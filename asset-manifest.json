@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/eliseevais/social-network-incubator/static/css/main.e6c13ad2.css",
+    "main.js": "/eliseevais/social-network-incubator/static/js/main.3c1eb152.js",
+    "static/media/flowers.jpg": "/eliseevais/social-network-incubator/static/media/flowers.a15de6269e4242f4004a.jpg",
+    "index.html": "/eliseevais/social-network-incubator/index.html",
+    "main.e6c13ad2.css.map": "/eliseevais/social-network-incubator/static/css/main.e6c13ad2.css.map",
+    "main.3c1eb152.js.map": "/eliseevais/social-network-incubator/static/js/main.3c1eb152.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.3c1eb152.js"
+  ]
+}
