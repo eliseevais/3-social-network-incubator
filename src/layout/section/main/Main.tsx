@@ -1,30 +1,16 @@
-import React from 'react';
-import { Styles } from './Main_Styles';
-import { Navbar } from '../../menu/Navbar';
-import { FlexWrapper } from '../../../components/FlexWrapper';
-import { Wall } from '../content/Wall';
-import { Container } from '../../../components/Container_Styles';
-import flowers from '../../../accets/img/flowers.jpg';
+import React from "react";
+import {Styles} from "./Main_Styles";
 
-type ContentPropsType = {
-
-}
-
-export function Main(props: ContentPropsType) {
+export function Main () {
   return (
     <Styles.Main>
-      <Container>
-        <FlexWrapper >
-          <Styles.NavbarWrapper>
-            <Navbar />
-            <Styles.MainPhoto>
-              <img src={flowers} alt="img" />
-            </Styles.MainPhoto>
-          </Styles.NavbarWrapper>
-          <Wall />
-        </FlexWrapper>
-      </Container>
+      <div>ava + description</div>
+      <div>
+        My Posts
+        <div>New post</div>
+        <div>Post 1</div>
+        <div>Post 2</div>
+      </div>
     </Styles.Main>
   )
 }
-

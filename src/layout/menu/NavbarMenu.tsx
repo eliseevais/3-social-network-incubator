@@ -1,20 +1,20 @@
 import React from 'react';
-import { Styles } from './Navbar_Styles';
+import { Styles } from './NavbarMenu_Styles';
 
 type MenuPropsType = {
 
 }
 
-export function Navbar(props: MenuPropsType) {
+export function NavbarMenu(props: MenuPropsType) {
   console.log("Menu is rendering")
   return (
-    <Styles.Navbar>
+    <Styles.NavbarMenu>
         <a href="#">Home</a>
         <a href="#">Inbox</a>
         <a href="#">Friends</a>
         <a href="#">Feed</a>
         <a href="#">Melodies</a>
         <a href="#">Inspiration</a>
-    </Styles.Navbar>
+    </Styles.NavbarMenu>
   )
 };
