@@ -1,16 +1,12 @@
 import React from "react";
 import {Styles} from "./Main_Styles";
+import {MyPosts} from "./myPosts/MyPosts";
 
-export function Main () {
+export function Main() {
   return (
     <Styles.Main>
       <div>ava + description</div>
-      <div>
-        My Posts
-        <div>New post</div>
-        <div>Post 1</div>
-        <div>Post 2</div>
-      </div>
+      <MyPosts/>
     </Styles.Main>
   )
 }
