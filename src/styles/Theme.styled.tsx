@@ -1,10 +1,10 @@
 export const myTheme = {
   colors: {
-    primary: "#e9a56636",
-    secondaryA: "#e9b26632",
-    secondaryB: "#e9946637",
-    accent: "#40858e36",
-    ground: "#f4cda830"
+    primary: "rgba(233,165,102,0.5)",
+    secondaryA: "rgba(233,178,102,0.1)",
+    secondaryB: "rgba(233,148,102,0.1)",
+    accent: "rgba(64,133,142,0.5)",
+    ground: "rgba(244,205,168,0.5)"
   },
 
   media: {

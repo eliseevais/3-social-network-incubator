@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { myTheme } from "../../../styles/Theme.styled";
 
 const NavBar = styled.div`
   padding: 0 10px 0 0;
