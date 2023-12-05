@@ -1,12 +1,13 @@
 import React from "react";
 import {Styles} from "./Main_Styles";
 import {MyPosts} from "./myPosts/MyPosts";
+import {Inbox} from "../inbox/Inbox";
 
 export function Main() {
   return (
     <Styles.Main>
-      <div>ava + description</div>
-      <MyPosts/>
+      {/*<MyPosts/>*/}
+      <Inbox/>
     </Styles.Main>
   )
 }

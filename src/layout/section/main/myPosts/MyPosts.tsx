@@ -5,6 +5,7 @@ import {Styles} from "./MyPosts_Styles";
 export const MyPosts = () => {
   return (
     <div>
+      <div>ava + description</div>
       <Styles.NewPostWrapper>
         <Styles.NewPostTextarea/>
         <Styles.AddPostButton>Add post</Styles.AddPostButton>
