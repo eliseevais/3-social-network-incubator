@@ -7,7 +7,7 @@ type InboxPropsType = {
 export const Inbox = (props: InboxPropsType) => {
   return (
     <Styles.Inbox>
-      Dialogs
+      Dialogs and messages are loading...
     </Styles.Inbox>
   )
 }

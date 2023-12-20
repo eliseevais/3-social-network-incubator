@@ -9,12 +9,11 @@ export function NavbarMenu(props: MenuPropsType) {
   console.log("Menu is rendering")
   return (
     <Styles.NavbarMenu>
-        <a href="#">Home</a>
-        <a href="#">Inbox</a>
-        <a href="#">Friends</a>
-        <a href="#">Feed</a>
-        <a href="#">Melodies</a>
-        <a href="#">Inspiration</a>
+        <a href="/myprofile">My profile</a>
+        <a href="/inbox">Inbox</a>
+        <a href="/friends">Friends</a>
+        <a href="/feeds">Feeds</a>
+        <a href="/melodies">Melodies</a>
     </Styles.NavbarMenu>
   )
 };
