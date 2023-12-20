@@ -11,6 +11,7 @@ export function ContentWindow() {
   return (
     <Styles.ContentWindow>
       <Route path='/myprofile' component={MyPosts}/>
+      {/*<Route exact path='/inbox' component={Inbox}/> */}
       <Route path='/inbox' component={Inbox}/>
       <Route path='/friends' component={Friends}/>
       <Route path='/feeds' component={Feeds}/>

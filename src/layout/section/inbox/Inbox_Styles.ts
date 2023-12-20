@@ -4,6 +4,11 @@ const Inbox = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
+
+  a {
+    text-decoration: none;
+    color: #000000;
+  }
 `
 
 const Dialog = styled.div`
