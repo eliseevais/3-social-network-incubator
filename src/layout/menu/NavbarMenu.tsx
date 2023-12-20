@@ -1,5 +1,6 @@
 import React from 'react';
 import { Styles } from './NavbarMenu_Styles';
+import {NavLink} from "react-router-dom";
 
 type MenuPropsType = {
 
@@ -9,11 +10,11 @@ export function NavbarMenu(props: MenuPropsType) {
   console.log("Menu is rendering")
   return (
     <Styles.NavbarMenu>
-        <a href="/myprofile">My profile</a>
-        <a href="/inbox">Inbox</a>
-        <a href="/friends">Friends</a>
-        <a href="/feeds">Feeds</a>
-        <a href="/melodies">Melodies</a>
+        <NavLink activeClassName='active' to="/myprofile">My profile</NavLink>
+        <NavLink to="/inbox">Inbox</NavLink>
+        <NavLink to="/friends">Friends</NavLink>
+        <NavLink to="/feeds">Feeds</NavLink>
+        <NavLink to="/melodies">Melodies</NavLink>
     </Styles.NavbarMenu>
   )
 };

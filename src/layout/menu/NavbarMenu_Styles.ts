@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {myTheme} from "../../styles/Theme.styled";
 
 const NavbarMenu = styled.nav`
   width: 100%;
@@ -11,6 +12,10 @@ const NavbarMenu = styled.nav`
     text-decoration: none;
     color: #000000;
     margin-right: 10px;
+  
+    &:active {
+      color: ${myTheme.colors.accent};
+    }
   }
 `;
 
