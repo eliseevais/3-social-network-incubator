@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {myTheme} from "../../../styles/Theme.styled";
 
 const Inbox = styled.div`
   width: 100%;
@@ -8,6 +9,12 @@ const Inbox = styled.div`
   a {
     text-decoration: none;
     color: #000000;
+  }
+  
+  a.isActive {
+    background: ${myTheme.colors.accent};
+    border-radius: 4px;
+    padding: 0 4px;
   }
 `
 

@@ -1,11 +1,12 @@
 import React from 'react';
 import {Post} from "./post/Post";
 import {Styles} from "./MyPosts_Styles";
+import {ProfileInfo} from "../profileInfo/ProfileInfo";
 
 export const MyPosts = () => {
   return (
     <div>
-      <div>ava + description</div>
+      <ProfileInfo/>
       <Styles.NewPostWrapper>
         <Styles.NewPostTextarea/>
         <Styles.AddPostButton>Add post</Styles.AddPostButton>

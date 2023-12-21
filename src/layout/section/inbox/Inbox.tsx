@@ -1,37 +1,24 @@
 import React from "react";
 import {Styles} from "./Inbox_Styles";
-import {Container} from "../../../components/Container_Styles";
-import {NavLink} from "react-router-dom";
+import {DialogItem} from "./dialogItem/DialogItem";
+import {MessageItem} from "./messageItem/MessageItem";
 
-type InboxPropsType = {}
+type InboxPropsType = {};
+
 export const Inbox = (props: InboxPropsType) => {
   return (
     <Styles.Inbox>
       <div>
-        <Styles.Dialog>
-          <NavLink to='/inbox/1'>Dmitry</NavLink>
-        </Styles.Dialog>
-
-        <Styles.Dialog>
-          <NavLink to='/inbox/2'>Ekaterina</NavLink>
-        </Styles.Dialog>
-
-        <Styles.Dialog>
-          <NavLink to='/inbox/3'>Maria</NavLink>
-        </Styles.Dialog>
-
-        <Styles.Dialog>
-          <NavLink to='/inbox/4'>Olga</NavLink>
-        </Styles.Dialog>
-
-        <Styles.Dialog>
-          <NavLink to='/inbox/5'>Maxim</NavLink>
-        </Styles.Dialog>
+        <DialogItem name='Dmitry' id='1'/>
+        <DialogItem name='Ekaterina' id='2'/>
+        <DialogItem name='Maria' id='3'/>
+        <DialogItem name='Olga' id='4'/>
+        <DialogItem name='Maxim' id='5'/>
       </div>
       <div>
-        <Styles.Message>Hello, my friend!</Styles.Message>
-        <Styles.Message>How are you doing?</Styles.Message>
-        <Styles.Message>Would you like to go to the cinema?</Styles.Message>
+        <MessageItem message='Hello, my friend!'/>
+        <MessageItem message='How are you doing?'/>
+        <MessageItem message='Would you like to go to the cinema?'/>
       </div>
     </Styles.Inbox>
   )

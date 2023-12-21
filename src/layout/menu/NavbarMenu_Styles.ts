@@ -17,6 +17,11 @@ const NavbarMenu = styled.nav`
       color: ${myTheme.colors.accent};
     }
   }
+  a.isActive {
+    background: ${myTheme.colors.accent};
+    border-radius: 4px;
+    padding: 0 4px;
+  }
 `;
 
 export const Styles = {
