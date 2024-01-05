@@ -2,8 +2,8 @@ import {Styles} from "../Inbox_Styles";
 import {NavLink} from "react-router-dom";
 import React from "react";
 
-type DialogItemPropsType = {
-  id: string;
+export type DialogItemPropsType = {
+  id: number;
   name: string;
 };
 
