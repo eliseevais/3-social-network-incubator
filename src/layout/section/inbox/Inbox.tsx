@@ -5,7 +5,7 @@ import {MessageItem} from "./messageItem/MessageItem";
 
 
 type DialogsDataPropsType = Array<DialogItemPropsType>;
-type MessagePropsType = {
+export type MessagePropsType = {
   id: number;
   message: string
 };

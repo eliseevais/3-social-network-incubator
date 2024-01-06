@@ -5,12 +5,13 @@ import {ContentWindow} from "./layout/section/main/ContentWindow";
 import {FlexWrapper} from "./components/FlexWrapper";
 import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
-import {BrowserRouter, Route} from "react-router-dom";
-import {Inbox} from "./layout/section/inbox/Inbox";
-import {MyPosts} from "./layout/section/main/myPosts/MyPosts";
+import {BrowserRouter} from "react-router-dom";
+import {store} from './index';
 
-function App() {
-  console.log("App is rendering");
+type AppPropsType = any;
+
+const App:React.FC<AppPropsType> = (props) =>  {
+  console.log("App is rendering", props);
   return (
     <BrowserRouter>
       <AppWrapper>
@@ -18,12 +19,12 @@ function App() {
         <Container>
           <FlexWrapper>
             <NavBar/>
-            <ContentWindow/>
+            <ContentWindow store={props.store}/>
           </FlexWrapper>
         </Container>
       </AppWrapper>
     </BrowserRouter>
   );
-}
+};
 
 export default App;
