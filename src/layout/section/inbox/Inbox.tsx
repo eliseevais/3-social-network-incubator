@@ -13,7 +13,7 @@ type MessageData = Array<MessagePropsType>;
 type InboxPropsType = {};
 
 export const Inbox = (props: InboxPropsType) => {
-  const dialogsData: DialogsDataPropsType = [
+  const dialogs: DialogsDataPropsType = [
     {id: 1, name: 'Dmitry'},
     {id: 2, name: 'Ekaterina'},
     {id: 3, name: 'Maria'},
@@ -21,17 +21,17 @@ export const Inbox = (props: InboxPropsType) => {
     {id: 5, name: 'Maxim'}
   ];
 
-  let dialogsElements = dialogsData
+  let dialogsElements = dialogs
     .map(dialog => <DialogItem name={dialog.name} id={dialog.id}/>);
 
-  const messageData: MessageData = [
+  const messages: MessageData = [
     {id: 1, message: 'Hello, my friend!'},
     {id: 2, message: 'How are you doing?'},
     {id: 3, message: 'Would you like to go to the cinema?'},
     {id: 4, message: 'No, thanks, I will stay at home to study.'},
   ];
 
-  let messagesElements = messageData
+  let messagesElements = messages
     .map(message => <MessageItem message={message.message}/>);
 
   return (

@@ -3,6 +3,9 @@ import {Post} from "./post/Post";
 import {Styles} from "./MyPosts_Styles";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
 
+type MyPostPropsType = {
+
+};
 type PostPropsType = {
   id: number;
   message: string;
@@ -10,8 +13,8 @@ type PostPropsType = {
 };
 type PostDataPropsType = Array<PostPropsType>;
 
-export const MyPosts = () => {
-  const postsData: PostDataPropsType = [
+export const MyPosts = (props: MyPostPropsType) => {
+  const posts: PostDataPropsType = [
     {id: 1, message: 'It\'s my first post.', likesCount: 9},
     {id: 2, message: 'Hello! How are you doing?', likesCount: 15},
     {id: 3, message: 'Winter is coming to our city', likesCount: 3},
@@ -19,7 +22,7 @@ export const MyPosts = () => {
     {id: 5, message: 'The weather was -24 today.', likesCount: 10},
     {id: 6, message: 'I like it-incubator!', likesCount: 23}
   ];
-  let postsElements = postsData
+  let postsElements = posts
     .map(post => <Post message={post.message} likesCount={post.likesCount}/>)
   return (
     <div>
