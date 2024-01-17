@@ -10,14 +10,14 @@ import {store} from './index';
 
 type AppPropsType = any;
 
-const App:React.FC<AppPropsType> = (props) =>  {
+const App = (props: AppPropsType) =>  {
   console.log("App is rendering", props);
   return (
     <BrowserRouter>
       <AppWrapper>
         <Header title="It's so good to have you back!"/>
         <Container>
-          <FlexWrapper>
+          <FlexWrapper >
             <NavBar/>
             <ContentWindow store={props.store}/>
           </FlexWrapper>

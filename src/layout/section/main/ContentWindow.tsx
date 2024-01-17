@@ -9,20 +9,26 @@ import {Melodies} from "../melodies/Melodies";
 import {DialogItemPropsType} from "../inbox/dialogItem/DialogItem";
 
 type ContentWindowPropsType = {
+  store: {
     posts: Array<PostPropsType>;
     dialogs: Array<DialogItemPropsType>;
     messages: Array<MessagePropsType>
+  }
 };
 
-export const ContentWindow:React.FC<ContentWindowPropsType> = (props) => {
+export const ContentWindow = (props: ContentWindowPropsType) => {
   console.log('props from contentWindow', props)
   return (
     <Styles.ContentWindow>
-      {/*<Route path='/myprofile' component={MyPosts}/>*/}
-      <Route path='/myprofile' render={() => <MyPosts posts={props.posts}></MyPosts>}/>
+      <Route path='/myprofile'
+             render={() => <MyPosts posts={props.store.posts}></MyPosts>}/>
 
-      {/*<Route exact path='/inbox' component={Inbox}/> */}
-      <Route path='/inbox' component={Inbox}/>
+      <Route path='/inbox' render={() =>
+        <Inbox dialogs={props.store.dialogs}
+               messages={props.store.messages}
+       />}/>
+      {/*<Route path='/inbox' component={Inbox}/>*/}
+
       <Route path='/friends' component={Friends}/>
       <Route path='/feeds' component={Feeds}/>
       <Route path='/melodies' component={Melodies}/>
