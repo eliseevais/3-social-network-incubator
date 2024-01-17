@@ -21,6 +21,15 @@ const Inbox = styled.div`
 const Dialog = styled.div`
   min-width: 200px;
   margin: 0 0 10px 0;
+  display: flex;
+  align-items: center;
+`
+
+const DialogAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  margin: 0 10px 0 0;
 `
 
 const Message = styled.div`
@@ -30,5 +39,6 @@ const Message = styled.div`
 export const Styles = {
   Inbox,
   Dialog,
-  Message,
+  DialogAvatar,
+  Message
 }

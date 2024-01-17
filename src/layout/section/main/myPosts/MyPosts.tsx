@@ -1,4 +1,4 @@
-import React, {ReactNode} from 'react';
+import React from 'react';
 import {Post} from "./post/Post";
 import {Styles} from "./MyPosts_Styles";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
@@ -10,7 +10,7 @@ export type PostPropsType = {
 };
 type PostDataPropsType =  {
   posts: Array<PostPropsType>
-}
+};
 
 export const MyPosts = (props: PostDataPropsType) => {
   console.log('props from MyPosts', props)

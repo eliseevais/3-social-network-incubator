@@ -2,17 +2,21 @@ import React from "react";
 import {Styles} from "./ContentWindow_Styles";
 import {MyPosts, PostPropsType} from "./myPosts/MyPosts";
 import {Inbox, MessagePropsType} from "../inbox/Inbox";
-import {Route} from "react-router-dom";
+import {Redirect, Route} from "react-router-dom";
 import {Friends} from "../friends/Friends";
 import {Feeds} from "../feeds/Feeds";
 import {Melodies} from "../melodies/Melodies";
 import {DialogItemPropsType} from "../inbox/dialogItem/DialogItem";
 
 type ContentWindowPropsType = {
-  store: {
-    posts: Array<PostPropsType>;
-    dialogs: Array<DialogItemPropsType>;
-    messages: Array<MessagePropsType>
+  state: {
+    myPostsPage: {
+      posts: Array<PostPropsType>;
+    };
+    InboxPage: {
+      dialogs: Array<DialogItemPropsType>;
+      messages: Array<MessagePropsType>
+    }
   }
 };
 
@@ -20,18 +24,21 @@ export const ContentWindow = (props: ContentWindowPropsType) => {
   console.log('props from contentWindow', props)
   return (
     <Styles.ContentWindow>
-      <Route path='/myprofile'
-             render={() => <MyPosts posts={props.store.posts}></MyPosts>}/>
+      <Redirect from='/' to='/myprofile'/>
 
-      <Route path='/inbox' render={() =>
-        <Inbox dialogs={props.store.dialogs}
-               messages={props.store.messages}
-       />}/>
-      {/*<Route path='/inbox' component={Inbox}/>*/}
+      <Route path='/myprofile' render={
+        () => <MyPosts posts={props.state.myPostsPage.posts}></MyPosts>}/>
+
+      <Route path='/inbox' render={
+        () => <Inbox dialogs={props.state.InboxPage.dialogs}
+                     messages={props.state.InboxPage.messages}
+        />}
+      />
 
       <Route path='/friends' component={Friends}/>
       <Route path='/feeds' component={Feeds}/>
       <Route path='/melodies' component={Melodies}/>
+
     </Styles.ContentWindow>
   )
 }
