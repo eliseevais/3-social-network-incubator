@@ -1,9 +1,21 @@
 import React from "react";
+import {Friend, FriendPropsType} from "./Friend";
 
-export const Friends = () => {
+type FriendsDataPropsType = {
+  friends: Array<FriendPropsType>
+};
+
+export const Friends = (props: FriendsDataPropsType) => {
+
+  let friendsElements = props.friends.map(friend =>
+    <Friend key={friend.id}
+            id={friend.id}
+            name={friend.name}
+    />)
+
   return (
     <div>
-      Friends list will be here
+      {friendsElements}
     </div>
   )
 }

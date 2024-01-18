@@ -8,19 +8,23 @@ import Ekaterina from '../accets/img/Ekaterina.jpg';
 import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
+import {FriendPropsType} from "../layout/section/friends/Friend";
 
 export type statePropsTypePages = {
-  myPostsPage: {
-    posts: Array<PostPropsType>;
+  MyPostsPage: {
+    posts: Array<PostPropsType>
   };
   InboxPage: {
     dialogs: Array<DialogItemPropsType>;
     messages: Array<MessagePropsType>
+  };
+  FriendsPage: {
+    friends: Array<FriendPropsType>
   }
 };
 
 export let state: statePropsTypePages = {
-  myPostsPage: {
+  MyPostsPage: {
     posts: [
       {id: 1, message: 'It\'s my first post.', likesCount: 9},
       {id: 2, message: 'Hello! How are you doing?', likesCount: 15},
@@ -43,6 +47,15 @@ export let state: statePropsTypePages = {
       {id: 2, message: 'How are you doing?'},
       {id: 3, message: 'Would you like to go to the cinema?'},
       {id: 4, message: 'No, thanks, I will stay at home to study.'},
+    ],
+  },
+  FriendsPage: {
+    friends: [
+      {id: 1, name: 'Dmitry'},
+      {id: 2, name: 'Ekaterina'},
+      {id: 3, name: 'Maria'},
+      {id: 4, name: 'Olga'},
+      {id: 5, name: 'Maxim'}
     ]
   }
 };
