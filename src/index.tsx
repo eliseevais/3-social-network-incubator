@@ -5,7 +5,7 @@ import App from './App';
 import {GlobalStyles} from './styles/GlobalStyles';
 import {ThemeProvider} from 'styled-components';
 import {myTheme} from './styles/Theme.styled';
-import {state} from './redux/State'
+import {state} from './redux/state'
 
 
 

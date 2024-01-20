@@ -8,21 +8,30 @@ export type PostPropsType = {
   message: string;
   likesCount: number
 };
-type PostDataPropsType =  {
-  posts: Array<PostPropsType>
+type PostDataPropsType = {
+  posts: Array<PostPropsType>;
+
 };
 
 export const MyPosts = (props: PostDataPropsType) => {
   console.log('props from MyPosts', props)
 
-  let postsElements = props.posts.map((post => <Post key={post.id} message={post.message} likesCount={post.likesCount}/>))
+  let postsElements = props.posts.map((post => <Post key={post.id}
+                                                     message={post.message}
+                                                     likesCount={post.likesCount}/>));
+  let newPostElement = React.createRef<HTMLTextAreaElement>();
+  let onClickAddPostHandler = () => {
+    let text = newPostElement.current?.value
+    alert(text)
+  };
 
   return (
     <div>
       <ProfileInfo/>
       <Styles.NewPostWrapper>
-        <Styles.NewPostTextarea/>
-        <Styles.AddPostButton>Add post</Styles.AddPostButton>
+        <Styles.NewPostTextarea ref={newPostElement}/>
+        <Styles.AddPostButton onClick={onClickAddPostHandler}>Add
+          post</Styles.AddPostButton>
       </Styles.NewPostWrapper>
       {postsElements}
     </div>

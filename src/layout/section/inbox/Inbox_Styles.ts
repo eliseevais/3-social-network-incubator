@@ -18,6 +18,15 @@ const Inbox = styled.div`
   }
 `
 
+const ButtonSendMessage = styled.button`
+  width: 80px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: ${myTheme.colors.accent};
+  border: none;
+  cursor: pointer;
+`
+
 const Dialog = styled.div`
   min-width: 200px;
   margin: 0 0 10px 0;
@@ -36,9 +45,24 @@ const Message = styled.div`
   margin: 0 0 10px 0;
 `
 
+const NewMessageTextarea = styled.textarea`
+  min-width: 300px;
+  min-height: 40px;
+  margin: 10px 10px 10px 0;
+`
+
+const NewMessageWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`
+
 export const Styles = {
+  ButtonSendMessage,
   Inbox,
   Dialog,
   DialogAvatar,
-  Message
+  Message,
+  NewMessageTextarea,
+  NewMessageWrapper
 }

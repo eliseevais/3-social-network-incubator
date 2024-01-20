@@ -21,19 +21,26 @@ export const Inbox = (props: InboxPropsType) => {
                 img={dialog.img}
     />);
 
-  let messagesElements = props.messages.map(message => <MessageItem
-    key={message.id} message={message.message}/>);
+  let messagesElements = props.messages.map(message =>
+    <MessageItem key={message.id} message={message.message}/>);
+  let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
+  let onClickSendMessageHandler = () => {
+    let newMessage = newMessageTextarea.current?.value;
+    alert(newMessage)
+  };
 
   return (
     <Styles.Inbox>
       <div>
-        {
-          dialogsElements
-        }
-
+        {dialogsElements}
       </div>
       <div>
         {messagesElements}
+        <Styles.NewMessageWrapper>
+          <Styles.NewMessageTextarea ref={newMessageTextarea}/>
+          <Styles.ButtonSendMessage
+            onClick={onClickSendMessageHandler}>send</Styles.ButtonSendMessage>
+        </Styles.NewMessageWrapper>
       </div>
     </Styles.Inbox>
   )

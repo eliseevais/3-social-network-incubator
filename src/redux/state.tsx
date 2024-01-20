@@ -11,20 +11,20 @@ import Maxim from '../accets/img/Maxim.jpg';
 import {FriendPropsType} from "../layout/section/friends/Friend";
 
 export type statePropsTypePages = {
-  MyPostsPage: {
+  myPostsPage: {
     posts: Array<PostPropsType>
   };
-  InboxPage: {
+  inboxPage: {
     dialogs: Array<DialogItemPropsType>;
     messages: Array<MessagePropsType>
   };
-  FriendsPage: {
+  friendsPage: {
     friends: Array<FriendPropsType>
   }
 };
 
 export let state: statePropsTypePages = {
-  MyPostsPage: {
+  myPostsPage: {
     posts: [
       {id: 1, message: 'It\'s my first post.', likesCount: 9},
       {id: 2, message: 'Hello! How are you doing?', likesCount: 15},
@@ -34,7 +34,7 @@ export let state: statePropsTypePages = {
       {id: 6, message: 'I like it-incubator!', likesCount: 23}
     ],
   },
-  InboxPage: {
+  inboxPage: {
     dialogs: [
       {id: 1, name: 'Dmitry', img: Dmitry},
       {id: 2, name: 'Ekaterina', img: Ekaterina},
@@ -49,7 +49,7 @@ export let state: statePropsTypePages = {
       {id: 4, message: 'No, thanks, I will stay at home to study.'},
     ],
   },
-  FriendsPage: {
+  friendsPage: {
     friends: [
       {id: 1, name: 'Dmitry'},
       {id: 2, name: 'Ekaterina'},

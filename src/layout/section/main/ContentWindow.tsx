@@ -12,14 +12,14 @@ import {FriendPropsType} from "../friends/Friend";
 
 type ContentWindowPropsType = {
   state: {
-    MyPostsPage: {
+    myPostsPage: {
       posts: Array<PostPropsType>;
     };
-    InboxPage: {
+    inboxPage: {
       dialogs: Array<DialogItemPropsType>;
       messages: Array<MessagePropsType>
     };
-    FriendsPage: {
+    friendsPage: {
       friends: Array<FriendPropsType>
     }
   }
@@ -32,19 +32,15 @@ export const ContentWindow = (props: ContentWindowPropsType) => {
       <Redirect from='/' to='/myprofile'/>
 
       <Route path='/myprofile' render={
-        () => <MyPosts posts={props.state.MyPostsPage.posts}></MyPosts>}
-      />
+        () => <MyPosts posts={props.state.myPostsPage.posts}></MyPosts>}/>
 
       <Route path='/inbox' render={
-        () => <Inbox dialogs={props.state.InboxPage.dialogs}
-                     messages={props.state.InboxPage.messages}
-        />}
-      />
+        () => <Inbox dialogs={props.state.inboxPage.dialogs}
+                     messages={props.state.inboxPage.messages}/>}/>
 
       <Route path='/friends' render={
-        () => <Friends friends={props.state.FriendsPage.friends}></Friends>}
-      />
-      {/*<Route path='/friends' component={Friends}/>*/}
+        () => <Friends friends={props.state.friendsPage.friends}/>}/>
+
       <Route path='/feeds' component={Feeds}/>
       <Route path='/melodies' component={Melodies}/>
 
