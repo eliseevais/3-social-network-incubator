@@ -6,6 +6,7 @@ import {FlexWrapper} from "./components/FlexWrapper";
 import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
 import {BrowserRouter} from "react-router-dom";
+import {addPost} from "./redux/state";
 
 type AppPropsType = any;
 
@@ -18,7 +19,7 @@ const App = (props: AppPropsType) =>  {
         <Container>
           <FlexWrapper >
             <NavBar/>
-            <ContentWindow state={props.state}/>
+            <ContentWindow state={props.state} addPost={addPost}/>
           </FlexWrapper>
         </Container>
       </AppWrapper>

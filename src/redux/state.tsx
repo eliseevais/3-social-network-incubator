@@ -22,7 +22,14 @@ export type statePropsTypePages = {
     friends: Array<FriendPropsType>
   }
 };
-
+export type newPostMessagePropsType = {
+  message: string
+};
+export type newPostPropsType = {
+  id: number;
+  message: string;
+  likesCount: 0
+}
 export let state: statePropsTypePages = {
   myPostsPage: {
     posts: [
@@ -58,4 +65,14 @@ export let state: statePropsTypePages = {
       {id: 5, name: 'Maxim'}
     ]
   }
+};
+
+export let addPost = (newPostMessage: string) => {
+  let newPost: newPostPropsType = {
+    id: 5,
+    message: newPostMessage,
+    likesCount: 0
+  }
+  state.myPostsPage.posts.push(newPost);
+  console.log(state.myPostsPage.posts)
 };

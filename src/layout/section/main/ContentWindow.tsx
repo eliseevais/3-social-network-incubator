@@ -22,7 +22,8 @@ type ContentWindowPropsType = {
     friendsPage: {
       friends: Array<FriendPropsType>
     }
-  }
+  };
+  addPost: (newPostMessage: string) => void
 };
 
 export const ContentWindow = (props: ContentWindowPropsType) => {
@@ -32,7 +33,10 @@ export const ContentWindow = (props: ContentWindowPropsType) => {
       <Redirect from='/' to='/myprofile'/>
 
       <Route path='/myprofile' render={
-        () => <MyPosts posts={props.state.myPostsPage.posts}></MyPosts>}/>
+        () => <MyPosts posts={props.state.myPostsPage.posts}
+                       addPost={props.addPost}
+        />}
+      />
 
       <Route path='/inbox' render={
         () => <Inbox dialogs={props.state.inboxPage.dialogs}

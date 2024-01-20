@@ -10,7 +10,7 @@ export type PostPropsType = {
 };
 type PostDataPropsType = {
   posts: Array<PostPropsType>;
-
+  addPost: (text: string) => void
 };
 
 export const MyPosts = (props: PostDataPropsType) => {
@@ -21,8 +21,10 @@ export const MyPosts = (props: PostDataPropsType) => {
                                                      likesCount={post.likesCount}/>));
   let newPostElement = React.createRef<HTMLTextAreaElement>();
   let onClickAddPostHandler = () => {
-    let text = newPostElement.current?.value
-    alert(text)
+    let text = newPostElement.current?.value;
+    if (text) {
+      props.addPost(text)
+    }
   };
 
   return (
