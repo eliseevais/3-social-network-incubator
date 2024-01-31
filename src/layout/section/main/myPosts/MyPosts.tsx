@@ -23,7 +23,8 @@ export const MyPosts = (props: PostDataPropsType) => {
   let onClickAddPostHandler = () => {
     let text = newPostElement.current?.value;
     if (text) {
-      props.addPost(text)
+      props.addPost(text);
+      // newPostElement.current?.value = ''
     }
   };
 

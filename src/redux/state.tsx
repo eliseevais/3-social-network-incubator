@@ -9,6 +9,7 @@ import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
 import {FriendPropsType} from "../layout/section/friends/Friend";
+import {rerenderEntireTree} from "../render";
 
 export type statePropsTypePages = {
   myPostsPage: {
@@ -69,10 +70,11 @@ export let state: statePropsTypePages = {
 
 export let addPost = (newPostMessage: string) => {
   let newPost: newPostPropsType = {
-    id: 5,
+    id: new Date().getTime(),
     message: newPostMessage,
     likesCount: 0
   }
   state.myPostsPage.posts.push(newPost);
+  rerenderEntireTree(state);
   console.log(state.myPostsPage.posts)
 };

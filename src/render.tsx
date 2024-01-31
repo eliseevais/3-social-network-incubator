@@ -5,12 +5,14 @@ import App from './App';
 import {GlobalStyles} from './styles/GlobalStyles';
 import {ThemeProvider} from 'styled-components';
 import {myTheme} from './styles/Theme.styled';
-import {state} from './redux/state'
-import {rerenderEntireTree} from "./render";
 
 
-rerenderEntireTree(state);
-
-
-
-
+export const rerenderEntireTree = (state: any) => {
+  ReactDOM.render(
+    <ThemeProvider theme={myTheme}>
+      <App state={state}/>
+      <GlobalStyles/>
+    </ThemeProvider>,
+    document.getElementById('root')
+  );
+};
