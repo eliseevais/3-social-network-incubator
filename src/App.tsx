@@ -6,7 +6,11 @@ import {FlexWrapper} from "./components/FlexWrapper";
 import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
 import {BrowserRouter} from "react-router-dom";
-import {addPost} from "./redux/state";
+import {
+  addPost,
+  sendMessage, updateNewMessageText,
+  updateNewPostText
+} from "./redux/state";
 
 type AppPropsType = any;
 
@@ -19,7 +23,12 @@ const App = (props: AppPropsType) =>  {
         <Container>
           <FlexWrapper >
             <NavBar/>
-            <ContentWindow state={props.state} addPost={addPost}/>
+            <ContentWindow state={props.state}
+                           addPost={addPost}
+                           updateNewPostText={updateNewPostText}
+                           sendMessage={sendMessage}
+                           updateNewMessageText={updateNewMessageText}
+            />
           </FlexWrapper>
         </Container>
       </AppWrapper>

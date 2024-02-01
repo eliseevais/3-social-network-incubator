@@ -9,7 +9,10 @@ export type MessagePropsType = {
 };
 type InboxPropsType = {
   dialogs: Array<DialogItemPropsType>;
-  messages: Array<MessagePropsType>
+  messages: Array<MessagePropsType>;
+  newMessageText: string;
+  sendMessage: () => void;
+  updateNewMessageText: (newMessageText: string) => void
 };
 
 export const Inbox = (props: InboxPropsType) => {
@@ -25,9 +28,15 @@ export const Inbox = (props: InboxPropsType) => {
     <MessageItem key={message.id} message={message.message}/>);
   let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
   let onClickSendMessageHandler = () => {
-    let newMessage = newMessageTextarea.current?.value;
-    alert(newMessage)
+    props.sendMessage()
   };
+
+  const onChangeNewMessageHandler = () => {
+    let text = newMessageTextarea.current?.value;
+    if (text) {
+      props.updateNewMessageText(text)
+    }
+  }
 
   return (
     <Styles.Inbox>
@@ -37,7 +46,10 @@ export const Inbox = (props: InboxPropsType) => {
       <div>
         {messagesElements}
         <Styles.NewMessageWrapper>
-          <Styles.NewMessageTextarea ref={newMessageTextarea}/>
+          <Styles.NewMessageTextarea ref={newMessageTextarea}
+                                     value={props.newMessageText}
+                                     onChange={onChangeNewMessageHandler}
+          />
           <Styles.ButtonSendMessage
             onClick={onClickSendMessageHandler}>send</Styles.ButtonSendMessage>
         </Styles.NewMessageWrapper>

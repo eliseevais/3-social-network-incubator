@@ -14,36 +14,50 @@ type ContentWindowPropsType = {
   state: {
     myPostsPage: {
       posts: Array<PostPropsType>;
+      newPostText: string
     };
     inboxPage: {
       dialogs: Array<DialogItemPropsType>;
-      messages: Array<MessagePropsType>
+      messages: Array<MessagePropsType>;
+      newMessageText: string
     };
     friendsPage: {
       friends: Array<FriendPropsType>
     }
   };
-  addPost: (newPostMessage: string) => void
+  addPost: () => void;
+  updateNewPostText: (newPostText: string) => void;
+  sendMessage: () => void;
+  updateNewMessageText: (newMessageText: string) => void
 };
 
 export const ContentWindow = (props: ContentWindowPropsType) => {
-  console.log('props from contentWindow', props)
   return (
     <Styles.ContentWindow>
       <Redirect from='/' to='/myprofile'/>
 
       <Route path='/myprofile' render={
         () => <MyPosts posts={props.state.myPostsPage.posts}
+                       newPostText={props.state.myPostsPage.newPostText}
                        addPost={props.addPost}
+                       updateNewPostText={props.updateNewPostText}
         />}
       />
 
       <Route path='/inbox' render={
         () => <Inbox dialogs={props.state.inboxPage.dialogs}
-                     messages={props.state.inboxPage.messages}/>}/>
+                     messages={props.state.inboxPage.messages}
+                     newMessageText={props.state.inboxPage.newMessageText}
+                     sendMessage={props.sendMessage}
+                     updateNewMessageText={props.updateNewMessageText}
+
+        />}
+      />
 
       <Route path='/friends' render={
-        () => <Friends friends={props.state.friendsPage.friends}/>}/>
+        () => <Friends friends={props.state.friendsPage.friends}
+        />}
+      />
 
       <Route path='/feeds' component={Feeds}/>
       <Route path='/melodies' component={Melodies}/>

@@ -13,24 +13,30 @@ import {rerenderEntireTree} from "../render";
 
 export type statePropsTypePages = {
   myPostsPage: {
-    posts: Array<PostPropsType>
+    posts: Array<PostPropsType>;
+    newPostText: string
   };
   inboxPage: {
     dialogs: Array<DialogItemPropsType>;
-    messages: Array<MessagePropsType>
+    messages: Array<MessagePropsType>;
+    newMessageText: string
   };
   friendsPage: {
     friends: Array<FriendPropsType>
   }
 };
-export type newPostMessagePropsType = {
-  message: string
-};
+
 export type newPostPropsType = {
   id: number;
   message: string;
   likesCount: 0
+};
+
+export type nextMessagePropsType = {
+  id: number;
+  message: string;
 }
+
 export let state: statePropsTypePages = {
   myPostsPage: {
     posts: [
@@ -41,6 +47,7 @@ export let state: statePropsTypePages = {
       {id: 5, message: 'The weather was -24 today.', likesCount: 10},
       {id: 6, message: 'I like it-incubator!', likesCount: 23}
     ],
+    newPostText: 'Hello from state.tsx'
   },
   inboxPage: {
     dialogs: [
@@ -56,6 +63,7 @@ export let state: statePropsTypePages = {
       {id: 3, message: 'Would you like to go to the cinema?'},
       {id: 4, message: 'No, thanks, I will stay at home to study.'},
     ],
+    newMessageText: 'HelloMessage from state.tsx'
   },
   friendsPage: {
     friends: [
@@ -68,13 +76,33 @@ export let state: statePropsTypePages = {
   }
 };
 
-export let addPost = (newPostMessage: string) => {
+export const addPost = () => {
   let newPost: newPostPropsType = {
     id: new Date().getTime(),
-    message: newPostMessage,
+    message: state.myPostsPage.newPostText,
     likesCount: 0
   }
   state.myPostsPage.posts.push(newPost);
+  state.myPostsPage.newPostText = '';
   rerenderEntireTree(state);
-  console.log(state.myPostsPage.posts)
 };
+
+export const updateNewPostText = (newPostText: string) => {
+   state.myPostsPage.newPostText = newPostText;
+   rerenderEntireTree(state)
+};
+
+export const sendMessage = () => {
+  let nextMessage: nextMessagePropsType = {
+    id: new Date().getTime(),
+    message: state.inboxPage.newMessageText,
+  }
+  state.inboxPage.messages.push(nextMessage);
+  state.inboxPage.newMessageText = '';
+  rerenderEntireTree(state)
+};
+
+export const updateNewMessageText = (newMessageText: string) => {
+  state.inboxPage.newMessageText = newMessageText;
+  rerenderEntireTree(state)
+}
