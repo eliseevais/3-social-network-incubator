@@ -6,15 +6,8 @@ import {FlexWrapper} from "./components/FlexWrapper";
 import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
 import {BrowserRouter} from "react-router-dom";
-import {
-  addPost,
-  sendMessage, updateNewMessageText,
-  updateNewPostText
-} from "./redux/state";
 
-type AppPropsType = any;
-
-const App = (props: AppPropsType) =>  {
+const App = (props: any) =>  {
   console.log("App is rendering", props);
   return (
     <BrowserRouter>
@@ -23,11 +16,11 @@ const App = (props: AppPropsType) =>  {
         <Container>
           <FlexWrapper >
             <NavBar/>
-            <ContentWindow state={props.state}
-                           addPost={addPost}
-                           updateNewPostText={updateNewPostText}
-                           sendMessage={sendMessage}
-                           updateNewMessageText={updateNewMessageText}
+            <ContentWindow state={props.store.getState()}
+                           addPost={props.store.addPost.bind(props.store)}
+                           updateNewPostText={props.store.updateNewPostText.bind(props.store)}
+                           sendMessage={props.store.sendMessage.bind(props.store)}
+                           updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
             />
           </FlexWrapper>
         </Container>

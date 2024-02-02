@@ -8,7 +8,7 @@ import {Feeds} from "../feeds/Feeds";
 import {Melodies} from "../melodies/Melodies";
 import {DialogItemPropsType} from "../inbox/dialogItem/DialogItem";
 import {FriendPropsType} from "../friends/Friend";
-
+import {storePropsType} from "../../../redux/state";
 
 type ContentWindowPropsType = {
   state: {
