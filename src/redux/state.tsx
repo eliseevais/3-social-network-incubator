@@ -9,7 +9,10 @@ import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
 import {FriendPropsType} from "../layout/section/friends/Friend";
-import {rerenderEntireTree} from "../render";
+
+let rerenderEntireTree = () => {
+  console.log('state was changed')
+};
 
 export type statePropsTypePages = {
   myPostsPage: {
@@ -84,12 +87,12 @@ export const addPost = () => {
   }
   state.myPostsPage.posts.push(newPost);
   state.myPostsPage.newPostText = '';
-  rerenderEntireTree(state);
+  rerenderEntireTree();
 };
 
 export const updateNewPostText = (newPostText: string) => {
    state.myPostsPage.newPostText = newPostText;
-   rerenderEntireTree(state)
+   rerenderEntireTree()
 };
 
 export const sendMessage = () => {
@@ -99,10 +102,14 @@ export const sendMessage = () => {
   }
   state.inboxPage.messages.push(nextMessage);
   state.inboxPage.newMessageText = '';
-  rerenderEntireTree(state)
+  rerenderEntireTree()
 };
 
 export const updateNewMessageText = (newMessageText: string) => {
   state.inboxPage.newMessageText = newMessageText;
-  rerenderEntireTree(state)
+  rerenderEntireTree()
+};
+
+export const subscribe = (observer: any) => {
+  rerenderEntireTree = observer
 }
