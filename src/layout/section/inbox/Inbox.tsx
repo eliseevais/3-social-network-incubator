@@ -12,8 +12,6 @@ type InboxPropsType = {
   dialogs: Array<DialogItemPropsType>;
   messages: Array<MessagePropsType>;
   newMessageText: string;
-  sendMessage?: () => void;
-  updateNewMessageText?: (newMessageText: string) => void;
   dispatch: (action: ActionPropsType) => void
 };
 
@@ -30,14 +28,15 @@ export const Inbox = (props: InboxPropsType) => {
     <MessageItem key={message.id} message={message.message}/>);
   let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
   let onClickSendMessageHandler = () => {
-    props.dispatch({type: 'SEND-MESSAGE'})
+    let action = {type: 'SEND-MESSAGE'};
+    props.dispatch(action)
   };
 
   const onChangeNewMessageHandler = () => {
     let text = newMessageTextarea.current?.value;
     if (text) {
-      //props.updateNewMessageText(text)
-      props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text})
+      let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text};
+      props.dispatch(action)
     }
   }
 
