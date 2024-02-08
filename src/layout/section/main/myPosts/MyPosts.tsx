@@ -8,11 +8,12 @@ export type PostPropsType = {
   message: string;
   likesCount: number
 };
+type actionPropsType = any;
+
 type PostDataPropsType = {
   posts: Array<PostPropsType>;
   newPostText: string;
-  addPost: () => void;
-  updateNewPostText: (newPostText: string) => void
+  dispatch: (action: actionPropsType) => void
 };
 
 export const MyPosts = (props: PostDataPropsType) => {
@@ -21,12 +22,14 @@ export const MyPosts = (props: PostDataPropsType) => {
                                                      likesCount={post.likesCount}/>));
   let newPostElement = React.createRef<HTMLTextAreaElement>();
   let onClickAddPostHandler = () => {
-    props.addPost()
+    let action = {type: 'ADD-POST'};
+    props.dispatch(action)
   };
   let onChangeNewPostTextHandler = () => {
     let text = newPostElement.current?.value;
     if (text) {
-      props.updateNewPostText(text);
+      let action = {type: 'UPDATE-NEW-POST-TEXT', newPostText: text};
+      props.dispatch(action)
     }
   }
 

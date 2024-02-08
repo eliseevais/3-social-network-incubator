@@ -8,8 +8,8 @@ import {Feeds} from "../feeds/Feeds";
 import {Melodies} from "../melodies/Melodies";
 import {DialogItemPropsType} from "../inbox/dialogItem/DialogItem";
 import {FriendPropsType} from "../friends/Friend";
-import {storePropsType} from "../../../redux/state";
 
+type ActionPropsType = any;
 type ContentWindowPropsType = {
   state: {
     myPostsPage: {
@@ -25,10 +25,8 @@ type ContentWindowPropsType = {
       friends: Array<FriendPropsType>
     }
   };
-  addPost: () => void;
-  updateNewPostText: (newPostText: string) => void;
-  sendMessage: () => void;
-  updateNewMessageText: (newMessageText: string) => void
+
+  dispatch: (action: ActionPropsType) => void
 };
 
 export const ContentWindow = (props: ContentWindowPropsType) => {
@@ -39,8 +37,7 @@ export const ContentWindow = (props: ContentWindowPropsType) => {
       <Route path='/myprofile' render={
         () => <MyPosts posts={props.state.myPostsPage.posts}
                        newPostText={props.state.myPostsPage.newPostText}
-                       addPost={props.addPost}
-                       updateNewPostText={props.updateNewPostText}
+                       dispatch={props.dispatch}
         />}
       />
 
@@ -48,9 +45,7 @@ export const ContentWindow = (props: ContentWindowPropsType) => {
         () => <Inbox dialogs={props.state.inboxPage.dialogs}
                      messages={props.state.inboxPage.messages}
                      newMessageText={props.state.inboxPage.newMessageText}
-                     sendMessage={props.sendMessage}
-                     updateNewMessageText={props.updateNewMessageText}
-
+                     dispatch={props.dispatch}
         />}
       />
 

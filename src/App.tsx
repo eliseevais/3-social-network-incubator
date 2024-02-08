@@ -7,20 +7,17 @@ import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
 import {BrowserRouter} from "react-router-dom";
 
-const App = (props: any) =>  {
+const App = (props: any) => {
   console.log("App is rendering", props);
   return (
     <BrowserRouter>
       <AppWrapper>
         <Header title="It's so good to have you back!"/>
         <Container>
-          <FlexWrapper >
+          <FlexWrapper>
             <NavBar/>
             <ContentWindow state={props.store.getState()}
-                           addPost={props.store.addPost.bind(props.store)}
-                           updateNewPostText={props.store.updateNewPostText.bind(props.store)}
-                           sendMessage={props.store.sendMessage.bind(props.store)}
-                           updateNewMessageText={props.store.updateNewMessageText.bind(props.store)}
+                           dispatch={props.store.dispatch.bind(props.store)}
             />
           </FlexWrapper>
         </Container>
