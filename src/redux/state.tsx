@@ -45,8 +45,8 @@ export type storePropsType = {
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
 
 export let store: storePropsType = {
   _state: {
@@ -75,7 +75,7 @@ export let store: storePropsType = {
         {id: 3, message: 'Would you like to go to the cinema?'},
         {id: 4, message: 'No, thanks, I will stay at home to study.'},
       ],
-      newMessageText: 'HelloMessage from state.tsx'
+      newMessageText: ''
     },
     friendsPage: {
       friends: [
@@ -110,6 +110,9 @@ export let store: storePropsType = {
     } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.myPostsPage.newPostText = action.newPostText;
       this._callSubscriber(this._state)
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+      this._state.inboxPage.newMessageText = action.newMessageText;
+      this._callSubscriber(this._state)
     } else if (action.type === SEND_MESSAGE) {
       let nextMessage: nextMessagePropsType = {
         id: new Date().getTime(),
@@ -117,9 +120,6 @@ export let store: storePropsType = {
       };
       this._state.inboxPage.messages.push(nextMessage);
       this._state.inboxPage.newMessageText = '';
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.inboxPage.newMessageText = action.newMessageText;
       this._callSubscriber(this._state)
     }
   }
@@ -129,7 +129,7 @@ export const addPostAC = () => ({type: ADD_POST});
 export const updateNewPostTextAC = (text: string) => {
   return {type: UPDATE_NEW_POST_TEXT, newPostText: text}
 };
-export const sendMessageAC = () => ({type: SEND_MESSAGE});
-export const updateNewMessageText = (text: string) => {
+export const updateNewMessageTextAC = (text: string) => {
   return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text}
 };
+export const sendMessageAC = () => ({type: SEND_MESSAGE});

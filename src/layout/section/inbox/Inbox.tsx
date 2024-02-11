@@ -2,7 +2,10 @@ import React from "react";
 import {Styles} from "./Inbox_Styles";
 import {DialogItem, DialogItemPropsType} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
-import {sendMessageAC, updateNewMessageText} from "../../../redux/state";
+import {
+  sendMessageAC,
+  updateNewMessageTextAC
+} from "../../../redux/state";
 
 export type MessagePropsType = {
   id: number;
@@ -32,10 +35,10 @@ export const Inbox = (props: InboxPropsType) => {
     props.dispatch(sendMessageAC())
   };
 
-  const onChangeNewMessageHandler = () => {
-    let text = newMessageTextarea.current?.value;
+  const onChangeNewMessageHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    let text = event.currentTarget.value;
     if (text) {
-      props.dispatch(updateNewMessageText(text))
+      props.dispatch(updateNewMessageTextAC(text))
     }
   };
 
@@ -47,9 +50,9 @@ export const Inbox = (props: InboxPropsType) => {
       <div>
         {messagesElements}
         <Styles.NewMessageWrapper>
-          <Styles.NewMessageTextarea ref={newMessageTextarea}
-                                     value={props.newMessageText}
+          <Styles.NewMessageTextarea value={props.newMessageText}
                                      onChange={onChangeNewMessageHandler}
+                                     placeholder={'Enter your message'}
           />
           <Styles.ButtonSendMessage
             onClick={onClickSendMessageHandler}>send</Styles.ButtonSendMessage>
