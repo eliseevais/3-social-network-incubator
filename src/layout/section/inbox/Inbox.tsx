@@ -2,6 +2,7 @@ import React from "react";
 import {Styles} from "./Inbox_Styles";
 import {DialogItem, DialogItemPropsType} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
+import {sendMessageAC, updateNewMessageText} from "../../../redux/state";
 
 export type MessagePropsType = {
   id: number;
@@ -28,17 +29,15 @@ export const Inbox = (props: InboxPropsType) => {
     <MessageItem key={message.id} message={message.message}/>);
   let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
   let onClickSendMessageHandler = () => {
-    let action = {type: 'SEND-MESSAGE'};
-    props.dispatch(action)
+    props.dispatch(sendMessageAC())
   };
 
   const onChangeNewMessageHandler = () => {
     let text = newMessageTextarea.current?.value;
     if (text) {
-      let action = {type: 'UPDATE-NEW-MESSAGE-TEXT', newMessageText: text};
-      props.dispatch(action)
+      props.dispatch(updateNewMessageText(text))
     }
-  }
+  };
 
   return (
     <Styles.Inbox>

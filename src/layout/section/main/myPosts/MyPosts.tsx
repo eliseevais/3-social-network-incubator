@@ -2,6 +2,10 @@ import React from 'react';
 import {Post} from "./post/Post";
 import {Styles} from "./MyPosts_Styles";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
+import {
+  addPostAC,
+  updateNewPostTextAC
+} from "../../../../redux/state";
 
 export type PostPropsType = {
   id: number;
@@ -22,14 +26,12 @@ export const MyPosts = (props: PostDataPropsType) => {
                                                      likesCount={post.likesCount}/>));
   let newPostElement = React.createRef<HTMLTextAreaElement>();
   let onClickAddPostHandler = () => {
-    let action = {type: 'ADD-POST'};
-    props.dispatch(action)
+    props.dispatch(addPostAC())
   };
   let onChangeNewPostTextHandler = () => {
     let text = newPostElement.current?.value;
     if (text) {
-      let action = {type: 'UPDATE-NEW-POST-TEXT', newPostText: text};
-      props.dispatch(action)
+      props.dispatch(updateNewPostTextAC(text))
     }
   }
 

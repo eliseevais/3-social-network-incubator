@@ -43,6 +43,11 @@ export type storePropsType = {
   dispatch: (action: any) => void;
 };
 
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+
 export let store: storePropsType = {
   _state: {
     myPostsPage: {
@@ -93,7 +98,7 @@ export let store: storePropsType = {
   },
 
   dispatch(action) {
-    if (action.type === 'ADD-POST') {
+    if (action.type === ADD_POST) {
       let newPost: newPostPropsType = {
         id: new Date().getTime(),
         message: this._state.myPostsPage.newPostText,
@@ -102,10 +107,10 @@ export let store: storePropsType = {
       this._state.myPostsPage.posts.push(newPost);
       this._state.myPostsPage.newPostText = '';
       this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+    } else if (action.type === UPDATE_NEW_POST_TEXT) {
       this._state.myPostsPage.newPostText = action.newPostText;
       this._callSubscriber(this._state)
-    } else if (action.type === 'SEND-MESSAGE') {
+    } else if (action.type === SEND_MESSAGE) {
       let nextMessage: nextMessagePropsType = {
         id: new Date().getTime(),
         message: store._state.inboxPage.newMessageText
@@ -113,9 +118,18 @@ export let store: storePropsType = {
       this._state.inboxPage.messages.push(nextMessage);
       this._state.inboxPage.newMessageText = '';
       this._callSubscriber(this._state)
-    } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
       this._state.inboxPage.newMessageText = action.newMessageText;
       this._callSubscriber(this._state)
     }
   }
-}
+};
+
+export const addPostAC = () => ({type: ADD_POST});
+export const updateNewPostTextAC = (text: string) => {
+  return {type: UPDATE_NEW_POST_TEXT, newPostText: text}
+};
+export const sendMessageAC = () => ({type: SEND_MESSAGE});
+export const updateNewMessageText = (text: string) => {
+  return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text}
+};
