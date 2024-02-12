@@ -5,7 +5,7 @@ import {MessageItem} from "./messageItem/MessageItem";
 import {
   sendMessageAC,
   updateNewMessageTextAC
-} from "../../../redux/state";
+} from "../../../redux/inboxPageReducer";
 
 export type MessagePropsType = {
   id: number;

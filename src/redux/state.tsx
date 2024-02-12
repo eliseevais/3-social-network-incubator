@@ -9,6 +9,8 @@ import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
 import {FriendPropsType} from "../layout/section/friends/Friend";
+import {myPostsPageReducer} from "./myPostsPageReducer";
+import {inboxPageReducer} from "./inboxPageReducer";
 
 export type newPostPropsType = {
   id: number;
@@ -19,22 +21,24 @@ export type nextMessagePropsType = {
   id: number;
   message: string;
 };
-
+export type myPostsPagePropsType = {
+  posts: Array<PostPropsType>;
+  newPostText: string
+};
+export type inboxPagePropsType = {
+  dialogs: Array<DialogItemPropsType>;
+  messages: Array<MessagePropsType>;
+  newMessageText: string
+};
+export type statePropsType = {
+  myPostsPage: myPostsPagePropsType;
+  inboxPage: inboxPagePropsType;
+  friendsPage: {
+    friends: Array<FriendPropsType>
+  }
+}
 export type storePropsType = {
-  _state: {
-    myPostsPage: {
-      posts: Array<PostPropsType>;
-      newPostText: string
-    };
-    inboxPage: {
-      dialogs: Array<DialogItemPropsType>;
-      messages: Array<MessagePropsType>;
-      newMessageText: string
-    };
-    friendsPage: {
-      friends: Array<FriendPropsType>
-    }
-  };
+  _state: statePropsType;
   _callSubscriber: (state: any) => void;
 
   getState: () => void;
@@ -42,11 +46,6 @@ export type storePropsType = {
 
   dispatch: (action: any) => void;
 };
-
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
-const SEND_MESSAGE = 'SEND-MESSAGE';
 
 export let store: storePropsType = {
   _state: {
@@ -98,38 +97,9 @@ export let store: storePropsType = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost: newPostPropsType = {
-        id: new Date().getTime(),
-        message: this._state.myPostsPage.newPostText,
-        likesCount: 0
-      };
-      this._state.myPostsPage.posts.push(newPost);
-      this._state.myPostsPage.newPostText = '';
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.myPostsPage.newPostText = action.newPostText;
-      this._callSubscriber(this._state)
-    } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
-      this._state.inboxPage.newMessageText = action.newMessageText;
-      this._callSubscriber(this._state)
-    } else if (action.type === SEND_MESSAGE) {
-      let nextMessage: nextMessagePropsType = {
-        id: new Date().getTime(),
-        message: store._state.inboxPage.newMessageText
-      };
-      this._state.inboxPage.messages.push(nextMessage);
-      this._state.inboxPage.newMessageText = '';
-      this._callSubscriber(this._state)
-    }
+
+    this._state.myPostsPage = myPostsPageReducer(this._state.myPostsPage, action);
+    this._state.inboxPage = inboxPageReducer(this._state.inboxPage, action);
+    this._callSubscriber(this._state);
   }
 };
-
-export const addPostAC = () => ({type: ADD_POST});
-export const updateNewPostTextAC = (text: string) => {
-  return {type: UPDATE_NEW_POST_TEXT, newPostText: text}
-};
-export const updateNewMessageTextAC = (text: string) => {
-  return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text}
-};
-export const sendMessageAC = () => ({type: SEND_MESSAGE});

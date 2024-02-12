@@ -5,7 +5,7 @@ import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {
   addPostAC,
   updateNewPostTextAC
-} from "../../../../redux/state";
+} from "../../../../redux/myPostsPageReducer";
 
 export type PostPropsType = {
   id: number;
