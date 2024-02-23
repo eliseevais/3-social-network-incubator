@@ -1,23 +1,15 @@
 import React from 'react';
+import {ActionsPropsType, MyPostsPagePropsType} from "../../../../redux/state";
 import {Post} from "./post/Post";
-import {Styles} from "./MyPosts_Styles";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {
   addPostAC,
   updateNewPostTextAC
 } from "../../../../redux/myPostsPageReducer";
+import {Styles} from "./MyPosts_Styles";
 
-export type PostPropsType = {
-  id: number;
-  message: string;
-  likesCount: number
-};
-type actionPropsType = any;
-
-type PostDataPropsType = {
-  posts: Array<PostPropsType>;
-  newPostText: string;
-  dispatch: (action: actionPropsType) => void
+type PostDataPropsType = MyPostsPagePropsType & {
+  dispatch: (action: ActionsPropsType) => void
 };
 
 export const MyPosts = (props: PostDataPropsType) => {

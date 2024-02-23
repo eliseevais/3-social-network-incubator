@@ -1,15 +1,20 @@
-import {nextMessagePropsType} from "./state";
+import {
+  ActionsPropsType,
+  NextMessagePropsType, SendMessageActionType,
+  UpdateNewMessageTextActionType
+} from "./state";
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
 
-export const inboxPageReducer = (state: any, action: any) => {
+export const inboxPageReducer = (
+  state: any, action: ActionsPropsType) => {
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_TEXT:
       state.newMessageText = action.newMessageText;
       return state
     case SEND_MESSAGE:
-      let nextMessage: nextMessagePropsType = {
+      let nextMessage: NextMessagePropsType = {
         id: new Date().getTime(),
         message: state.newMessageText
       };
@@ -21,7 +26,7 @@ export const inboxPageReducer = (state: any, action: any) => {
   }
 }
 
-export const updateNewMessageTextAC = (text: string) => {
+export const updateNewMessageTextAC = (text: string): UpdateNewMessageTextActionType => {
   return {type: UPDATE_NEW_MESSAGE_TEXT, newMessageText: text}
 };
-export const sendMessageAC = () => ({type: SEND_MESSAGE});
+export const sendMessageAC = (): SendMessageActionType => ({type: SEND_MESSAGE});

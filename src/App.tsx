@@ -6,8 +6,13 @@ import {FlexWrapper} from "./components/FlexWrapper";
 import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
 import {BrowserRouter} from "react-router-dom";
+import {StorePropsType} from "./redux/state";
 
-const App = (props: any) => {
+type AppPropsType = {
+  store: StorePropsType
+};
+
+const App: React.FC<AppPropsType> = (props) => {
   console.log("App is rendering", props);
   return (
     <BrowserRouter>

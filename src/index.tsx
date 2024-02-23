@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import {StatePropsType, store} from './redux/state';
 import {GlobalStyles} from './styles/GlobalStyles';
 import {ThemeProvider} from 'styled-components';
+import App from './App';
 import {myTheme} from './styles/Theme.styled';
-import {store} from './redux/state'
+import './index.css';
 
-const rerenderEntireTree = (state: any) => {
+const rerenderEntireTree = (state: StatePropsType) => {
   ReactDOM.render(
     <ThemeProvider theme={myTheme}>
       <App store={store}/>
@@ -19,7 +19,3 @@ const rerenderEntireTree = (state: any) => {
 
 rerenderEntireTree(store.getState());
 store.subscribe(rerenderEntireTree);
-
-
-
-

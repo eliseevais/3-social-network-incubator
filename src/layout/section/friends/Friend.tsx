@@ -1,9 +1,5 @@
 import React from "react";
-
-export type FriendPropsType = {
-  id: number;
-  name: string;
-};
+import {FriendPropsType} from "../../../redux/state";
 
 export const Friend = (props: FriendPropsType) => {
   return (

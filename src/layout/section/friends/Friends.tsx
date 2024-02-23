@@ -1,5 +1,6 @@
 import React from "react";
-import {Friend, FriendPropsType} from "./Friend";
+import {FriendPropsType} from "../../../redux/state";
+import {Friend} from "./Friend";
 
 type FriendsDataPropsType = {
   friends: Array<FriendPropsType>

@@ -1,22 +1,15 @@
 import React from "react";
-import {Styles} from "./Inbox_Styles";
-import {DialogItem, DialogItemPropsType} from "./dialogItem/DialogItem";
+import {ActionsPropsType, InboxPagePropsType} from "../../../redux/state";
+import {DialogItem} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
 import {
   sendMessageAC,
   updateNewMessageTextAC
 } from "../../../redux/inboxPageReducer";
+import {Styles} from "./Inbox_Styles";
 
-export type MessagePropsType = {
-  id: number;
-  message: string
-};
-type ActionPropsType = any;
-type InboxPropsType = {
-  dialogs: Array<DialogItemPropsType>;
-  messages: Array<MessagePropsType>;
-  newMessageText: string;
-  dispatch: (action: ActionPropsType) => void
+type InboxPropsType = InboxPagePropsType & {
+  dispatch: (action: ActionsPropsType) => void
 };
 
 export const Inbox = (props: InboxPropsType) => {

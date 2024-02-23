@@ -1,53 +1,86 @@
-import {PostPropsType} from "../layout/section/main/myPosts/MyPosts";
 import {
   DialogItemPropsType
 } from "../layout/section/inbox/dialogItem/DialogItem";
-import {MessagePropsType} from "../layout/section/inbox/Inbox";
 import Dmitry from '../accets/img/Dmitry.jpg';
 import Ekaterina from '../accets/img/Ekaterina.jpg';
 import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
-import {FriendPropsType} from "../layout/section/friends/Friend";
 import {myPostsPageReducer} from "./myPostsPageReducer";
 import {inboxPageReducer} from "./inboxPageReducer";
 
-export type newPostPropsType = {
+export type PostPropsType = {
+  id: number;
+  message: string;
+  likesCount: number
+};
+export type MessagePropsType = {
+  id: number;
+  message: string
+};
+export type NewPostPropsType = {
   id: number;
   message: string;
   likesCount: 0
 };
-export type nextMessagePropsType = {
+export type NextMessagePropsType = {
   id: number;
   message: string;
 };
-export type myPostsPagePropsType = {
+export type FriendPropsType = {
+  id: number;
+  name: string;
+};
+export type MyPostsPagePropsType = {
   posts: Array<PostPropsType>;
   newPostText: string
 };
-export type inboxPagePropsType = {
+export type InboxPagePropsType = {
   dialogs: Array<DialogItemPropsType>;
   messages: Array<MessagePropsType>;
   newMessageText: string
 };
-export type statePropsType = {
-  myPostsPage: myPostsPagePropsType;
-  inboxPage: inboxPagePropsType;
+
+export type StatePropsType = {
+  myPostsPage: MyPostsPagePropsType;
+  inboxPage: InboxPagePropsType;
   friendsPage: {
     friends: Array<FriendPropsType>
   }
-}
-export type storePropsType = {
-  _state: statePropsType;
-  _callSubscriber: (state: any) => void;
-
-  getState: () => void;
-  subscribe: (observer: any) => void
-
-  dispatch: (action: any) => void;
 };
 
-export let store: storePropsType = {
+export type AddPostActionType = {
+  type: 'ADD-POST'
+};
+export type UpdateNewPostTextActionType = {
+  type: 'UPDATE-NEW-POST-TEXT';
+  newPostText?: string
+};
+export type UpdateNewMessageTextActionType = {
+  type: 'UPDATE-NEW-MESSAGE-TEXT';
+  newMessageText: string
+};
+export type SendMessageActionType = {
+  type: 'SEND-MESSAGE'
+};
+
+export type ActionsPropsType =
+  AddPostActionType
+  | UpdateNewPostTextActionType
+  | UpdateNewMessageTextActionType
+  | SendMessageActionType;
+
+export type StorePropsType = {
+  _state: StatePropsType;
+  _callSubscriber: (state: StatePropsType) => void;
+
+  getState: () => StatePropsType;
+  subscribe: (observer: (state: StatePropsType) => void) => void
+
+  dispatch: (action: ActionsPropsType) => void;
+};
+
+export let store: StorePropsType = {
   _state: {
     myPostsPage: {
       posts: [
@@ -92,12 +125,11 @@ export let store: storePropsType = {
   getState() {
     return this._state
   },
-  subscribe(observer: any) {
+  subscribe(observer) {
     this._callSubscriber = observer
   },
 
   dispatch(action) {
-
     this._state.myPostsPage = myPostsPageReducer(this._state.myPostsPage, action);
     this._state.inboxPage = inboxPageReducer(this._state.inboxPage, action);
     this._callSubscriber(this._state);

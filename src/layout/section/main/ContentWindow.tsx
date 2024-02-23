@@ -1,32 +1,16 @@
 import React from "react";
-import {Styles} from "./ContentWindow_Styles";
-import {MyPosts, PostPropsType} from "./myPosts/MyPosts";
-import {Inbox, MessagePropsType} from "../inbox/Inbox";
 import {Redirect, Route} from "react-router-dom";
+import {ActionsPropsType, StatePropsType} from "../../../redux/state";
+import {MyPosts} from "./myPosts/MyPosts";
+import {Inbox} from "../inbox/Inbox";
 import {Friends} from "../friends/Friends";
 import {Feeds} from "../feeds/Feeds";
 import {Melodies} from "../melodies/Melodies";
-import {DialogItemPropsType} from "../inbox/dialogItem/DialogItem";
-import {FriendPropsType} from "../friends/Friend";
+import {Styles} from "./ContentWindow_Styles";
 
-type ActionPropsType = any;
 type ContentWindowPropsType = {
-  state: {
-    myPostsPage: {
-      posts: Array<PostPropsType>;
-      newPostText: string
-    };
-    inboxPage: {
-      dialogs: Array<DialogItemPropsType>;
-      messages: Array<MessagePropsType>;
-      newMessageText: string
-    };
-    friendsPage: {
-      friends: Array<FriendPropsType>
-    }
-  };
-
-  dispatch: (action: ActionPropsType) => void
+  state: StatePropsType;
+  dispatch: (action: ActionsPropsType) => void
 };
 
 export const ContentWindow = (props: ContentWindowPropsType) => {
