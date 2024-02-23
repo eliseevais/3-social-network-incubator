@@ -1,22 +1,10 @@
 import React from "react";
-import {FriendPropsType} from "../../../redux/state";
-import {Friend} from "./Friend";
 
-type FriendsDataPropsType = {
-  friends: Array<FriendPropsType>
-};
-
-export const Friends = (props: FriendsDataPropsType) => {
-
-  let friendsElements = props.friends.map(friend =>
-    <Friend key={friend.id}
-            id={friend.id}
-            name={friend.name}
-    />)
+export const Friends = (props: any) => {
 
   return (
     <div>
-      {friendsElements}
+      Here will be friends list
     </div>
   )
 }

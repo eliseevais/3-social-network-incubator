@@ -1,5 +1,4 @@
 import React from "react";
-import {ActionsPropsType, InboxPagePropsType} from "../../../redux/state";
 import {DialogItem} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
 import {
@@ -7,6 +6,10 @@ import {
   updateNewMessageTextAC
 } from "../../../redux/inboxPageReducer";
 import {Styles} from "./Inbox_Styles";
+import {
+  ActionsPropsType,
+  InboxPagePropsType
+} from "../../../redux/storeAllPropsType";
 
 type InboxPropsType = InboxPagePropsType & {
   dispatch: (action: ActionsPropsType) => void

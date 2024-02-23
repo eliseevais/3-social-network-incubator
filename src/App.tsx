@@ -1,15 +1,15 @@
 import React from 'react';
+import {AppStoreType} from "./redux/reduxStore";
+import {BrowserRouter} from "react-router-dom";
 import {Header} from './layout/header/Header';
 import {NavBar} from './layout/section/navbar/NavBar';
 import {ContentWindow} from "./layout/section/main/ContentWindow";
 import {FlexWrapper} from "./components/FlexWrapper";
 import {Container} from "./components/Container_Styles";
 import {AppWrapper} from "./App_Styles";
-import {BrowserRouter} from "react-router-dom";
-import {StorePropsType} from "./redux/state";
 
 type AppPropsType = {
-  store: StorePropsType
+  store: AppStoreType
 };
 
 const App: React.FC<AppPropsType> = (props) => {

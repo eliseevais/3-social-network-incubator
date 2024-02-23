@@ -1,9 +1,22 @@
 import React from "react";
+import {Feed} from "./Feed";
+import {  FeedPropsType} from "../../../redux/storeAllPropsType";
 
-export const Feeds = () => {
+type FeedsDataPropsType = {
+  feeds: Array<FeedPropsType>
+};
+
+export const Feeds = (props: FeedsDataPropsType) => {
+
+  let friendsElements = props.feeds.map(feed =>
+    <Feed key={feed.id}
+            id={feed.id}
+            text={feed.text}
+    />)
+
   return (
     <div>
-      Feeds are loading...
+      {friendsElements}
     </div>
   )
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import {ActionsPropsType, MyPostsPagePropsType} from "../../../../redux/state";
 import {Post} from "./post/Post";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {
@@ -7,6 +6,10 @@ import {
   updateNewPostTextAC
 } from "../../../../redux/myPostsPageReducer";
 import {Styles} from "./MyPosts_Styles";
+import {
+  ActionsPropsType,
+  MyPostsPagePropsType
+} from "../../../../redux/storeAllPropsType";
 
 type PostDataPropsType = MyPostsPagePropsType & {
   dispatch: (action: ActionsPropsType) => void
