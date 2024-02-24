@@ -12,7 +12,8 @@ import {
 } from "../../../redux/storeAllPropsType";
 
 type InboxPropsType = InboxPagePropsType & {
-  dispatch: (action: ActionsPropsType) => void
+  updateNewMessageText: (text: string) => void;
+  sendMessage: () => void
 };
 
 export const Inbox = (props: InboxPropsType) => {
@@ -27,14 +28,15 @@ export const Inbox = (props: InboxPropsType) => {
   let messagesElements = props.messages.map(message =>
     <MessageItem key={message.id} message={message.message}/>);
   let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
+
   let onClickSendMessageHandler = () => {
-    props.dispatch(sendMessageAC())
+    props.sendMessage()
   };
 
   const onChangeNewMessageHandler = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     let text = event.currentTarget.value;
     if (text) {
-      props.dispatch(updateNewMessageTextAC(text))
+      props.updateNewMessageText(text)
     }
   };
 

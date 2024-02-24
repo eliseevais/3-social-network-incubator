@@ -1,18 +1,12 @@
 import React from 'react';
 import {Post} from "./post/Post";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
-import {
-  addPostAC,
-  updateNewPostTextAC
-} from "../../../../redux/myPostsPageReducer";
 import {Styles} from "./MyPosts_Styles";
-import {
-  ActionsPropsType,
-  MyPostsPagePropsType
-} from "../../../../redux/storeAllPropsType";
+import {MyPostsPagePropsType} from "../../../../redux/storeAllPropsType";
 
 type PostDataPropsType = MyPostsPagePropsType & {
-  dispatch: (action: ActionsPropsType) => void
+  updateNewPostText: (text: string) => void;
+  addPost: () => void
 };
 
 export const MyPosts = (props: PostDataPropsType) => {
@@ -20,13 +14,14 @@ export const MyPosts = (props: PostDataPropsType) => {
                                                      message={post.message}
                                                      likesCount={post.likesCount}/>));
   let newPostElement = React.createRef<HTMLTextAreaElement>();
+
   let onClickAddPostHandler = () => {
-    props.dispatch(addPostAC())
+    props.addPost()
   };
   let onChangeNewPostTextHandler = () => {
     let text = newPostElement.current?.value;
     if (text) {
-      props.dispatch(updateNewPostTextAC(text))
+      props.updateNewPostText(text)
     }
   }
 
@@ -38,8 +33,9 @@ export const MyPosts = (props: PostDataPropsType) => {
                                 value={props.newPostText}
                                 onChange={onChangeNewPostTextHandler}
         />
-        <Styles.AddPostButton onClick={onClickAddPostHandler}>Add
-          post</Styles.AddPostButton>
+        <Styles.AddPostButton onClick={onClickAddPostHandler}>
+          Add post
+        </Styles.AddPostButton>
       </Styles.NewPostWrapper>
       {postsElements}
     </div>
