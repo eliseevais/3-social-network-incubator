@@ -4,11 +4,13 @@ import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {Styles} from "./MyPosts_Styles";
 import {MyPostsPagePropsType} from "../../../../redux/storeAllPropsType";
 
+
 type PostDataPropsType = MyPostsPagePropsType & {
   updateNewPostText: (text: string) => void;
   addPost: () => void
 };
 
+// export const MyPosts = (props: PostDataPropsType) => {
 export const MyPosts = (props: PostDataPropsType) => {
   let postsElements = props.posts.map((post => <Post key={post.id}
                                                      message={post.message}

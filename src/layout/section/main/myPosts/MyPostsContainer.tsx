@@ -9,26 +9,36 @@ import {
   MyPostsPagePropsType
 } from "../../../../redux/storeAllPropsType";
 import {MyPosts} from "./MyPosts";
+import {StoreContext} from "../../../../redux/storeContext";
 
 type PostDataPropsType = MyPostsPagePropsType & {
   dispatch: (action: ActionsPropsType) => void
 };
 
-export const MyPostsContainer = (props: PostDataPropsType) => {
-   let onClickAddPostHandler = () => {
-    let action = addPostAC();
-    props.dispatch(action)
-  };
-  let onChangeNewPostTextHandler = (text: string) => {
-    let action = updateNewPostTextAC(text);
-    props.dispatch(action)
-  }
+// export const MyPostsContainer = (props: PostDataPropsType) => {
+export const MyPostsContainer = () => {
+
 
   return (
-    <MyPosts updateNewPostText={onChangeNewPostTextHandler}
-             addPost={onClickAddPostHandler}
-             posts={props.posts}
-             newPostText={props.newPostText}
-    />
+    <StoreContext.Consumer>
+      {
+        (store) => {
+          let onClickAddPostHandler = () => {
+            let action = addPostAC();
+            store.dispatch(action)
+          };
+          let onChangeNewPostTextHandler = (text: string) => {
+            let action = updateNewPostTextAC(text);
+            store.dispatch(action)
+          }
+          return (
+            <MyPosts updateNewPostText={onChangeNewPostTextHandler}
+                     addPost={onClickAddPostHandler}
+                     posts={store.getState().myPostsPage.posts}
+                     newPostText={store.getState().myPostsPage.newPostText}
+            />)
+        }
+      }
+    </StoreContext.Consumer>
   );
 };

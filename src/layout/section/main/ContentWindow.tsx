@@ -15,24 +15,18 @@ type ContentWindowPropsType = {
   dispatch: (action: ActionsPropsType) => void
 };
 
-export const ContentWindow = (props: ContentWindowPropsType) => {
+// export const ContentWindow = (props: ContentWindowPropsType) => {
+export const ContentWindow = (props: any) => {
   return (
     <Styles.ContentWindow>
       <Redirect from='/' to='/myprofile'/>
 
       <Route path='/myprofile' render={
-        () => <MyPostsContainer posts={props.state.myPostsPage.posts}
-                       newPostText={props.state.myPostsPage.newPostText}
-                       dispatch={props.dispatch}
-        />}
+        () => <MyPostsContainer />}
       />
 
       <Route path='/inbox' render={
-        () => <InboxContainer dialogs={props.state.inboxPage.dialogs}
-                     messages={props.state.inboxPage.messages}
-                     newMessageText={props.state.inboxPage.newMessageText}
-                     dispatch={props.dispatch}
-        />}
+        () => <InboxContainer />}
       />
       <Route path='/feeds' render={
         () => <Feeds feeds={props.state.feedsPage.feeds}/>}/>
