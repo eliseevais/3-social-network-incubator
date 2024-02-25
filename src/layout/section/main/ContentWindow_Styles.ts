@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { myTheme } from "../../../styles/Theme.styled";
+import { myTheme } from "../../../stylesGlobal/Theme.styled";
 
-const ContentWindow = styled.div`
+const WrapperForContent = styled.div`
   width: 100%;
   min-height: 95vh;
   background-color: ${myTheme.colors.ground};
@@ -9,5 +9,5 @@ const ContentWindow = styled.div`
 `
 
 export const Styles = {
-  ContentWindow,
+  WrapperForContent,
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {myTheme} from "../../../styles/Theme.styled";
+import {myTheme} from "../../../stylesGlobal/Theme.styled";
 
 const Inbox = styled.div`
   width: 100%;

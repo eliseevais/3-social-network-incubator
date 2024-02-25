@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {AppStoreType, store} from './redux/reduxStore';
-import {GlobalStyles} from './styles/GlobalStyles';
+import {GlobalStyles} from './stylesGlobal/GlobalStyles';
 import {ThemeProvider} from 'styled-components';
 import App from './App';
-import {myTheme} from './styles/Theme.styled';
+import {myTheme} from './stylesGlobal/Theme.styled';
 import './index.css';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";

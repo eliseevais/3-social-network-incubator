@@ -1,13 +1,13 @@
 import React from 'react';
-import {Styles} from './NavbarMenu_Styles';
 import {NavLink} from "react-router-dom";
+import {Styles} from './SideBarOnlyMenu_Styles';
 
 type MenuPropsType = {}
 
-export function NavbarMenu(props: MenuPropsType) {
+export function SideBarOnlyMenu(props: MenuPropsType) {
   console.log("Menu is rendering")
   return (
-    <Styles.NavbarMenu>
+    <Styles.SideBarOnlyMenu>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
                to="/myprofile">My profile</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
@@ -18,6 +18,6 @@ export function NavbarMenu(props: MenuPropsType) {
                to="/feeds">Feeds</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
                to="/melodies">Melodies</NavLink>
-    </Styles.NavbarMenu>
+    </Styles.SideBarOnlyMenu>
   )
 };
