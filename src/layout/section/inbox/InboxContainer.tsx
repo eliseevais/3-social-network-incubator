@@ -1,49 +1,28 @@
-import React from "react";
-import {DialogItem} from "./dialogItem/DialogItem";
-import {MessageItem} from "./messageItem/MessageItem";
+import {
+  ActionsPropsType, StatePropsType
+} from "../../../redux/storeAllPropsType";
 import {
   sendMessageAC,
   updateNewMessageTextAC
 } from "../../../redux/inboxPageReducer";
-import {Styles} from "./Inbox_Styles";
-import {
-  ActionsPropsType,
-  InboxPagePropsType
-} from "../../../redux/storeAllPropsType";
 import {Inbox} from "./Inbox";
-import { StoreContext } from "../../../redux/storeContext";
-import {store} from "../../../redux/reduxStore";
+import {connect} from "react-redux";
 
-type InboxPropsType = InboxPagePropsType & {
-  dispatch: (action: ActionsPropsType) => void
+let mapStateToProps = (state: StatePropsType) => {
+  return {
+    inboxPage: state.inboxPage
+  }
 };
 
-// export const InboxContainer = (props: InboxPropsType) => {
-export const InboxContainer = () => {
-
-  return (
-    <StoreContext.Consumer>
-      {
-      (store) => {
-        let onClickSendMessageHandler = () => {
-          store.dispatch(sendMessageAC())
-        };
-
-        const onChangeNewMessageHandler = (text: string) => {
-          let action = updateNewMessageTextAC(text);
-          store.dispatch(action)
-        }
-        return (
-          <Inbox dialogs={store.getState().inboxPage.dialogs}
-                 messages={store.getState().inboxPage.messages}
-                 newMessageText={store.getState().inboxPage.newMessageText}
-                 updateNewMessageText={onChangeNewMessageHandler}
-                 sendMessage={onClickSendMessageHandler}
-          />
-        )
-      }
+let mapDispatchToProps = (dispatch: (action: ActionsPropsType) => void) => {
+  return {
+    updateNewMessageText: () => {
+      dispatch(sendMessageAC())
+    },
+    sendMessage: (text: string) => {
+      dispatch(updateNewMessageTextAC(text))
     }
+  }
+};
 
-    </StoreContext.Consumer>
-  )
-}
+export const InboxContainer = connect(mapStateToProps, mapDispatchToProps)(Inbox);

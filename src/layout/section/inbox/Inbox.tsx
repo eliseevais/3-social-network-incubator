@@ -1,31 +1,27 @@
 import React from "react";
+import {InboxPagePropsType} from "../../../redux/storeAllPropsType";
 import {DialogItem} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
-import {
-  sendMessageAC,
-  updateNewMessageTextAC
-} from "../../../redux/inboxPageReducer";
 import {Styles} from "./Inbox_Styles";
-import {
-  ActionsPropsType,
-  InboxPagePropsType
-} from "../../../redux/storeAllPropsType";
 
-type InboxPropsType = InboxPagePropsType & {
+export type InboxPropsType = {
+  inboxPage: InboxPagePropsType
   updateNewMessageText: (text: string) => void;
   sendMessage: () => void
 };
 
 export const Inbox = (props: InboxPropsType) => {
 
-  let dialogsElements = props.dialogs.map(dialog =>
+  let state = props.inboxPage;
+
+  let dialogsElements = state.dialogs.map(dialog =>
     <DialogItem key={dialog.id}
                 name={dialog.name}
                 id={dialog.id}
                 img={dialog.img}
     />);
 
-  let messagesElements = props.messages.map(message =>
+  let messagesElements = state.messages.map(message =>
     <MessageItem key={message.id} message={message.message}/>);
   let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
 
@@ -48,7 +44,7 @@ export const Inbox = (props: InboxPropsType) => {
       <div>
         {messagesElements}
         <Styles.NewMessageWrapper>
-          <Styles.NewMessageTextarea value={props.newMessageText}
+          <Styles.NewMessageTextarea value={state.newMessageText}
                                      onChange={onChangeNewMessageHandler}
                                      placeholder={'Enter your message'}
           />

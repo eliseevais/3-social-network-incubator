@@ -6,9 +6,8 @@ import {ThemeProvider} from 'styled-components';
 import App from './App';
 import {myTheme} from './styles/Theme.styled';
 import './index.css';
-import {StoreContext} from "./redux/storeContext";
-import {Provider} from "react-redux";
 import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux";
 
 const rerenderEntireTree = (store: AppStoreType) => {
   ReactDOM.render(

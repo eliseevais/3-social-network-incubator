@@ -1,7 +1,7 @@
 import React from 'react';
 import { Styles } from './Header_Styles';
-import { Container } from '../../components/Container_Styles';
-import { FlexWrapper } from '../../components/FlexWrapper';
+import { Container } from '../Container_Styles';
+import { FlexWrapper } from '../FlexWrapper';
 
 type HeaderStyledPropsType = {
   title: string;

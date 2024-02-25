@@ -22,11 +22,11 @@ export const ContentWindow = (props: any) => {
       <Redirect from='/' to='/myprofile'/>
 
       <Route path='/myprofile' render={
-        () => <MyPostsContainer />}
+        () => <MyPostsContainer/>}
       />
 
       <Route path='/inbox' render={
-        () => <InboxContainer />}
+        () => <InboxContainer/>}
       />
       <Route path='/feeds' render={
         () => <Feeds feeds={props.state.feedsPage.feeds}/>}/>

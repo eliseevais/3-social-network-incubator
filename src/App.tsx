@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppStoreType} from "./redux/reduxStore";
-import {Header} from './layout/header/Header';
+import {Header} from './components/header/Header';
 import {NavBar} from './layout/section/navbar/NavBar';
 import {ContentWindow} from "./layout/section/main/ContentWindow";
 import {FlexWrapper} from "./components/FlexWrapper";
@@ -14,18 +14,18 @@ type AppPropsType = {
 
 // const App: React.FC<AppPropsType> = (props) => {
 const App = () => {
-  const appStore = useSelector(state=>state)
-  console.log(appStore)
+  const appStore = useSelector(state => state)
+  console.log('appStore', appStore)
   return (
-      <AppWrapper>
-        <Header title="It's so good to have you back!"/>
-        <Container>
-          <FlexWrapper>
-            <NavBar/>
-            <ContentWindow />
-          </FlexWrapper>
-        </Container>
-      </AppWrapper>
+    <AppWrapper>
+      <Header title="It's so good to have you back!"/>
+      <Container>
+        <FlexWrapper>
+          <NavBar/>
+          <ContentWindow/>
+        </FlexWrapper>
+      </Container>
+    </AppWrapper>
   );
 };
 

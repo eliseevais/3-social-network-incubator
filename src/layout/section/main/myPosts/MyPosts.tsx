@@ -5,14 +5,18 @@ import {Styles} from "./MyPosts_Styles";
 import {MyPostsPagePropsType} from "../../../../redux/storeAllPropsType";
 
 
-type PostDataPropsType = MyPostsPagePropsType & {
+type PostDataPropsType = {
+  myPostsPage: MyPostsPagePropsType
   updateNewPostText: (text: string) => void;
   addPost: () => void
 };
 
 // export const MyPosts = (props: PostDataPropsType) => {
 export const MyPosts = (props: PostDataPropsType) => {
-  let postsElements = props.posts.map((post => <Post key={post.id}
+
+  let state = props.myPostsPage;
+
+  let postsElements = state.posts.map((post => <Post key={post.id}
                                                      message={post.message}
                                                      likesCount={post.likesCount}/>));
   let newPostElement = React.createRef<HTMLTextAreaElement>();
@@ -32,7 +36,7 @@ export const MyPosts = (props: PostDataPropsType) => {
       <ProfileInfo/>
       <Styles.NewPostWrapper>
         <Styles.NewPostTextarea ref={newPostElement}
-                                value={props.newPostText}
+                                value={state.newPostText}
                                 onChange={onChangeNewPostTextHandler}
         />
         <Styles.AddPostButton onClick={onClickAddPostHandler}>
