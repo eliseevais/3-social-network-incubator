@@ -9,21 +9,33 @@ import './index.css';
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
-const rerenderEntireTree = (store: AppStoreType) => {
-  ReactDOM.render(
-    <ThemeProvider theme={myTheme}>
-      <BrowserRouter>
-        <Provider store={store}>
-          <App/>
-          <GlobalStyles/>
-        </Provider>
-      </BrowserRouter>
-    </ThemeProvider>,
-    document.getElementById('root')
-  );
-};
+// const rerenderEntireTree = (store: AppStoreType) => {
+//   ReactDOM.render(
+//     <ThemeProvider theme={myTheme}>
+//       <BrowserRouter>
+//         <Provider store={store}>
+//           <App/>
+//           <GlobalStyles/>
+//         </Provider>
+//       </BrowserRouter>
+//     </ThemeProvider>,
+//     document.getElementById('root')
+//   );
+// };
+//
+// rerenderEntireTree(store);
+// store.subscribe(() => {
+//   rerenderEntireTree(store)
+// });
 
-rerenderEntireTree(store);
-store.subscribe(() => {
-  rerenderEntireTree(store)
-});
+ReactDOM.render(
+  <ThemeProvider theme={myTheme}>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App/>
+        <GlobalStyles/>
+      </Provider>
+    </BrowserRouter>
+  </ThemeProvider>,
+  document.getElementById('root')
+);

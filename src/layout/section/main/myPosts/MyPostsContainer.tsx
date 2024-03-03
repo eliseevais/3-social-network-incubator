@@ -11,6 +11,8 @@ import {connect} from "react-redux";
 const mapStateToProps = (state: StatePropsType) => {
   return {
     myPostsPage: state.myPostsPage
+    // posts: state.myPostsPage.posts
+    // newPostText: state.myPostsPage.newPostText
   }
 };
 
