@@ -23,7 +23,8 @@ export const Inbox = (props: InboxPropsType) => {
 
   let messagesElements = state.messages.map(message =>
     <MessageItem key={message.id} message={message.message}/>);
-  let newMessageTextarea = React.createRef<HTMLTextAreaElement>();
+
+  let newMessageTextarea = state.newMessageText;
 
   let onClickSendMessageHandler = () => {
     props.sendMessage()

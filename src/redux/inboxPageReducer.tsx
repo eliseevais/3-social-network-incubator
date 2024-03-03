@@ -30,22 +30,22 @@ let initialState = {
 }
 export const inboxPageReducer = (
   state = initialState, action: ActionsPropsType) => {
+
   switch (action.type) {
-    case UPDATE_NEW_MESSAGE_TEXT: {
-      let stateCopy = {...state};
-      stateCopy.newMessageText = action.newMessageText;
-      return stateCopy
-    }
-    case SEND_MESSAGE: {
+    case UPDATE_NEW_MESSAGE_TEXT:
+      return {
+        ...state,
+        newMessageText: action.newMessageText
+      }
+    case SEND_MESSAGE:
       let nextMessage: NextMessagePropsType = {
         id: new Date().getTime(),
         message: state.newMessageText
       };
-      let stateCopy = {...state};
-      stateCopy.messages = [...state.messages]
-      stateCopy.messages.push(nextMessage);
-      stateCopy.newMessageText = '';
-      return stateCopy;
+      return {
+        ...state,
+        newMessageText: '',
+        messages: [...state.messages, nextMessage]
     }
     default:
       return state

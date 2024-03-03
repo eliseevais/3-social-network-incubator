@@ -2,23 +2,24 @@ import React from 'react';
 import {Post} from "./post/Post";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {Styles} from "./MyPosts_Styles";
-import {MyPostsPagePropsType} from "../../../../redux/storeAllPropsType";
+import {PostPropsType} from "../../../../redux/storeAllPropsType";
 
 
 type PostDataPropsType = {
-  myPostsPage: MyPostsPagePropsType
+  posts: Array<PostPropsType>;
+  newPostText: string;
   updateNewPostText: (text: string) => void;
   addPost: () => void
 };
 
-// export const MyPosts = (props: PostDataPropsType) => {
 export const MyPosts = (props: PostDataPropsType) => {
 
-  let state = props.myPostsPage;
+  let statePosts = props.posts;
+  let stateNewPostText = props.newPostText;
 
-  let postsElements = state.posts.map((post => <Post key={post.id}
-                                                     message={post.message}
-                                                     likesCount={post.likesCount}/>));
+  let postsElements = statePosts.map((post => <Post key={post.id}
+                                                    message={post.message}
+                                                    likesCount={post.likesCount}/>));
   let newPostElement = React.createRef<HTMLTextAreaElement>();
 
   let onClickAddPostHandler = () => {
@@ -36,7 +37,7 @@ export const MyPosts = (props: PostDataPropsType) => {
       <ProfileInfo/>
       <Styles.NewPostWrapper>
         <Styles.NewPostTextarea ref={newPostElement}
-                                value={state.newPostText}
+                                value={stateNewPostText}
                                 onChange={onChangeNewPostTextHandler}
         />
         <Styles.AddPostButton onClick={onClickAddPostHandler}>
