@@ -2,16 +2,16 @@ import {combineReducers, createStore} from "redux";
 import {myPostsPageReducer} from "./myPostsPageReducer";
 import {inboxPageReducer} from "./inboxPageReducer";
 import {feedsPageReducer} from "./feedsPageReducer";
-import {friendsPageReducer} from "./friendsPageReducer";
+import {usersPageReducer} from "./usersPageReducer";
 
-let reducers = combineReducers({
+let rootReducer = combineReducers({
   myPostsPage: myPostsPageReducer,
   inboxPage: inboxPageReducer,
   feedsPage: feedsPageReducer,
-  friendsPage: friendsPageReducer
+  usersPage: usersPageReducer
 });
 
 export type AppStoreType = typeof store;
-export type RootState = ReturnType<typeof reducers>;
+export type AppStateType = ReturnType<typeof rootReducer>;
 
-export let store = createStore(reducers);
+export let store = createStore(rootReducer);

@@ -1,6 +1,5 @@
-import {
-  ActionsPropsType, StatePropsType
-} from "../../redux/storeAllPropsType";
+import {ActionsPropsType} from "../../redux/storeAllPropsType";
+import {AppStateType} from "../../redux/reduxStore";
 import {
   sendMessageAC,
   updateNewMessageTextAC
@@ -8,7 +7,7 @@ import {
 import {Inbox} from "./Inbox";
 import {connect} from "react-redux";
 
-let mapStateToProps = (state: StatePropsType) => {
+let mapStateToProps = (state: AppStateType) => {
   return {
     inboxPage: state.inboxPage
   }

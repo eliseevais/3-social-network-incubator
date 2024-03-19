@@ -37,7 +37,7 @@ export let store: StorePropsType = {
       ],
       newMessageText: ''
     },
-    friendsPage: {
+    usersPage: {
       users: []
     },
     feedsPage: {

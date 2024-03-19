@@ -5,7 +5,7 @@ import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 import {InboxContainer} from "../inbox/InboxContainer";
 import {Styles} from "./ContentWindow_Styles";
 import {Feeds} from "../feeds/Feeds";
-import FriendsContainer from "../friends/FriendsContainer";
+import FriendsContainer from "../users/UsersContainer";
 
 export const WrapperForContent = () => {
   return (

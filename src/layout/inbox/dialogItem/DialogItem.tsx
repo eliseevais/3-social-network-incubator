@@ -1,12 +1,7 @@
-import {Styles} from "../Inbox_Styles";
-import {NavLink} from "react-router-dom";
 import React from "react";
-
-export type DialogItemPropsType = {
-  id: number;
-  name: string;
-  img: any
-};
+import {DialogItemPropsType} from "../../../redux/storeAllPropsType";
+import {NavLink} from "react-router-dom";
+import {Styles} from "../Inbox_Styles";
 
 export const DialogItem = (props: DialogItemPropsType) => {
   let path = '/inbox/' + props.id;

@@ -1,16 +1,26 @@
-import {
-  DialogItemPropsType
-} from "../layout/inbox/dialogItem/DialogItem";
-import Dmitry from "../accets/img/Dmitry.jpg";
+// Dialogs
+import {AppStateType} from "./reduxStore";
 
-export type PostPropsType = {
+export type DialogItemPropsType = {
   id: number;
-  message: string;
-  likesCount: number
+  name: string;
+  img: any
 };
 export type MessagePropsType = {
   id: number;
   message: string
+};
+export type InboxPagePropsType = {
+  dialogs: Array<DialogItemPropsType>;
+  messages: Array<MessagePropsType>;
+  newMessageText: string
+};
+
+// Posts
+export type PostPropsType = {
+  id: number;
+  message: string;
+  likesCount: number
 };
 export type NewPostPropsType = {
   id: number;
@@ -21,46 +31,50 @@ export type NextMessagePropsType = {
   id: number;
   message: string;
 };
+export type MyPostsPagePropsType = {
+  posts: Array<PostPropsType>;
+  newPostText: string
+};
+
+// Feeds
 export type FeedPropsType = {
   id: number;
   text: string;
 };
-export type FriendPropsType = {
+export type FeedsPagePropsType = {
+  feeds: Array<FeedPropsType>
+};
+
+// Users
+type LocationUserPropsType = {
+  city: string,
+  country: string
+};
+export type UserPropsType = {
   id: number,
   name: string,
   img: any,
   followed: boolean,
   status: string,
-  location: {
-    city: string,
-    country: string
-  }
-}
-export type FriendsPagePropsType = {
-  users: Array<FriendPropsType>;
-  follow?: (id: number) => void;
-  unfollow?: (id: number) => void;
-  setUsers?: (users: Array<FriendPropsType>) => void
+  location: LocationUserPropsType
+};
+export type UsersPagePropsTypeFromApp = {
+  users: Array<UserPropsType>
+};
 
-}
-export type FeedsPagePropsType = {
-  feeds: Array<FeedPropsType>
-}
-export type MyPostsPagePropsType = {
-  posts: Array<PostPropsType>;
-  newPostText: string
+export type InitialStateUsersPagePropsType = {
+  users: Array<UserPropsType>
 };
-export type InboxPagePropsType = {
-  dialogs: Array<DialogItemPropsType>;
-  messages: Array<MessagePropsType>;
-  newMessageText: string
-};
-export type StatePropsType = {
-  myPostsPage: MyPostsPagePropsType;
-  inboxPage: InboxPagePropsType;
-  friendsPage: FriendsPagePropsType
-  feedsPage: FeedsPagePropsType
-};
+
+// I use AppStateType from reduxStore instead StatePropsType
+// export type StatePropsType = {
+//   myPostsPage: MyPostsPagePropsType;
+//   inboxPage: InboxPagePropsType;
+//   usersPage: UsersPagePropsTypeFromApp
+//   feedsPage: FeedsPagePropsType
+// };
+
+// ActionTypes
 export type AddPostActionType = {
   type: 'ADD-POST'
 };
@@ -75,17 +89,34 @@ export type UpdateNewMessageTextActionType = {
 export type SendMessageActionType = {
   type: 'SEND-MESSAGE'
 };
+export type FollowActionType = {
+  userId: number;
+  type: 'FOLLOW'
+};
+export type UnfollowActionType = {
+  userId: number;
+  type: 'UNFOLLOW'
+};
+type SetUsersActionType = {
+  users: Array<UserPropsType>;
+  type: 'SET_USERS'
+};
+
 export type ActionsPropsType =
   AddPostActionType
   | UpdateNewPostTextActionType
   | UpdateNewMessageTextActionType
-  | SendMessageActionType;
-export type StorePropsType = {
-  _state: StatePropsType;
-  _callSubscriber: (state: StatePropsType) => void;
+  | SendMessageActionType
+  | FollowActionType
+  | UnfollowActionType
+  | SetUsersActionType;
 
-  getState: () => StatePropsType;
-  subscribe: (observer: (state: StatePropsType) => void) => void
+export type StorePropsType = {
+  _state: AppStateType;
+  _callSubscriber: (state: AppStateType) => void;
+
+  getState: () => AppStateType;
+  subscribe: (observer: (state: AppStateType) => void) => void
 
   dispatch: (action: ActionsPropsType) => void;
 };

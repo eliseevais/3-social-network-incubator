@@ -1,14 +1,15 @@
 import React from "react";
-import {Styles} from "./Friends_Styles";
+import {Styles} from "./Users_Styles";
 import Dmitry from "../../accets/img/Dmitry.jpg";
 import Ekaterina from "../../accets/img/Ekaterina.jpg";
 import Maria from "../../accets/img/Maria.jpg";
 import Olga from "../../accets/img/Olga.jpg";
 import Maxim from "../../accets/img/Maxim.jpg";
+import {UsersPagePropsType} from "./UsersContainer";
 
-export const Friends = (props: any) => {
+export const Users = (props: UsersPagePropsType) => {
 
-  if (props.users.length === 0) {
+  if (props.usersPage.users.length === 0) {
     props.setUsers([
       {
         id: 1,
@@ -53,11 +54,12 @@ export const Friends = (props: any) => {
     ])
   }
 
+  console.log(props.usersPage.users)
 
   return (
     <div>
       {
-        props.users.map(u => <Styles.UserWrapper key={u.id}>
+        props.usersPage.users.map(u => <Styles.UserWrapper key={u.id}>
             <Styles.PhotoAndButton>
               <Styles.UserAvatar src={u.img}/>
               <div>
@@ -73,9 +75,9 @@ export const Friends = (props: any) => {
                     </Styles.ButtonFollowUnfollow>
                 }
               </div>
-              <Styles.ButtonFollowUnfollow>
-                Follow
-              </Styles.ButtonFollowUnfollow>
+              {/*<Styles.ButtonFollowUnfollow>*/}
+              {/*  Follow*/}
+              {/*</Styles.ButtonFollowUnfollow>*/}
             </Styles.PhotoAndButton>
             <Styles.UserPreview>
               <Styles.NameAndStatus>
@@ -83,8 +85,8 @@ export const Friends = (props: any) => {
                 <div>{u.status}</div>
               </Styles.NameAndStatus>
               <Styles.Location>
-                <div>{u.location.country}</div>
-                <div>{u.location.city}</div>
+                <div>{u.location?.country}</div>
+                <div>{u.location?.city}</div>
               </Styles.Location>
             </Styles.UserPreview>
 

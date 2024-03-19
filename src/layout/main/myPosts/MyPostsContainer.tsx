@@ -2,13 +2,12 @@ import {
   addPostAC,
   updateNewPostTextAC
 } from "../../../redux/myPostsPageReducer";
-import {
-  ActionsPropsType, StatePropsType
-} from "../../../redux/storeAllPropsType";
+import {ActionsPropsType} from "../../../redux/storeAllPropsType";
+import {AppStateType} from "../../../redux/reduxStore";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 
-const mapStateToProps = (state: StatePropsType) => {
+const mapStateToProps = (state: AppStateType) => {
   return {
     posts: state.myPostsPage.posts,
     newPostText: state.myPostsPage.newPostText
