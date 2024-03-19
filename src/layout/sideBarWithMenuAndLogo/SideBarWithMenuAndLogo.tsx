@@ -1,8 +1,8 @@
 import React from 'react';
-import flowers from '../../../accets/img/flowers.jpg';
+import flowers from '../../accets/img/flowers.jpg';
 import {SideBarOnlyMenu} from "./sideBarOnlyMenu/SideBarOnlyMenu";
 import {Styles} from './SideBarWithMenuAndLogo_Styles';
-import {FlexWrapper} from '../../../componentsWrappers/FlexWrapper';
+import {FlexWrapper} from '../../componentsWrappers/FlexWrapper';
 
 type ContentPropsType = {}
 

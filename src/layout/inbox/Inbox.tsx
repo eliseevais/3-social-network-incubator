@@ -1,5 +1,5 @@
 import React from "react";
-import {InboxPagePropsType} from "../../../redux/storeAllPropsType";
+import {InboxPagePropsType} from "../../redux/storeAllPropsType";
 import {DialogItem} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
 import {Styles} from "./Inbox_Styles";

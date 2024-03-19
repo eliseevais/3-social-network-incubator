@@ -1,5 +1,5 @@
 import React from 'react';
-import bird from '../../../../../accets/img/bird.jpg';
+import bird from '../../../../accets/img/bird.jpg';
 import {Styles} from "./Post_Styles";
 
 type PostPropsType = {

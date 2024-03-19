@@ -1,10 +1,10 @@
 import {
   addPostAC,
   updateNewPostTextAC
-} from "../../../../redux/myPostsPageReducer";
+} from "../../../redux/myPostsPageReducer";
 import {
   ActionsPropsType, StatePropsType
-} from "../../../../redux/storeAllPropsType";
+} from "../../../redux/storeAllPropsType";
 import {MyPosts} from "./MyPosts";
 import {connect} from "react-redux";
 

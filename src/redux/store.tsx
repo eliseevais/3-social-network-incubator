@@ -37,6 +37,9 @@ export let store: StorePropsType = {
       ],
       newMessageText: ''
     },
+    friendsPage: {
+      users: []
+    },
     feedsPage: {
       feeds: [
         {id: 1, text: 'This is the first news!'},

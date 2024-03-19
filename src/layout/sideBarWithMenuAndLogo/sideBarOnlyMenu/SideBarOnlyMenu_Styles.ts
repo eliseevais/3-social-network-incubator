@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {myTheme} from "../../../../stylesGlobal/Theme.styled";
+import {myTheme} from "../../../stylesGlobal/Theme.styled";
 
 const SideBarOnlyMenu = styled.nav`
   width: 100%;

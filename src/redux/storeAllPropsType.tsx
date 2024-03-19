@@ -1,6 +1,7 @@
 import {
   DialogItemPropsType
-} from "../layout/section/inbox/dialogItem/DialogItem";
+} from "../layout/inbox/dialogItem/DialogItem";
+import Dmitry from "../accets/img/Dmitry.jpg";
 
 export type PostPropsType = {
   id: number;
@@ -24,6 +25,24 @@ export type FeedPropsType = {
   id: number;
   text: string;
 };
+export type FriendPropsType = {
+  id: number,
+  name: string,
+  img: any,
+  followed: boolean,
+  status: string,
+  location: {
+    city: string,
+    country: string
+  }
+}
+export type FriendsPagePropsType = {
+  users: Array<FriendPropsType>;
+  follow?: (id: number) => void;
+  unfollow?: (id: number) => void;
+  setUsers?: (users: Array<FriendPropsType>) => void
+
+}
 export type FeedsPagePropsType = {
   feeds: Array<FeedPropsType>
 }
@@ -39,6 +58,7 @@ export type InboxPagePropsType = {
 export type StatePropsType = {
   myPostsPage: MyPostsPagePropsType;
   inboxPage: InboxPagePropsType;
+  friendsPage: FriendsPagePropsType
   feedsPage: FeedsPagePropsType
 };
 export type AddPostActionType = {

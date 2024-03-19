@@ -1,10 +1,10 @@
 import {
   ActionsPropsType, StatePropsType
-} from "../../../redux/storeAllPropsType";
+} from "../../redux/storeAllPropsType";
 import {
   sendMessageAC,
   updateNewMessageTextAC
-} from "../../../redux/inboxPageReducer";
+} from "../../redux/inboxPageReducer";
 import {Inbox} from "./Inbox";
 import {connect} from "react-redux";
 
