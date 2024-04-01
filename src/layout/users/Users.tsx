@@ -1,57 +1,17 @@
 import React from "react";
 import {Styles} from "./Users_Styles";
-import Dmitry from "../../accets/img/Dmitry.jpg";
-import Ekaterina from "../../accets/img/Ekaterina.jpg";
-import Maria from "../../accets/img/Maria.jpg";
-import Olga from "../../accets/img/Olga.jpg";
-import Maxim from "../../accets/img/Maxim.jpg";
+import UserPhoto from "../../accets/img/user.png"
 import {UsersPagePropsType} from "./UsersContainer";
+import axios from "axios";
 
 export const Users = (props: UsersPagePropsType) => {
 
   if (props.usersPage.users.length === 0) {
-    props.setUsers([
-      {
-        id: 1,
-        name: 'Dmitry',
-        img: Dmitry,
-        followed: true,
-        status: 'I am looking for a job',
-        location: {city: 'Moscow', country: 'Russia'}
-      },
-      {
-        id: 2,
-        name: 'Ekaterina',
-        img: Ekaterina,
-        followed: false,
-        status: 'I like hockey',
-        location: {city: 'Kiev', country: 'Ukraine'}
-      },
-      {
-        id: 3,
-        name: 'Maria',
-        img: Maria,
-        followed: true,
-        status: 'Beautiful life',
-        location: {city: 'Minsk', country: 'Belarus'}
-      },
-      {
-        id: 4,
-        name: 'Olga',
-        img: Olga,
-        followed: false,
-        status: 'I love my job',
-        location: {city: 'Moscow', country: 'Tula'}
-      },
-      {
-        id: 5,
-        name: 'Maxim',
-        img: Maxim,
-        followed: false,
-        status: 'Next month I will travel to Austria',
-        location: {city: 'Egypt', country: 'Cairo'}
-      }
-    ])
+
+    axios.get('https://social-network.samuraijs.com/api/1.0/users')
+      .then(response => {
+        props.setUsers(response.data.items)
+      })
   }
 
   console.log(props.usersPage.users)
@@ -61,7 +21,10 @@ export const Users = (props: UsersPagePropsType) => {
       {
         props.usersPage.users.map(u => <Styles.UserWrapper key={u.id}>
             <Styles.PhotoAndButton>
-              <Styles.UserAvatar src={u.img}/>
+              <Styles.UserAvatar src={
+                u.photos.small !== null
+                ? u.photos.small
+                : UserPhoto}/>
               <div>
                 {
                   u.followed

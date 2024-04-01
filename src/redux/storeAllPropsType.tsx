@@ -53,7 +53,8 @@ type LocationUserPropsType = {
 export type UserPropsType = {
   id: number,
   name: string,
-  img: any,
+  img?: any,
+  photos?: any,
   followed: boolean,
   status: string,
   location: LocationUserPropsType

@@ -31,7 +31,8 @@ const UserAvatar = styled.img`
   width: 120px;
   height: 120px;
   border-radius: 80px;
-  margin: 0 10px 10px 0;
+  //margin: 0 10px 10px 0;
+  margin: 0;
 `
 
 const UserPreview = styled.div`
@@ -50,7 +51,7 @@ const UserWrapper = styled.div`
   background-color: ${myTheme.colors.ground};
   padding: 14px;
   box-sizing: border-box;
-  border-radius: 30px;
+  //border-radius: 30px;
 `
 
 export const Styles = {
