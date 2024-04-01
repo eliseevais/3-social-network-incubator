@@ -6,25 +6,26 @@ import axios from "axios";
 
 export const Users = (props: UsersPagePropsType) => {
 
-  if (props.usersPage.users.length === 0) {
+  let getUsers = () => {
+    if (props.usersPage.users.length === 0) {
 
-    axios.get('https://social-network.samuraijs.com/api/1.0/users')
-      .then(response => {
-        props.setUsers(response.data.items)
-      })
+      axios.get('https://social-network.samuraijs.com/api/1.0/users')
+        .then(response => {
+          props.setUsers(response.data.items)
+        })
+    }
   }
-
-  console.log(props.usersPage.users)
 
   return (
     <div>
+      <button onClick={getUsers}>Get users</button>
       {
         props.usersPage.users.map(u => <Styles.UserWrapper key={u.id}>
             <Styles.PhotoAndButton>
               <Styles.UserAvatar src={
                 u.photos.small !== null
-                ? u.photos.small
-                : UserPhoto}/>
+                  ? u.photos.small
+                  : UserPhoto}/>
               <div>
                 {
                   u.followed
