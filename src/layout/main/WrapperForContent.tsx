@@ -4,7 +4,6 @@ import {Melodies} from "../melodies/Melodies";
 import {MyPostsContainer} from "./myPosts/MyPostsContainer";
 import {InboxContainer} from "../inbox/InboxContainer";
 import {Styles} from "./ContentWindow_Styles";
-import {Feeds} from "../feeds/Feeds";
 import UsersContainer from "../users/UsersContainer";
 
 export const WrapperForContent = () => {

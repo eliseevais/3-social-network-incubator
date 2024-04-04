@@ -5,7 +5,6 @@ import {Styles} from './SideBarOnlyMenu_Styles';
 type MenuPropsType = {}
 
 export function SideBarOnlyMenu(props: MenuPropsType) {
-  console.log("Menu is rendering")
   return (
     <Styles.SideBarOnlyMenu>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}

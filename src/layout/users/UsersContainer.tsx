@@ -7,7 +7,9 @@ import {
 import {AppStateType} from "../../redux/reduxStore";
 import {Dispatch} from "redux";
 import {UserPropsType} from "../../redux/storeAllPropsType";
-import UsersC from "./UsersC";
+import React from "react";
+import axios from "axios";
+import {UsersNew} from "./UsersNew";
 
 type MSTPType = {
   users: Array<UserPropsType>
@@ -24,6 +26,42 @@ type MDTPType = {
 }
 
 export type UsersPagePropsType = MSTPType & MDTPType
+
+class UsersContainer extends React.Component<UsersPagePropsType, {}> {
+  componentDidMount() {
+    axios.get<{totalCount: number, items: UserPropsType[]}>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.setUsers(response.data.items)
+        this.props.setTotalUsersCount(response.data.totalCount)
+      })
+  }
+
+  onPageChanged = (pageNumber: number) => {
+    this.props.setCurrentPage(pageNumber);
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+      .then(response => {
+        this.props.setUsers(response.data.items)
+      })
+  }
+
+  render() {
+    return (
+      <UsersNew totalCount={this.props.totalCount}
+                pageSize={this.props.pageSize}
+                currentPage={this.props.currentPage}
+                onPageChanged={this.onPageChanged}
+                users={this.props.users}
+                follow={this.props.follow}
+                unfollow={this.props.unfollow}
+                setCurrentPage={this.props.setCurrentPage}
+                setTotalUsersCount={this.props.setTotalUsersCount}
+                setUsers={this.props.setUsers}
+      />
+    )
+  }
+}
+
+
 const MSTP = (state: AppStateType): MSTPType => {
   return {
     users: state.usersPage.users,
@@ -52,4 +90,4 @@ const MDTP = (dispatch: Dispatch): MDTPType => {
   }
 }
 
-export default connect(MSTP, MDTP)(UsersC)
+export default connect(MSTP, MDTP)(UsersContainer)

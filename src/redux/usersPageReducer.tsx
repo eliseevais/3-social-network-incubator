@@ -13,7 +13,7 @@ let initialState: InitialStateUsersPagePropsType = {
   users: [],
   pageSize: 20,
   totalCount: 0,
-  currentPage: 2
+  currentPage: 1
 }
 export const usersPageReducer = (
   state: InitialStateUsersPagePropsType = initialState,

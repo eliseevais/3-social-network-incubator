@@ -15,7 +15,6 @@ import {useSelector} from "react-redux";
 
 const App = () => {
   const appStore = useSelector(state => state)
-  console.log('appStore', appStore)
   return (
     <AppWrapper>
       <Header title="Login"/>
