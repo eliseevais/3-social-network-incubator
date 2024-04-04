@@ -27,11 +27,20 @@ const PhotoAndButton = styled.div`
   align-items: center;
 `
 
+const Page = styled.span`
+  cursor: pointer;
+  margin: 4px;
+`
+
+const SelectedPage = styled(Page)`
+  font-weight: 900;
+`
+
 const UserAvatar = styled.img`
   width: 120px;
   height: 120px;
   border-radius: 80px;
-  //margin: 0 10px 10px 0;
+  //Styles.Page 10px 0;
   margin: 0;
 `
 
@@ -59,6 +68,8 @@ export const Styles = {
   Location,
   NameAndStatus,
   PhotoAndButton,
+  Page,
+  SelectedPage,
   UserAvatar,
   UserPreview,
   UserWrapper

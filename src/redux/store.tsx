@@ -38,7 +38,10 @@ export let store: StorePropsType = {
       newMessageText: ''
     },
     usersPage: {
-      users: []
+      users: [],
+      pageSize: 5,
+      totalCount: 0,
+      currentPage: 1
     },
     feedsPage: {
       feeds: [

@@ -7,7 +7,7 @@ import axios from "axios";
 export const Users = (props: UsersPagePropsType) => {
 
   let getUsers = () => {
-    if (props.usersPage.users.length === 0) {
+    if (props.users.length === 0) {
 
       axios.get('https://social-network.samuraijs.com/api/1.0/users')
         .then(response => {
@@ -20,7 +20,7 @@ export const Users = (props: UsersPagePropsType) => {
     <div>
       <button onClick={getUsers}>Get users</button>
       {
-        props.usersPage.users.map(u => <Styles.UserWrapper key={u.id}>
+        props.users.map(u => <Styles.UserWrapper key={u.id}>
             <Styles.PhotoAndButton>
               <Styles.UserAvatar src={
                 u.photos.small !== null

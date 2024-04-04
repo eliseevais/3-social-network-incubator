@@ -65,15 +65,10 @@ export type UsersPagePropsTypeFromApp = {
 
 export type InitialStateUsersPagePropsType = {
   users: Array<UserPropsType>
+  pageSize: number
+  totalCount: number
+  currentPage: number
 };
-
-// I use AppStateType from reduxStore instead StatePropsType
-// export type StatePropsType = {
-//   myPostsPage: MyPostsPagePropsType;
-//   inboxPage: InboxPagePropsType;
-//   usersPage: UsersPagePropsTypeFromApp
-//   feedsPage: FeedsPagePropsType
-// };
 
 // ActionTypes
 export type AddPostActionType = {
@@ -102,6 +97,14 @@ type SetUsersActionType = {
   users: Array<UserPropsType>;
   type: 'SET_USERS'
 };
+type SetCurrentPageActionType = {
+  type: 'SET_CURRENT_PAGE';
+  currentPage: number
+};
+type setTotalUsersCountAC = {
+  type: 'SET_TOTAL_USERS_COUNT';
+  totalCount: number
+}
 
 export type ActionsPropsType =
   AddPostActionType
@@ -110,7 +113,9 @@ export type ActionsPropsType =
   | SendMessageActionType
   | FollowActionType
   | UnfollowActionType
-  | SetUsersActionType;
+  | SetUsersActionType
+  | SetCurrentPageActionType
+  | setTotalUsersCountAC;
 
 export type StorePropsType = {
   _state: AppStateType;
