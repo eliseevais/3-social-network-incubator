@@ -41,7 +41,8 @@ export let store: StorePropsType = {
       users: [],
       pageSize: 5,
       totalCount: 0,
-      currentPage: 1
+      currentPage: 1,
+      isFetching: false
     },
     feedsPage: {
       feeds: [

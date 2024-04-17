@@ -68,6 +68,7 @@ export type InitialStateUsersPagePropsType = {
   pageSize: number
   totalCount: number
   currentPage: number
+  isFetching: boolean
 };
 
 // ActionTypes
@@ -101,13 +102,17 @@ type SetCurrentPageActionType = {
   type: 'SET_CURRENT_PAGE';
   currentPage: number
 };
-type setTotalUsersCountAC = {
+type setTotalUsersCountActionType = {
   type: 'SET_TOTAL_USERS_COUNT';
   totalCount: number
+};
+type toggleIsFetchingActionType = {
+  type: 'TOGGLE_IS_FETCHING';
+  isFetching: boolean
 }
 
 export type ActionsPropsType =
-  AddPostActionType
+  | AddPostActionType
   | UpdateNewPostTextActionType
   | UpdateNewMessageTextActionType
   | SendMessageActionType
@@ -115,7 +120,8 @@ export type ActionsPropsType =
   | UnfollowActionType
   | SetUsersActionType
   | SetCurrentPageActionType
-  | setTotalUsersCountAC;
+  | setTotalUsersCountActionType
+  | toggleIsFetchingActionType;
 
 export type StorePropsType = {
   _state: AppStateType;

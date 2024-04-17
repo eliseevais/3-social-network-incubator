@@ -1,21 +1,23 @@
-import {connect} from "react-redux";
+import React from 'react';
+import {AppStateType} from '../../redux/reduxStore';
+import {Dispatch} from 'redux';
+import {UserPropsType} from '../../redux/storeAllPropsType';
+import axios from 'axios';
+import {connect} from 'react-redux';
+import {UsersNew} from './UsersNew';
 import {
   followAC, setCurrentPageAC, setTotalUsersCountAC,
-  setUsersAC,
+  setUsersAC, toggleIsFetchingAC,
   unfollowAC
-} from "../../redux/usersPageReducer";
-import {AppStateType} from "../../redux/reduxStore";
-import {Dispatch} from "redux";
-import {UserPropsType} from "../../redux/storeAllPropsType";
-import React from "react";
-import axios from "axios";
-import {UsersNew} from "./UsersNew";
+} from '../../redux/usersPageReducer';
+import {Preloader} from "../../common/Preloader";
 
 type MSTPType = {
   users: Array<UserPropsType>
   pageSize: number
   totalCount: number
   currentPage: number
+  isFetching: boolean
 };
 type MDTPType = {
   follow: (userId: number) => void;
@@ -23,40 +25,53 @@ type MDTPType = {
   setUsers: (users: Array<UserPropsType>) => void
   setCurrentPage: (pageNumber: number) => void
   setTotalUsersCount: (totalUsersCount: number) => void
+  toggleIsFetching: (isFetching: boolean) => void
 }
 
 export type UsersPagePropsType = MSTPType & MDTPType
 
 class UsersContainer extends React.Component<UsersPagePropsType, {}> {
   componentDidMount() {
-    axios.get<{totalCount: number, items: UserPropsType[]}>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+    this.props.toggleIsFetching(true);
+    axios.get<{
+      totalCount: number,
+      items: UserPropsType[]
+    }>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
       .then(response => {
         this.props.setUsers(response.data.items)
         this.props.setTotalUsersCount(response.data.totalCount)
+        this.props.toggleIsFetching(false)
       })
   }
 
   onPageChanged = (pageNumber: number) => {
+    this.props.toggleIsFetching(true);
     this.props.setCurrentPage(pageNumber);
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
       .then(response => {
         this.props.setUsers(response.data.items)
+        this.props.toggleIsFetching(false)
       })
   }
 
   render() {
     return (
-      <UsersNew totalCount={this.props.totalCount}
-                pageSize={this.props.pageSize}
-                currentPage={this.props.currentPage}
-                onPageChanged={this.onPageChanged}
-                users={this.props.users}
-                follow={this.props.follow}
-                unfollow={this.props.unfollow}
-                setCurrentPage={this.props.setCurrentPage}
-                setTotalUsersCount={this.props.setTotalUsersCount}
-                setUsers={this.props.setUsers}
-      />
+      <>
+        {this.props.isFetching ? <Preloader/> : null}
+        <UsersNew totalCount={this.props.totalCount}
+                  pageSize={this.props.pageSize}
+                  currentPage={this.props.currentPage}
+                  onPageChanged={this.onPageChanged}
+                  users={this.props.users}
+                  follow={this.props.follow}
+                  unfollow={this.props.unfollow}
+                  setCurrentPage={this.props.setCurrentPage}
+                  setTotalUsersCount={this.props.setTotalUsersCount}
+                  setUsers={this.props.setUsers}
+                  isFetching={this.props.isFetching}
+                  toggleIsFetching={this.props.toggleIsFetching}
+        />
+      </>
     )
   }
 }
@@ -67,7 +82,8 @@ const MSTP = (state: AppStateType): MSTPType => {
     users: state.usersPage.users,
     pageSize: state.usersPage.pageSize,
     totalCount: state.usersPage.totalCount,
-    currentPage: state.usersPage.currentPage
+    currentPage: state.usersPage.currentPage,
+    isFetching: state.usersPage.isFetching
   }
 }
 const MDTP = (dispatch: Dispatch): MDTPType => {
@@ -86,6 +102,9 @@ const MDTP = (dispatch: Dispatch): MDTPType => {
     },
     setTotalUsersCount: (totalCount: number) => {
       dispatch(setTotalUsersCountAC(totalCount))
+    },
+    toggleIsFetching: (isFetching) => {
+      dispatch(toggleIsFetchingAC(isFetching))
     }
   }
 }

@@ -41,7 +41,7 @@ const UserAvatar = styled.img`
   height: 120px;
   border-radius: 80px;
   //Styles.Page 10px 0;
-  margin: 0;
+  margin-bottom: 10px;
 `
 
 const UserPreview = styled.div`
