@@ -6,9 +6,9 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {UsersNew} from './UsersNew';
 import {
-  followAC, setCurrentPageAC, setTotalUsersCountAC,
-  setUsersAC, toggleIsFetchingAC,
-  unfollowAC
+  follow, setCurrentPage, setTotalUsersCount,
+  setUsers, toggleIsFetching,
+  unfollow
 } from '../../redux/usersPageReducer';
 import {Preloader} from "../../common/Preloader";
 
@@ -86,27 +86,30 @@ const MSTP = (state: AppStateType): MSTPType => {
     isFetching: state.usersPage.isFetching
   }
 }
-const MDTP = (dispatch: Dispatch): MDTPType => {
-  return {
-    follow: (userId: number) => {
-      dispatch(followAC(userId))
-    },
-    unfollow: (userId: number) => {
-      dispatch(unfollowAC(userId))
-    },
-    setUsers: (users: Array<UserPropsType>) => {
-      dispatch(setUsersAC(users))
-    },
-    setCurrentPage: (pageNumber: number) => {
-      dispatch(setCurrentPageAC(pageNumber))
-    },
-    setTotalUsersCount: (totalCount: number) => {
-      dispatch(setTotalUsersCountAC(totalCount))
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(toggleIsFetchingAC(isFetching))
-    }
-  }
-}
+// const MDTP = (dispatch: Dispatch): MDTPType => {
+//   return {
+//     follow: (userId: number) => {
+//       dispatch(followAC(userId))
+//     },
+//     unfollow: (userId: number) => {
+//       dispatch(unfollowAC(userId))
+//     },
+//     setUsers: (users: Array<UserPropsType>) => {
+//       dispatch(setUsersAC(users))
+//     },
+//     setCurrentPage: (pageNumber: number) => {
+//       dispatch(setCurrentPageAC(pageNumber))
+//     },
+//     setTotalUsersCount: (totalCount: number) => {
+//       dispatch(setTotalUsersCountAC(totalCount))
+//     },
+//     toggleIsFetching: (isFetching) => {
+//       dispatch(toggleIsFetchingAC(isFetching))
+//     }
+//   }
+// }
 
-export default connect(MSTP, MDTP)(UsersContainer)
+export default connect(MSTP, {
+  follow, unfollow, setUsers, setCurrentPage,
+  setTotalUsersCount, toggleIsFetching
+})(UsersContainer)

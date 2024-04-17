@@ -55,21 +55,21 @@ export const usersPageReducer = (
   }
 }
 
-export const followAC = (userId: number) => {
+export const follow = (userId: number) => {
   return {type: FOLLOW, userId}
 };
-export const unfollowAC = (userId: number) => {
+export const unfollow = (userId: number) => {
   return {type: UNFOLLOW, userId};
 };
-export const setUsersAC = (users: Array<UserPropsType>) => {
+export const setUsers = (users: Array<UserPropsType>) => {
   return {type: SET_USERS, users};
 };
-export const setCurrentPageAC = (currentPage: number) => {
+export const setCurrentPage = (currentPage: number) => {
   return {type: SET_CURRENT_PAGE, currentPage}
 };
-export const setTotalUsersCountAC = (totalCount: number) => {
+export const setTotalUsersCount = (totalCount: number) => {
   return {type: SET_TOTAL_USERS_COUNT, totalCount}
 };
-export const toggleIsFetchingAC = (isFetching: boolean) => {
+export const toggleIsFetching = (isFetching: boolean) => {
   return {type: TOGGLE_IS_FETCHING, isFetching}
 }
