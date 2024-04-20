@@ -1,8 +1,8 @@
 import React from "react";
 
-import {FeedPropsType} from "../../redux/storeAllPropsType";
+import {FeedType} from "../../redux/storeAllPropsType";
 
-export const Feed = (props: FeedPropsType) => {
+export const Feed = (props: FeedType) => {
   return (
     <div>{props.text}</div>
   );

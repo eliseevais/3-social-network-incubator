@@ -2,11 +2,11 @@ import React from 'react';
 import {Post} from "./post/Post";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {Styles} from "./MyPosts_Styles";
-import {PostPropsType} from "../../../redux/storeAllPropsType";
+import {PostType} from "../../../redux/storeAllPropsType";
 
 
 type PostDataPropsType = {
-  posts: Array<PostPropsType>;
+  posts: Array<PostType>;
   newPostText: string;
   updateNewPostText: (text: string) => void;
   addPost: () => void

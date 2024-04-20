@@ -47,7 +47,7 @@ const UserAvatar = styled.img`
 const UserAvatarLarge = styled(UserAvatar)`
   width: 240px;
   height: 240px;
-  border-radius: 120px;
+  border-radius: 20px;
 `
 
 const UserPreview = styled.div`
@@ -59,7 +59,8 @@ const UserPreview = styled.div`
 `
 
 const UserWrapper = styled.div`
-  width: 98%;
+  //width: 98%;
+  max-width: 59%;
   display: flex;
   flex-direction: row;
   margin: 10px;

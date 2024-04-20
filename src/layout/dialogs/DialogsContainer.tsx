@@ -1,11 +1,11 @@
-import {ActionsPropsType} from '../../redux/storeAllPropsType';
+import {ActionsType} from '../../redux/storeAllPropsType';
 import {AppStateType} from '../../redux/reduxStore';
 import {connect} from 'react-redux';
 import {Dialogs} from './Dialogs';
 import {
   sendMessageAC,
   updateNewMessageTextAC
-} from '../../redux/inboxPageReducer';
+} from '../../redux/dialogsReducer';
 
 let mapStateToProps = (state: AppStateType) => {
   return {
@@ -13,7 +13,7 @@ let mapStateToProps = (state: AppStateType) => {
   }
 };
 
-let mapDispatchToProps = (dispatch: (action: ActionsPropsType) => void) => {
+let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
   return {
     updateNewMessageText: (text: string) => {
       dispatch(updateNewMessageTextAC(text))

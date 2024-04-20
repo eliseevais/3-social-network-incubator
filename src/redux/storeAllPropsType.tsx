@@ -1,66 +1,66 @@
 // Dialogs
 import {AppStateType} from "./reduxStore";
 
-export type DialogItemPropsType = {
+export type DialogItemType = {
   id: number;
   name: string;
   img: any
 };
-export type MessagePropsType = {
+export type MessageType = {
   id: number;
   message: string
 };
 export type InboxPagePropsType = {
-  dialogs: Array<DialogItemPropsType>;
-  messages: Array<MessagePropsType>;
+  dialogs: Array<DialogItemType>;
+  messages: Array<MessageType>;
   newMessageText: string
 };
 
 // Posts
-export type PostPropsType = {
+export type PostType = {
   id: number;
   message: string;
   likesCount: number
 };
-export type NewPostPropsType = {
+export type NewPostType = {
   id: number;
   message: string;
   likesCount: 0
 };
-export type NextMessagePropsType = {
+export type NextMessageType = {
   id: number;
   message: string;
 };
-export type ProfilePagePropsType = {
-  posts: Array<PostPropsType>;
+export type ProfilePageType = {
+  posts: Array<PostType>;
   newPostText: string
 };
 
 // Feeds
-export type FeedPropsType = {
+export type FeedType = {
   id: number;
   text: string;
 };
-// export type FeedsPagePropsType = {
-//   feeds: Array<FeedPropsType>
+// export type FeedsPageType = {
+//   feeds: Array<FeedType>
 // };
 
 // Users
-type LocationUserPropsType = {
+type LocationUserType = {
   city: string,
   country: string
 };
-export type UserPropsType = {
+export type UserType = {
   id: number,
   name: string,
   img?: any,
   photos?: any,
   followed: boolean,
   status: string,
-  location: LocationUserPropsType
+  location: LocationUserType
 };
-export type UsersPagePropsTypeFromApp = {
-  users: Array<UserPropsType>
+export type UsersPageTypeFromApp = {
+  users: Array<UserType>
 };
 export type UserFromServerType = {
   aboutMe: string | null;
@@ -84,8 +84,8 @@ export type UserFromServerType = {
   }
 };
 
-export type InitialStateUsersPagePropsType = {
-  users: Array<UserPropsType>
+export type InitialStateUsersPageType = {
+  users: Array<UserType>
   pageSize: number
   totalCount: number
   currentPage: number
@@ -116,7 +116,7 @@ export type UnfollowActionType = {
   type: 'UNFOLLOW'
 };
 type SetUsersActionType = {
-  users: Array<UserPropsType>;
+  users: Array<UserType>;
   type: 'SET_USERS'
 };
 type SetCurrentPageActionType = {
@@ -136,7 +136,7 @@ type setUserProfileActionType = {
   profile: any;
 };
 
-export type ActionsPropsType =
+export type ActionsType =
   | AddPostActionType
   | UpdateNewPostTextActionType
   | UpdateNewMessageTextActionType
@@ -149,12 +149,12 @@ export type ActionsPropsType =
   | toggleIsFetchingActionType
   | setUserProfileActionType;
 
-export type StorePropsType = {
+export type StoreType = {
   _state: AppStateType;
   _callSubscriber: (state: AppStateType) => void;
 
   getState: () => AppStateType;
   subscribe: (observer: (state: AppStateType) => void) => void
 
-  dispatch: (action: ActionsPropsType) => void;
+  dispatch: (action: ActionsType) => void;
 };

@@ -1,14 +1,16 @@
 import {combineReducers, createStore} from "redux";
 import {profileReducer} from "./profileReducer";
-import {inboxPageReducer} from "./inboxPageReducer";
-import {feedsPageReducer} from "./feedsPageReducer";
-import {usersPageReducer} from "./usersPageReducer";
+import {dialogsReducer} from "./dialogsReducer";
+import {feedsReducer} from "./feedsReducer";
+import {usersReducer} from "./usersReducer";
+import {authReducer} from "./authReducer";
 
 let rootReducer = combineReducers({
   profilePage: profileReducer,
-  dialogsPage: inboxPageReducer,
-  feedsPage: feedsPageReducer,
-  usersPage: usersPageReducer
+  dialogsPage: dialogsReducer,
+  feedsPage: feedsReducer,
+  usersPage: usersReducer,
+  auth: authReducer
 });
 
 export type AppStoreType = typeof store;

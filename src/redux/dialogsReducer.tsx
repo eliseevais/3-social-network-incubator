@@ -4,7 +4,7 @@ import Maria from "../accets/img/Maria.jpg";
 import Olga from "../accets/img/Olga.jpg";
 import Maxim from "../accets/img/Maxim.jpg";
 import {
-  ActionsPropsType, DialogItemPropsType, MessagePropsType, NextMessagePropsType,
+  ActionsType, DialogItemType, MessageType, NextMessageType,
   SendMessageActionType,
   UpdateNewMessageTextActionType
 } from "./storeAllPropsType";
@@ -21,19 +21,19 @@ let initialState = {
     {id: 3, name: 'Maria', img: Maria},
     {id: 4, name: 'Olga', img: Olga},
     {id: 5, name: 'Maxim', img: Maxim}
-  ] as Array<DialogItemPropsType>,
+  ] as Array<DialogItemType>,
   messages: [
     {id: 1, message: 'Hello, my friend!'},
     {id: 2, message: 'How are you doing?'},
     {id: 3, message: 'Would you like to go to the cinema?'},
     {id: 4, message: 'No, thanks, I will stay at home to study.'},
-  ] as Array<MessagePropsType>,
+  ] as Array<MessageType>,
   newMessageText: ''
 }
 
-export const inboxPageReducer = (
+export const dialogsReducer = (
   state: InitialStateInboxPagePropsType = initialState,
-  action: ActionsPropsType): InitialStateInboxPagePropsType => {
+  action: ActionsType): InitialStateInboxPagePropsType => {
 
   switch (action.type) {
     case UPDATE_NEW_MESSAGE_TEXT:
@@ -42,7 +42,7 @@ export const inboxPageReducer = (
         newMessageText: action.newMessageText
       }
     case SEND_MESSAGE:
-      let nextMessage: NextMessagePropsType = {
+      let nextMessage: NextMessageType = {
         id: new Date().getTime(),
         message: state.newMessageText
       };

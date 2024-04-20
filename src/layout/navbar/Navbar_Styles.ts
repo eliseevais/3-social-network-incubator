@@ -4,7 +4,7 @@ import { myTheme } from "../../stylesGlobal/Theme.styled";
 const Navbar = styled.div`
   width: 100%;
   min-height: 95vh;
-  background-color: ${myTheme.colors.ground};
+  //background-color: ${myTheme.colors.ground};
   padding: 10px;
 `
 

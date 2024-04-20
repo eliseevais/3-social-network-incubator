@@ -1,6 +1,6 @@
 import React from 'react';
 import {AppStateType} from '../../redux/reduxStore';
-import {UserPropsType} from '../../redux/storeAllPropsType';
+import {UserType} from '../../redux/storeAllPropsType';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {UsersNew} from './UsersNew';
@@ -8,11 +8,11 @@ import {
   follow, setCurrentPage, setTotalUsersCount,
   setUsers, toggleIsFetching,
   unfollow
-} from '../../redux/usersPageReducer';
+} from '../../redux/usersReducer';
 import {Preloader} from "../../common/Preloader";
 
 type MSTPType = {
-  users: Array<UserPropsType>
+  users: Array<UserType>
   pageSize: number
   totalCount: number
   currentPage: number
@@ -21,7 +21,7 @@ type MSTPType = {
 type MDTPType = {
   follow: (userId: number) => void;
   unfollow: (userId: number) => void;
-  setUsers: (users: Array<UserPropsType>) => void
+  setUsers: (users: Array<UserType>) => void
   setCurrentPage: (pageNumber: number) => void
   setTotalUsersCount: (totalUsersCount: number) => void
   toggleIsFetching: (isFetching: boolean) => void
@@ -34,7 +34,7 @@ class UsersContainer extends React.Component<UsersPagePropsType, {}> {
     this.props.toggleIsFetching(true);
     axios.get<{
       totalCount: number,
-      items: UserPropsType[]
+      items: UserType[]
     }>(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
       .then(response => {
         this.props.setUsers(response.data.items)

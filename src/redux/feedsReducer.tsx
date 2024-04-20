@@ -1,4 +1,4 @@
-import {ActionsPropsType} from "./storeAllPropsType";
+import {ActionsType} from "./storeAllPropsType";
 
 let initialState = {
   feeds: [
@@ -7,7 +7,7 @@ let initialState = {
     {id: 3, text: 'This is the third news!'}
   ]
 };
-export const feedsPageReducer = (state = initialState, action: ActionsPropsType) => {
+export const feedsReducer = (state = initialState, action: ActionsType) => {
 
   return state
 }

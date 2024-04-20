@@ -1,6 +1,6 @@
 import {
-  ActionsPropsType,
-  InitialStateUsersPagePropsType, UserPropsType,
+  ActionsType,
+  InitialStateUsersPageType, UserType,
 } from "./storeAllPropsType";
 
 const FOLLOW = 'FOLLOW';
@@ -10,16 +10,16 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
-let initialState: InitialStateUsersPagePropsType = {
+let initialState: InitialStateUsersPageType = {
   users: [],
   pageSize: 20,
   totalCount: 0,
   currentPage: 1,
   isFetching: false
 }
-export const usersPageReducer = (
-  state: InitialStateUsersPagePropsType = initialState,
-  action: ActionsPropsType): InitialStateUsersPagePropsType => {
+export const usersReducer = (
+  state: InitialStateUsersPageType = initialState,
+  action: ActionsType): InitialStateUsersPageType => {
 
   switch (action.type) {
     case FOLLOW:
@@ -31,7 +31,7 @@ export const usersPageReducer = (
           }
           return user
         })
-      } as InitialStateUsersPagePropsType
+      } as InitialStateUsersPageType
     case UNFOLLOW:
       return {
         ...state,
@@ -41,7 +41,7 @@ export const usersPageReducer = (
           }
           return user
         })
-      } as InitialStateUsersPagePropsType
+      } as InitialStateUsersPageType
     case SET_USERS:
       return {...state, users: action.users}
     case SET_CURRENT_PAGE:
@@ -61,7 +61,7 @@ export const follow = (userId: number) => {
 export const unfollow = (userId: number) => {
   return {type: UNFOLLOW, userId};
 };
-export const setUsers = (users: Array<UserPropsType>) => {
+export const setUsers = (users: Array<UserType>) => {
   return {type: SET_USERS, users};
 };
 export const setCurrentPage = (currentPage: number) => {

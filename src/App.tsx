@@ -1,8 +1,8 @@
 import React from 'react';
+import HeaderContainer from "./layout/header/HeaderContainer";
 import {AppWrapper} from './App_Styles';
 import {Container} from './componentsWrappers/Container_Styles';
 import {FlexWrapper} from './componentsWrappers/FlexWrapper';
-import {Header} from './layout/header/Header';
 import {Navbar} from './layout/navbar/Navbar';
 import {SideBarMenuAndLogo} from './layout/sideBarMenuAndLogo/SideBarMenuAndLogo';
 import {useSelector} from 'react-redux';
@@ -11,7 +11,7 @@ const App = () => {
   const appStore = useSelector(state => state)
   return (
     <AppWrapper>
-      <Header title="Login"/>
+      <HeaderContainer/>
       <Container>
         <FlexWrapper>
           <SideBarMenuAndLogo/>

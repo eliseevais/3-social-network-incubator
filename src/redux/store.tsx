@@ -3,12 +3,12 @@ import Ekaterina from '../accets/img/Ekaterina.jpg';
 import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
-import {StorePropsType} from "./storeAllPropsType";
+import {StoreType} from "./storeAllPropsType";
 import {profileReducer} from "./profileReducer";
-import {inboxPageReducer} from "./inboxPageReducer";
-import {feedsPageReducer} from "./feedsPageReducer";
+import {dialogsReducer} from "./dialogsReducer";
+import {feedsReducer} from "./feedsReducer";
 
-export let store: StorePropsType = {
+export let store: StoreType = {
   _state: {
     profilePage: {
       posts: [
@@ -51,7 +51,8 @@ export let store: StorePropsType = {
         {id: 2, text: 'This is the second news!'},
         {id: 3, text: 'This is the third news!'}
       ]
-    }
+    },
+    auth: {}
   },
   _callSubscriber() {
     console.log('state was changed')
@@ -65,8 +66,8 @@ export let store: StorePropsType = {
 
   dispatch(action) {
     this._state.profilePage = profileReducer(this._state.profilePage, action);
-    this._state.dialogsPage = inboxPageReducer(this._state.dialogsPage, action);
-    this._state.feedsPage = feedsPageReducer(this._state.feedsPage, action);
+    this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+    this._state.feedsPage = feedsReducer(this._state.feedsPage, action);
     this._callSubscriber(this._state);
   }
 };

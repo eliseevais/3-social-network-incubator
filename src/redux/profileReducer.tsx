@@ -1,6 +1,6 @@
 import {
-  ActionsPropsType, AddPostActionType, NewPostPropsType,
-  UpdateNewPostTextActionType, UserPropsType
+  ActionsType, AddPostActionType, NewPostType,
+  UpdateNewPostTextActionType, UserType
 } from "./storeAllPropsType";
 
 const ADD_POST = 'ADD-POST';
@@ -21,10 +21,10 @@ let initialState = {
 }
 
 export const profileReducer = (
-  state = initialState, action: ActionsPropsType) => {
+  state = initialState, action: ActionsType) => {
   switch (action.type) {
     case ADD_POST:
-      let newPost: NewPostPropsType = {
+      let newPost: NewPostType = {
         id: new Date().getTime(),
         message: state.newPostText,
         likesCount: 0
@@ -47,7 +47,7 @@ export const addPostAC = (): AddPostActionType => ({type: ADD_POST});
 export const updateNewPostTextAC = (text: string): UpdateNewPostTextActionType => {
   return {type: UPDATE_NEW_POST_TEXT, newPostText: text}
 };
-export const setUserProfile = (profile: UserPropsType) => ({
+export const setUserProfile = (profile: UserType) => ({
   type: SET_USER_PROFILE,
   profile
 })

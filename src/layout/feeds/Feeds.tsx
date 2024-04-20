@@ -1,9 +1,9 @@
 import React from "react";
 import {Feed} from "./Feed";
-import {  FeedPropsType} from "../../redux/storeAllPropsType";
+import {  FeedType} from "../../redux/storeAllPropsType";
 
 type FeedsDataPropsType = {
-  feeds: Array<FeedPropsType>
+  feeds: Array<FeedType>
 };
 
 export const Feeds = (props: FeedsDataPropsType) => {
