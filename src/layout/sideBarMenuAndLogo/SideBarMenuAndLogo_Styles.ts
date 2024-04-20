@@ -8,7 +8,7 @@ const SideBarMenuAndLogo = styled.div`
   justify-content: center;
 `;
 
-const SideBarOnlyLogo = styled.div`
+const SideBarLogo = styled.div`
   margin: 40px 0;
 
   img {
@@ -21,5 +21,5 @@ const SideBarOnlyLogo = styled.div`
 
 export const Styles = {
   SideBarMenuAndLogo,
-  SideBarOnlyLogo
+  SideBarLogo
 };

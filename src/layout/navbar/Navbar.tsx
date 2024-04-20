@@ -1,10 +1,10 @@
-import React from "react";
-import {Redirect, Route} from "react-router-dom";
-import {Music} from "../music/Music";
-import {DialogsContainer} from "../dialogs/DialogsContainer";
-import {Styles} from "./Navbar_Styles";
-import UsersContainer from "../users/UsersContainer";
-import ProfileContainer from "../profile/ProfileContainer";
+import React from 'react';
+import {Redirect, Route} from 'react-router-dom';
+import ProfileContainer from '../profile/ProfileContainer';
+import {Styles} from './Navbar_Styles';
+import UsersContainer from '../users/UsersContainer';
+import {DialogsContainer} from '../dialogs/DialogsContainer';
+import {Music} from '../music/Music';
 
 export const Navbar = () => {
   return (
@@ -12,9 +12,9 @@ export const Navbar = () => {
 
       <Redirect from='/' to='/profile'/>
 
-      <Route path='/profile' render={() => <ProfileContainer/>}/>
+      <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
       <Route path='/dialogs' render={() => <DialogsContainer/>}/>
-      <Route path='/friends' render={() => <UsersContainer/>}/>
+      <Route path='/users' render={() => <UsersContainer/>}/>
 
       <Route path='/music' render={() => <Music/>}/>
 

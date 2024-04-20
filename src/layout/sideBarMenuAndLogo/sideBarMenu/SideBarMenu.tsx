@@ -1,10 +1,8 @@
 import React from 'react';
-import {NavLink} from "react-router-dom";
 import {Styles} from './SideBarMenu_Styles';
+import {NavLink} from 'react-router-dom';
 
-type MenuPropsType = {}
-
-export function SideBarMenu(props: MenuPropsType) {
+export function SideBarMenu(props: any) {
   return (
     <Styles.SideBarMenu>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
@@ -12,7 +10,7 @@ export function SideBarMenu(props: MenuPropsType) {
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
                to="/dialogs">Inbox</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
-               to="/friends">Friends</NavLink>
+               to="/users">Friends</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
                to="/feeds">Feeds</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}

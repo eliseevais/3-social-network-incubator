@@ -1,11 +1,11 @@
-import {ActionsPropsType} from "../../redux/storeAllPropsType";
-import {AppStateType} from "../../redux/reduxStore";
+import {ActionsPropsType} from '../../redux/storeAllPropsType';
+import {AppStateType} from '../../redux/reduxStore';
+import {connect} from 'react-redux';
+import {Dialogs} from './Dialogs';
 import {
   sendMessageAC,
   updateNewMessageTextAC
-} from "../../redux/inboxPageReducer";
-import {Dialogs} from "./Dialogs";
-import {connect} from "react-redux";
+} from '../../redux/inboxPageReducer';
 
 let mapStateToProps = (state: AppStateType) => {
   return {

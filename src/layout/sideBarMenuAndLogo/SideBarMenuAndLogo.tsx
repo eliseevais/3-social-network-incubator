@@ -1,19 +1,17 @@
 import React from 'react';
 import flowers from '../../accets/img/flowers.jpg';
-import {SideBarMenu} from "./sideBarMenu/SideBarMenu";
-import {Styles} from './SideBarMenuAndLogo_Styles';
 import {FlexWrapper} from '../../componentsWrappers/FlexWrapper';
+import {Styles} from './SideBarMenuAndLogo_Styles';
+import {SideBarMenu} from "./sideBarMenu/SideBarMenu";
 
-type ContentPropsType = {}
-
-export function SideBarMenuAndLogo(props: ContentPropsType) {
+export function SideBarMenuAndLogo(props: any) {
   return (
     <Styles.SideBarMenuAndLogo>
       <FlexWrapper direction="column">
         <SideBarMenu/>
-        <Styles.SideBarOnlyLogo>
+        <Styles.SideBarLogo>
           <img src={flowers} alt="img"/>
-        </Styles.SideBarOnlyLogo>
+        </Styles.SideBarLogo>
       </FlexWrapper>
     </Styles.SideBarMenuAndLogo>
   )

@@ -1,6 +1,5 @@
 import React from 'react';
 import {AppStateType} from '../../redux/reduxStore';
-import {Dispatch} from 'redux';
 import {UserPropsType} from '../../redux/storeAllPropsType';
 import axios from 'axios';
 import {connect} from 'react-redux';
