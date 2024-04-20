@@ -60,7 +60,7 @@ const UserPreview = styled.div`
 
 const UserWrapper = styled.div`
   //width: 98%;
-  max-width: 59%;
+  width: 46%;
   display: flex;
   flex-direction: row;
   margin: 10px;
@@ -68,6 +68,12 @@ const UserWrapper = styled.div`
   padding: 14px;
   box-sizing: border-box;
   //border-radius: 30px;
+`
+
+const UsersListWrapper = styled.div`
+  max-width: 60%;
+  display: flex;
+  flex-wrap: wrap;
 `
 
 export const Styles = {
@@ -80,5 +86,6 @@ export const Styles = {
   UserAvatar,
   UserAvatarLarge,
   UserPreview,
-  UserWrapper
+  UserWrapper,
+  UsersListWrapper
 }
