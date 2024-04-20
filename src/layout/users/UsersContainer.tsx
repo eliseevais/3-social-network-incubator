@@ -26,7 +26,7 @@ type MDTPType = {
   setCurrentPage: (pageNumber: number) => void
   setTotalUsersCount: (totalUsersCount: number) => void
   toggleIsFetching: (isFetching: boolean) => void
-}
+};
 
 export type UsersPagePropsType = MSTPType & MDTPType
 

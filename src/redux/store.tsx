@@ -4,13 +4,13 @@ import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
 import {StorePropsType} from "./storeAllPropsType";
-import {myPostsPageReducer} from "./myPostsPageReducer";
+import {profileReducer} from "./profileReducer";
 import {inboxPageReducer} from "./inboxPageReducer";
 import {feedsPageReducer} from "./feedsPageReducer";
 
 export let store: StorePropsType = {
   _state: {
-    myPostsPage: {
+    profilePage: {
       posts: [
         {id: 1, message: 'It\'s my first post.', likesCount: 9},
         {id: 2, message: 'Hello! How are you doing?', likesCount: 15},
@@ -19,9 +19,10 @@ export let store: StorePropsType = {
         {id: 5, message: 'The weather was -24 today.', likesCount: 10},
         {id: 6, message: 'I like it-incubator!', likesCount: 23}
       ],
-      newPostText: 'Hello from store.tsx'
+      newPostText: 'Hello from store.tsx',
+      profile: null
     },
-    inboxPage: {
+    dialogsPage: {
       dialogs: [
         {id: 1, name: 'Dmitry', img: Dmitry},
         {id: 2, name: 'Ekaterina', img: Ekaterina},
@@ -63,8 +64,8 @@ export let store: StorePropsType = {
   },
 
   dispatch(action) {
-    this._state.myPostsPage = myPostsPageReducer(this._state.myPostsPage, action);
-    this._state.inboxPage = inboxPageReducer(this._state.inboxPage, action);
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.dialogsPage = inboxPageReducer(this._state.dialogsPage, action);
     this._state.feedsPage = feedsPageReducer(this._state.feedsPage, action);
     this._callSubscriber(this._state);
   }

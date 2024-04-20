@@ -39,9 +39,7 @@ export const Users = (props: UsersPagePropsType) => {
                     </Styles.ButtonFollowUnfollow>
                 }
               </div>
-              {/*<Styles.ButtonFollowUnfollow>*/}
-              {/*  Follow*/}
-              {/*</Styles.ButtonFollowUnfollow>*/}
+
             </Styles.PhotoAndButton>
             <Styles.UserPreview>
               <Styles.NameAndStatus>

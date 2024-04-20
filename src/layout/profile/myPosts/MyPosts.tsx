@@ -33,8 +33,7 @@ export const MyPosts = (props: PostDataPropsType) => {
   }
 
   return (
-    <div>
-      <ProfileInfo/>
+    <>
       <Styles.NewPostWrapper>
         <Styles.NewPostTextarea ref={newPostElement}
                                 value={stateNewPostText}
@@ -45,6 +44,6 @@ export const MyPosts = (props: PostDataPropsType) => {
         </Styles.AddPostButton>
       </Styles.NewPostWrapper>
       {postsElements}
-    </div>
+    </>
   );
 };

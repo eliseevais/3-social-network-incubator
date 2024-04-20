@@ -2,6 +2,7 @@ import {Styles} from "./Users_Styles";
 import UserPhoto from "../../accets/img/user.png";
 import React from "react";
 import {UsersPagePropsType} from "./UsersContainer";
+import {NavLink} from "react-router-dom";
 
 type onPageChanged = {
   onPageChanged: (p: number) => void
@@ -34,10 +35,12 @@ export const UsersNew = (props: UsersPagePropsType & onPageChanged) => {
       {
         props.users.map(u => <Styles.UserWrapper key={u.id}>
             <Styles.PhotoAndButton>
+              <NavLink to={`/profile/${u.id}`}>
               <Styles.UserAvatar src={
                 u.photos.small !== null
                   ? u.photos.small
                   : UserPhoto}/>
+              </NavLink>
               <div>
                 {
                   u.followed

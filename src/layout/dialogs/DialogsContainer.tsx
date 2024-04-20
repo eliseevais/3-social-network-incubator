@@ -4,12 +4,12 @@ import {
   sendMessageAC,
   updateNewMessageTextAC
 } from "../../redux/inboxPageReducer";
-import {Inbox} from "./Inbox";
+import {Dialogs} from "./Dialogs";
 import {connect} from "react-redux";
 
 let mapStateToProps = (state: AppStateType) => {
   return {
-    inboxPage: state.inboxPage
+    inboxPage: state.dialogsPage
   }
 };
 
@@ -24,4 +24,4 @@ let mapDispatchToProps = (dispatch: (action: ActionsPropsType) => void) => {
   }
 };
 
-export const InboxContainer = connect(mapStateToProps, mapDispatchToProps)(Inbox);
+export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);

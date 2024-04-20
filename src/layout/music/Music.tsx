@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Melodies = () => {
+export const Music = () => {
   return (
     <div>
       Oops! Melodies list is empty!

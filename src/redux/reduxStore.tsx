@@ -1,12 +1,12 @@
 import {combineReducers, createStore} from "redux";
-import {myPostsPageReducer} from "./myPostsPageReducer";
+import {profileReducer} from "./profileReducer";
 import {inboxPageReducer} from "./inboxPageReducer";
 import {feedsPageReducer} from "./feedsPageReducer";
 import {usersPageReducer} from "./usersPageReducer";
 
 let rootReducer = combineReducers({
-  myPostsPage: myPostsPageReducer,
-  inboxPage: inboxPageReducer,
+  profilePage: profileReducer,
+  dialogsPage: inboxPageReducer,
   feedsPage: feedsPageReducer,
   usersPage: usersPageReducer
 });

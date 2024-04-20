@@ -1,7 +1,7 @@
 import {
   addPostAC,
   updateNewPostTextAC
-} from "../../../redux/myPostsPageReducer";
+} from "../../../redux/profileReducer";
 import {ActionsPropsType} from "../../../redux/storeAllPropsType";
 import {AppStateType} from "../../../redux/reduxStore";
 import {MyPosts} from "./MyPosts";
@@ -9,8 +9,8 @@ import {connect} from "react-redux";
 
 const mapStateToProps = (state: AppStateType) => {
   return {
-    posts: state.myPostsPage.posts,
-    newPostText: state.myPostsPage.newPostText
+    posts: state.profilePage.posts,
+    newPostText: state.profilePage.newPostText
   }
 };
 

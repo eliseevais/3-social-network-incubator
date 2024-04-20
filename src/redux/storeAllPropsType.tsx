@@ -31,7 +31,7 @@ export type NextMessagePropsType = {
   id: number;
   message: string;
 };
-export type MyPostsPagePropsType = {
+export type ProfilePagePropsType = {
   posts: Array<PostPropsType>;
   newPostText: string
 };
@@ -41,9 +41,9 @@ export type FeedPropsType = {
   id: number;
   text: string;
 };
-export type FeedsPagePropsType = {
-  feeds: Array<FeedPropsType>
-};
+// export type FeedsPagePropsType = {
+//   feeds: Array<FeedPropsType>
+// };
 
 // Users
 type LocationUserPropsType = {
@@ -61,6 +61,27 @@ export type UserPropsType = {
 };
 export type UsersPagePropsTypeFromApp = {
   users: Array<UserPropsType>
+};
+export type UserFromServerType = {
+  aboutMe: string | null;
+  contacts: {
+    facebook: string | null
+    website: string | null
+    vk: string | null
+    twitter: string | null
+    instagram: string | null
+    youtube: string | null
+    github: string | null
+    mainLink: string | null
+  };
+  lookingForAJob: boolean | null;
+  lookingForAJobDescription: string | null;
+  fullName: string | null;
+  userId: number,
+  photos: {
+    small: any,
+    large: any
+  }
 };
 
 export type InitialStateUsersPagePropsType = {
@@ -109,7 +130,11 @@ type setTotalUsersCountActionType = {
 type toggleIsFetchingActionType = {
   type: 'TOGGLE_IS_FETCHING';
   isFetching: boolean
-}
+};
+type setUserProfileActionType = {
+  type: 'SET_USER_PROFILE';
+  profile: any;
+};
 
 export type ActionsPropsType =
   | AddPostActionType
@@ -121,7 +146,8 @@ export type ActionsPropsType =
   | SetUsersActionType
   | SetCurrentPageActionType
   | setTotalUsersCountActionType
-  | toggleIsFetchingActionType;
+  | toggleIsFetchingActionType
+  | setUserProfileActionType;
 
 export type StorePropsType = {
   _state: AppStateType;

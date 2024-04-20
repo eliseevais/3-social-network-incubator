@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const SideBarWithMenuAndLogo = styled.div`
+const SideBarMenuAndLogo = styled.div`
   min-width: 40%;
   min-height: 95vh;
   display: flex;
@@ -20,6 +20,6 @@ const SideBarOnlyLogo = styled.div`
 `;
 
 export const Styles = {
-  SideBarWithMenuAndLogo,
+  SideBarMenuAndLogo,
   SideBarOnlyLogo
 };

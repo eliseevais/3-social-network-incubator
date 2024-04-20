@@ -1,10 +1,11 @@
 import {
   ActionsPropsType, AddPostActionType, NewPostPropsType,
-  UpdateNewPostTextActionType
+  UpdateNewPostTextActionType, UserPropsType
 } from "./storeAllPropsType";
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
   posts: [
@@ -15,10 +16,11 @@ let initialState = {
     {id: 5, message: 'The weather was -24 today.', likesCount: 10},
     {id: 6, message: 'I like it-incubator!', likesCount: 23}
   ],
-  newPostText: 'Hello from store.tsx'
+  newPostText: 'Hello from store.tsx',
+  profile: null
 }
 
-export const myPostsPageReducer = (
+export const profileReducer = (
   state = initialState, action: ActionsPropsType) => {
   switch (action.type) {
     case ADD_POST:
@@ -33,10 +35,9 @@ export const myPostsPageReducer = (
         newPostText: ''
       };
     case UPDATE_NEW_POST_TEXT:
-      return {
-        ...state,
-        newPostText: action.newPostText
-      }
+      return {...state, newPostText: action.newPostText}
+    case SET_USER_PROFILE:
+      return {...state, profile: action.profile}
     default:
       return state
   }
@@ -46,3 +47,7 @@ export const addPostAC = (): AddPostActionType => ({type: ADD_POST});
 export const updateNewPostTextAC = (text: string): UpdateNewPostTextActionType => {
   return {type: UPDATE_NEW_POST_TEXT, newPostText: text}
 };
+export const setUserProfile = (profile: UserPropsType) => ({
+  type: SET_USER_PROFILE,
+  profile
+})

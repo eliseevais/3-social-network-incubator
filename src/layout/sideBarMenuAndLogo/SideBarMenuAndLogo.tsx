@@ -1,20 +1,20 @@
 import React from 'react';
 import flowers from '../../accets/img/flowers.jpg';
-import {SideBarOnlyMenu} from "./sideBarOnlyMenu/SideBarOnlyMenu";
-import {Styles} from './SideBarWithMenuAndLogo_Styles';
+import {SideBarMenu} from "./sideBarMenu/SideBarMenu";
+import {Styles} from './SideBarMenuAndLogo_Styles';
 import {FlexWrapper} from '../../componentsWrappers/FlexWrapper';
 
 type ContentPropsType = {}
 
-export function SideBarWithMenuAndLogo(props: ContentPropsType) {
+export function SideBarMenuAndLogo(props: ContentPropsType) {
   return (
-    <Styles.SideBarWithMenuAndLogo>
+    <Styles.SideBarMenuAndLogo>
       <FlexWrapper direction="column">
-        <SideBarOnlyMenu/>
+        <SideBarMenu/>
         <Styles.SideBarOnlyLogo>
           <img src={flowers} alt="img"/>
         </Styles.SideBarOnlyLogo>
       </FlexWrapper>
-    </Styles.SideBarWithMenuAndLogo>
+    </Styles.SideBarMenuAndLogo>
   )
 }

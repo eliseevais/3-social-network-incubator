@@ -1,4 +1,4 @@
-import {Styles} from "../Inbox_Styles";
+import {Styles} from "../Dialogs_Styles";
 import React from "react";
 
 type MessageItem = {

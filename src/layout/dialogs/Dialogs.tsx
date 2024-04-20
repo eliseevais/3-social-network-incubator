@@ -2,7 +2,7 @@ import React from "react";
 import {InboxPagePropsType} from "../../redux/storeAllPropsType";
 import {DialogItem} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
-import {Styles} from "./Inbox_Styles";
+import {Styles} from "./Dialogs_Styles";
 
 export type InboxPropsType = {
   inboxPage: InboxPagePropsType
@@ -10,7 +10,7 @@ export type InboxPropsType = {
   sendMessage: () => void
 };
 
-export const Inbox = (props: InboxPropsType) => {
+export const Dialogs = (props: InboxPropsType) => {
 
   let state = props.inboxPage;
 
@@ -38,7 +38,7 @@ export const Inbox = (props: InboxPropsType) => {
   };
 
   return (
-    <Styles.Inbox>
+    <Styles.Dialogs>
       <div>
         {dialogsElements}
       </div>
@@ -53,6 +53,6 @@ export const Inbox = (props: InboxPropsType) => {
             onClick={onClickSendMessageHandler}>send</Styles.ButtonSendMessage>
         </Styles.NewMessageWrapper>
       </div>
-    </Styles.Inbox>
+    </Styles.Dialogs>
   )
 }

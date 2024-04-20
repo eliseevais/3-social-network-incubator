@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {myTheme} from "../../../stylesGlobal/Theme.styled";
 
-const SideBarOnlyMenu = styled.nav`
+const SideBarMenu = styled.nav`
   width: 100%;
   padding: 10px 10px 0 0;
   display: flex;
@@ -25,5 +25,5 @@ const SideBarOnlyMenu = styled.nav`
 `;
 
 export const Styles = {
-  SideBarOnlyMenu
+  SideBarMenu
 };

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { myTheme } from "../../stylesGlobal/Theme.styled";
 
-const WrapperForContent = styled.div`
+const Navbar = styled.div`
   width: 100%;
   min-height: 95vh;
   background-color: ${myTheme.colors.ground};
@@ -9,5 +9,5 @@ const WrapperForContent = styled.div`
 `
 
 export const Styles = {
-  WrapperForContent,
+  Navbar
 }

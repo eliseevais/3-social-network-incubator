@@ -1,22 +1,22 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {Styles} from './SideBarOnlyMenu_Styles';
+import {Styles} from './SideBarMenu_Styles';
 
 type MenuPropsType = {}
 
-export function SideBarOnlyMenu(props: MenuPropsType) {
+export function SideBarMenu(props: MenuPropsType) {
   return (
-    <Styles.SideBarOnlyMenu>
+    <Styles.SideBarMenu>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
-               to="/myprofile">My profile</NavLink>
+               to="/profile">My profile</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
-               to="/inbox">Inbox</NavLink>
+               to="/dialogs">Inbox</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
                to="/friends">Friends</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
                to="/feeds">Feeds</NavLink>
       <NavLink className={(isActive) => isActive ? 'isActive' : ''}
-               to="/melodies">Melodies</NavLink>
-    </Styles.SideBarOnlyMenu>
+               to="/music">Music</NavLink>
+    </Styles.SideBarMenu>
   )
 };

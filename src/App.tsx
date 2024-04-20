@@ -1,17 +1,11 @@
 import React from 'react';
-import {AppStoreType} from "./redux/reduxStore";
 import {Header} from './layout/header/Header';
-import {SideBarWithMenuAndLogo} from './layout/sideBarWithMenuAndLogo/SideBarWithMenuAndLogo';
-import {WrapperForContent} from "./layout/main/WrapperForContent";
+import {SideBarMenuAndLogo} from './layout/sideBarMenuAndLogo/SideBarMenuAndLogo';
+import {Navbar} from "./layout/navbar/Navbar";
+import {useSelector} from "react-redux";
 import {FlexWrapper} from "./componentsWrappers/FlexWrapper";
 import {Container} from "./componentsWrappers/Container_Styles";
 import {AppWrapper} from "./App_Styles";
-import {useSelector} from "react-redux";
-
-// type AppPropsType = {
-//   store: AppStoreType
-// };
-// const App: React.FC<AppPropsType> = (props) => {
 
 const App = () => {
   const appStore = useSelector(state => state)
@@ -20,8 +14,8 @@ const App = () => {
       <Header title="Login"/>
       <Container>
         <FlexWrapper>
-          <SideBarWithMenuAndLogo/>
-          <WrapperForContent/>
+          <SideBarMenuAndLogo/>
+          <Navbar/>
         </FlexWrapper>
       </Container>
     </AppWrapper>

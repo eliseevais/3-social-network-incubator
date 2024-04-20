@@ -39,9 +39,15 @@ const SelectedPage = styled(Page)`
 const UserAvatar = styled.img`
   width: 120px;
   height: 120px;
-  border-radius: 80px;
+  border-radius: 60px;
   //Styles.Page 10px 0;
   margin-bottom: 10px;
+`
+
+const UserAvatarLarge = styled(UserAvatar)`
+  width: 240px;
+  height: 240px;
+  border-radius: 120px;
 `
 
 const UserPreview = styled.div`
@@ -71,6 +77,7 @@ export const Styles = {
   Page,
   SelectedPage,
   UserAvatar,
+  UserAvatarLarge,
   UserPreview,
   UserWrapper
 }

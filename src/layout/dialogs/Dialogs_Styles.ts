@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {myTheme} from "../../stylesGlobal/Theme.styled";
 
-const Inbox = styled.div`
+const Dialogs = styled.div`
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -59,7 +59,7 @@ const NewMessageWrapper = styled.div`
 
 export const Styles = {
   ButtonSendMessage,
-  Inbox,
+  Dialogs,
   Dialog,
   DialogAvatar,
   Message,
