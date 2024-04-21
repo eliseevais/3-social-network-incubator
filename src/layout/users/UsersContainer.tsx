@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {AppStateType} from '../../redux/reduxStore';
 import {UserType} from '../../redux/storeAllPropsType';
 import {connect} from 'react-redux';
@@ -21,15 +21,15 @@ type MSTPType = {
 type MDTPType = {
   follow: (userId: number) => void;
   unfollow: (userId: number) => void;
-  setUsers: (users: Array<UserType>) => void
-  setCurrentPage: (pageNumber: number) => void
-  setTotalUsersCount: (totalUsersCount: number) => void
+  setUsers: (users: Array<UserType>) => void;
+  setCurrentPage: (pageNumber: number) => void;
+  setTotalUsersCount: (totalUsersCount: number) => void;
   toggleIsFetching: (isFetching: boolean) => void
 };
 
-export type UsersPagePropsType = MSTPType & MDTPType
+export type UsersPagePropsType = MSTPType & MDTPType;
 
-class UsersContainer extends React.Component<UsersPagePropsType, {}> {
+class UsersContainer extends Component<UsersPagePropsType, {}> {
   componentDidMount() {
     this.props.toggleIsFetching(true);
 

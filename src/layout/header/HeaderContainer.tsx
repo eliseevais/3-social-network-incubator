@@ -5,7 +5,16 @@ import {connect} from "react-redux";
 import {setAuthUserData} from "../../redux/authReducer";
 import {AppStateType} from "../../redux/reduxStore";
 
-class HeaderContainer extends Component<any, any> {
+type MSTPType = {
+  isAuth: boolean;
+  login: string
+};
+type MDTPType = {
+  setAuthUserData: (userId: number, email: string, login: string) => void
+};
+type OwnPropsType = MSTPType & MDTPType;
+
+class HeaderContainer extends Component<OwnPropsType, AppStateType> {
 
   componentDidMount() {
     axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {withCredentials: true})
@@ -24,7 +33,7 @@ class HeaderContainer extends Component<any, any> {
   }
 }
 
-const MSTP = (state: AppStateType) => ({
+const MSTP = (state: AppStateType): MSTPType => ({
   isAuth: state.auth.isAuth,
   login: state.auth.login
 })
