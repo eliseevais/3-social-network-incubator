@@ -68,7 +68,6 @@ class UsersContainer extends Component<UsersPagePropsType, {}> {
   }
 }
 
-
 const MSTP = (state: AppStateType): MSTPType => {
   return {
     users: state.usersPage.users,

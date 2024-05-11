@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {AppStateType} from '../../redux/redux-store';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {Profile} from './Profile';
-import {setUserProfile} from '../../redux/profile-reducer';
+import {getUserProfile} from '../../redux/profile-reducer';
 import {RouteComponentProps, withRouter} from 'react-router-dom';
 import {UserType} from "../../redux/storeAllPropsType";
 
@@ -30,7 +29,7 @@ type MSTPType = {
   }
 };
 type MDTPType = {
-  setUserProfile: (profile: UserType) => void
+  getUserProfile: (userId: number) => void
 };
 type PathParamsType = {
   userId: any
@@ -44,10 +43,7 @@ class ProfileContainer extends Component<PropsType, AppStateType> {
     if (!userId) {
       userId = 2;
     }
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userId}`)
-      .then(response => {
-        this.props.setUserProfile(response.data)
-      })
+    this.props.getUserProfile(userId)
   }
 
   render() {
@@ -63,4 +59,4 @@ let MSTP = (state: AppStateType): MSTPType => ({
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)
 
-export default connect(MSTP, {setUserProfile})(WithUrlDataContainerComponent);
+export default connect(MSTP, {getUserProfile})(WithUrlDataContainerComponent);

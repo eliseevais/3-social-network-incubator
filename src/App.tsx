@@ -4,7 +4,9 @@ import {AppWrapper} from './App_Styles';
 import {Container} from './componentsWrappers/Container_Styles';
 import {FlexWrapper} from './componentsWrappers/FlexWrapper';
 import {Navbar} from './layout/navbar/Navbar';
-import {SideBarMenuAndLogo} from './layout/sideBarMenuAndLogo/SideBarMenuAndLogo';
+import {
+  SideBarMenuAndLogo
+} from './layout/sideBarMenuAndLogo/SideBarMenuAndLogo';
 import {useSelector} from 'react-redux';
 
 const App = () => {
