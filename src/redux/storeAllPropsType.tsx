@@ -1,5 +1,5 @@
 // Dialogs
-import {AppStateType} from "./reduxStore";
+import {AppStateType} from "./redux-store";
 
 export type DialogItemType = {
   id: number;
@@ -45,7 +45,7 @@ export type FeedType = {
 //   feeds: Array<FeedType>
 // };
 
-// Users
+// UsersOld
 type LocationUserType = {
   city: string,
   country: string

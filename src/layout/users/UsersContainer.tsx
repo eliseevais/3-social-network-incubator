@@ -1,77 +1,67 @@
 import React, {Component} from 'react';
-import {AppStateType} from '../../redux/reduxStore';
+import {AppStateType} from '../../redux/redux-store';
 import {UserType} from '../../redux/storeAllPropsType';
 import {connect} from 'react-redux';
-import {usersAPI} from "../../api/api";
-import {UsersNew} from './UsersNew';
+import {Users} from './Users';
 import {
-  follow, setCurrentPage, setTotalUsersCount,
-  setUsers, toggleIsFollowingProgress, toggleIsFetching,
+  follow,
+  getUsers,
+  setCurrentPage,
+  toggleIsFollowingProgress,
   unfollow
 } from '../../redux/users-reducer';
 import {Preloader} from "../../common/Preloader";
 
 type MSTPType = {
-  users: Array<UserType>
-  pageSize: number
-  totalCount: number
-  currentPage: number
-  isFetching: boolean
+  users: Array<UserType>;
+  pageSize: number;
+  totalCount: number;
+  currentPage: number;
+  isFetching: boolean;
   followingInProgress: []
 };
 type MDTPType = {
   follow: (userId: number) => void;
   unfollow: (userId: number) => void;
-  setUsers: (users: Array<UserType>) => void;
   setCurrentPage: (pageNumber: number) => void;
-  setTotalUsersCount: (totalUsersCount: number) => void;
-  toggleIsFetching: (isFetching: boolean) => void;
-  toggleFollowingProgress: any
+  getUsers: (currentPage: number, pageSize: number) => void;
+  // setUsers?: (users: Array<UserType>) => void;
+  // setTotalUsersCount?: (totalUsersCount: number) => void;
+  // toggleIsFetching?: (isFetching: boolean) => void;
+  // toggleIsFollowingProgress?: any;
 };
 
 export type UsersPagePropsType = MSTPType & MDTPType;
 
 class UsersContainer extends Component<UsersPagePropsType, {}> {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
-
-    usersAPI.getUsers(this.props.currentPage, this.props.pageSize)
-      .then(response => {
-        this.props.setUsers(response.items)
-        this.props.setTotalUsersCount(response.totalCount)
-        this.props.toggleIsFetching(false)
-      })
-  }
+    this.props.getUsers(this.props.currentPage, this.props.pageSize);
+  };
 
   onPageChanged = (pageNumber: number) => {
-    this.props.toggleIsFetching(true);
     this.props.setCurrentPage(pageNumber);
-
-    usersAPI.getUsers(pageNumber, this.props.pageSize)
-      .then(response => {
-        this.props.setUsers(response.items)
-        this.props.toggleIsFetching(false)
-      })
-  }
+    this.props.getUsers(pageNumber, this.props.pageSize);
+  };
 
   render() {
     return (
       <>
         {this.props.isFetching ? <Preloader/> : null}
-        <UsersNew totalCount={this.props.totalCount}
-                  pageSize={this.props.pageSize}
-                  currentPage={this.props.currentPage}
-                  onPageChanged={this.onPageChanged}
-                  users={this.props.users}
-                  follow={this.props.follow}
-                  unfollow={this.props.unfollow}
-                  setCurrentPage={this.props.setCurrentPage}
-                  setTotalUsersCount={this.props.setTotalUsersCount}
-                  setUsers={this.props.setUsers}
-                  isFetching={this.props.isFetching}
-                  toggleIsFetching={this.props.toggleIsFetching}
-                  toggleFollowingProgress={this.props.toggleFollowingProgress}
-                  followingInProgress={this.props.followingInProgress}
+        <Users totalCount={this.props.totalCount}
+               pageSize={this.props.pageSize}
+               currentPage={this.props.currentPage}
+               onPageChanged={this.onPageChanged}
+               users={this.props.users}
+               follow={this.props.follow}
+               unfollow={this.props.unfollow}
+               setCurrentPage={this.props.setCurrentPage}
+               isFetching={this.props.isFetching}
+               followingInProgress={this.props.followingInProgress}
+               getUsers={this.props.getUsers}
+          //setTotalUsersCount={this.props.setTotalUsersCount}
+          //setUsers={this.props.setUsers}
+          //toggleIsFetching={this.props.toggleIsFetching}
+          //toggleIsFollowingProgress={this.props.toggleIsFollowingProgress}
         />
       </>
     )
@@ -113,6 +103,9 @@ const MSTP = (state: AppStateType): MSTPType => {
 // }
 
 export default connect(MSTP, {
-  follow, unfollow, setUsers, setCurrentPage,
-  setTotalUsersCount, toggleIsFetching, toggleFollowingProgress: toggleIsFollowingProgress
+  follow,
+  unfollow,
+  setCurrentPage,
+  toggleIsFollowingProgress,
+  getUsers
 })(UsersContainer)

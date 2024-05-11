@@ -3,7 +3,7 @@ import axios from 'axios';
 import {Header} from './Header';
 import {connect} from "react-redux";
 import {setAuthUserData} from "../../redux/auth-reducer";
-import {AppStateType} from "../../redux/reduxStore";
+import {AppStateType} from "../../redux/redux-store";
 
 type MSTPType = {
   isAuth: boolean;

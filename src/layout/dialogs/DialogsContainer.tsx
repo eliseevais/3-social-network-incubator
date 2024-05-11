@@ -1,5 +1,5 @@
 import {ActionsType} from '../../redux/storeAllPropsType';
-import {AppStateType} from '../../redux/reduxStore';
+import {AppStateType} from '../../redux/redux-store';
 import {connect} from 'react-redux';
 import {Dialogs} from './Dialogs';
 import {
