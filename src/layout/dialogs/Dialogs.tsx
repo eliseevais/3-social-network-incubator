@@ -1,18 +1,20 @@
 import React from "react";
-import {InboxPagePropsType} from "../../redux/storeAllPropsType";
+import {DialogsPagePropsType} from "../../redux/store-all-props-types";
 import {DialogItem} from "./dialogItem/DialogItem";
 import {MessageItem} from "./messageItem/MessageItem";
 import {Styles} from "./Dialogs_Styles";
+import {Redirect} from "react-router-dom";
 
-export type InboxPropsType = {
-  inboxPage: InboxPagePropsType
+export type DialogsPropsType = {
+  dialogsPage: DialogsPagePropsType
   updateNewMessageText: (text: string) => void;
   sendMessage: () => void
+  isAuth: boolean
 };
 
-export const Dialogs = (props: InboxPropsType) => {
+export const Dialogs = (props: DialogsPropsType) => {
 
-  let state = props.inboxPage;
+  let state = props.dialogsPage;
 
   let dialogsElements = state.dialogs.map(dialog =>
     <DialogItem key={dialog.id}
@@ -36,6 +38,8 @@ export const Dialogs = (props: InboxPropsType) => {
       props.updateNewMessageText(text)
     }
   };
+
+  if (!props.isAuth) return <Redirect to={'/login'}/>
 
   return (
     <Styles.Dialogs>

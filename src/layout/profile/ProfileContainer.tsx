@@ -3,8 +3,7 @@ import {AppStateType} from '../../redux/redux-store';
 import {connect} from 'react-redux';
 import {Profile} from './Profile';
 import {getUserProfile} from '../../redux/profile-reducer';
-import {RouteComponentProps, withRouter} from 'react-router-dom';
-import {UserType} from "../../redux/storeAllPropsType";
+import {Redirect, RouteComponentProps, withRouter} from 'react-router-dom';
 
 type MSTPType = {
   profile: {
@@ -26,10 +25,12 @@ type MSTPType = {
       small: string | null,
       large: string | null
     }
-  }
+  };
+  isAuth: boolean
 };
 type MDTPType = {
-  getUserProfile: (userId: number) => void
+  getUserProfile: (userId: number) => void;
+
 };
 type PathParamsType = {
   userId: any
@@ -47,6 +48,7 @@ class ProfileContainer extends Component<PropsType, AppStateType> {
   }
 
   render() {
+    if (!this.props.isAuth) return <Redirect to={'/login'}/>
     return (
       <Profile {...this.props} profile={this.props.profile}/>
     )
@@ -54,7 +56,8 @@ class ProfileContainer extends Component<PropsType, AppStateType> {
 }
 
 let MSTP = (state: AppStateType): MSTPType => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  isAuth: state.auth.isAuth
 });
 
 let WithUrlDataContainerComponent = withRouter(ProfileContainer)

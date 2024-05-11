@@ -1,7 +1,7 @@
 import {
   ActionsType, AddPostActionType, NewPostType,
   UpdateNewPostTextActionType, UserType
-} from "./storeAllPropsType";
+} from "./store-all-props-types";
 import {Dispatch} from "redux";
 import {usersAPI} from "../api/api";
 

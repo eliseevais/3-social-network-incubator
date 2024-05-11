@@ -3,7 +3,7 @@ import Ekaterina from '../accets/img/Ekaterina.jpg';
 import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
-import {StoreType} from "./storeAllPropsType";
+import {StoreType} from "./store-all-props-types";
 import {profileReducer} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {feedsReducer} from "./feeds-reducer";

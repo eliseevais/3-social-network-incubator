@@ -1,6 +1,6 @@
 import React from 'react';
 import flowers from '../../accets/img/flowers.jpg';
-import {FlexWrapper} from '../../componentsWrappers/FlexWrapper';
+import {FlexWrapper} from '../../wrappers/FlexWrapper';
 import {Styles} from './SideBarMenuAndLogo_Styles';
 import {SideBarMenu} from "./sideBarMenu/SideBarMenu";
 

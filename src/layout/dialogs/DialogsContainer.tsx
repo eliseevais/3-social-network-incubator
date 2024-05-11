@@ -1,4 +1,4 @@
-import {ActionsType} from '../../redux/storeAllPropsType';
+import {ActionsType} from '../../redux/store-all-props-types';
 import {AppStateType} from '../../redux/redux-store';
 import {connect} from 'react-redux';
 import {Dialogs} from './Dialogs';
@@ -9,7 +9,8 @@ import {
 
 let mapStateToProps = (state: AppStateType) => {
   return {
-    inboxPage: state.dialogsPage
+    dialogsPage: state.dialogsPage,
+    isAuth: state.auth.isAuth
   }
 };
 

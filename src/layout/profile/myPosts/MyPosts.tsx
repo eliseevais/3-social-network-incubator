@@ -2,7 +2,7 @@ import React from 'react';
 import {Post} from "./post/Post";
 import {ProfileInfo} from "../profileInfo/ProfileInfo";
 import {Styles} from "./MyPosts_Styles";
-import {PostType} from "../../../redux/storeAllPropsType";
+import {PostType} from "../../../redux/store-all-props-types";
 
 
 type PostDataPropsType = {

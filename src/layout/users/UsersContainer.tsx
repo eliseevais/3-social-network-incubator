@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {AppStateType} from '../../redux/redux-store';
-import {UserType} from '../../redux/storeAllPropsType';
+import {UserType} from '../../redux/store-all-props-types';
 import {connect} from 'react-redux';
 import {Users} from './Users';
 import {

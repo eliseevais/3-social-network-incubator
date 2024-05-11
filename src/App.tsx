@@ -1,8 +1,8 @@
 import React from 'react';
 import HeaderContainer from "./layout/header/HeaderContainer";
 import {AppWrapper} from './App_Styles';
-import {Container} from './componentsWrappers/Container_Styles';
-import {FlexWrapper} from './componentsWrappers/FlexWrapper';
+import {Container} from './wrappers/Container_Styles';
+import {FlexWrapper} from './wrappers/FlexWrapper';
 import {Navbar} from './layout/navbar/Navbar';
 import {
   SideBarMenuAndLogo

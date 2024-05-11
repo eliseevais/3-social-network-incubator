@@ -1,7 +1,7 @@
 import React from 'react';
 import { Styles } from './Header_Styles';
-import { Container } from '../../componentsWrappers/Container_Styles';
-import { FlexWrapper } from '../../componentsWrappers/FlexWrapper';
+import { Container } from '../../wrappers/Container_Styles';
+import { FlexWrapper } from '../../wrappers/FlexWrapper';
 import {NavLink} from "react-router-dom";
 
 export function Header(props: any) {

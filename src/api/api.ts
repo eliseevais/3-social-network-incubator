@@ -1,5 +1,5 @@
 import axios from "axios";
-import {UserType} from "../redux/storeAllPropsType";
+import {UserType} from "../redux/store-all-props-types";
 
 const instance = axios.create({
 

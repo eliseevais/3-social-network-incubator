@@ -1,5 +1,5 @@
 import React from "react";
-import {DialogItemType} from "../../../redux/storeAllPropsType";
+import {DialogItemType} from "../../../redux/store-all-props-types";
 import {NavLink} from "react-router-dom";
 import {Styles} from "../Dialogs_Styles";
 

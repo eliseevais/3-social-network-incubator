@@ -1,7 +1,7 @@
 import {
   ActionsType,
   InitialStateUsersPageType, UserType,
-} from "./storeAllPropsType";
+} from "./store-all-props-types";
 import {Dispatch} from "redux";
 import {usersAPI} from "../api/api";
 

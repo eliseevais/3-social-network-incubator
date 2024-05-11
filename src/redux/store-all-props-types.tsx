@@ -10,7 +10,7 @@ export type MessageType = {
   id: number;
   message: string
 };
-export type InboxPagePropsType = {
+export type DialogsPagePropsType = {
   dialogs: Array<DialogItemType>;
   messages: Array<MessageType>;
   newMessageText: string

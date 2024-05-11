@@ -1,4 +1,4 @@
-import {ActionsType} from "./storeAllPropsType";
+import {ActionsType} from "./store-all-props-types";
 
 let initialState = {
   feeds: [

@@ -7,7 +7,7 @@ import {
   ActionsType, DialogItemType, MessageType, NextMessageType,
   SendMessageActionType,
   UpdateNewMessageTextActionType
-} from "./storeAllPropsType";
+} from "./store-all-props-types";
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';

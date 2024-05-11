@@ -1,6 +1,6 @@
 import React from "react";
 import {Feed} from "./Feed";
-import {  FeedType} from "../../redux/storeAllPropsType";
+import {  FeedType} from "../../redux/store-all-props-types";
 
 type FeedsDataPropsType = {
   feeds: Array<FeedType>
