@@ -5,7 +5,7 @@ import {Dialogs} from './Dialogs';
 import {
   sendMessageAC,
   updateNewMessageTextAC
-} from '../../redux/dialogsReducer';
+} from '../../redux/dialogs-reducer';
 
 let mapStateToProps = (state: AppStateType) => {
   return {

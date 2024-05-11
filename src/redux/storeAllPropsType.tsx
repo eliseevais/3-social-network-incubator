@@ -90,6 +90,7 @@ export type InitialStateUsersPageType = {
   totalCount: number
   currentPage: number
   isFetching: boolean
+  followingInProgress: any
 };
 
 // ActionTypes
@@ -129,7 +130,12 @@ type setTotalUsersCountActionType = {
 };
 type toggleIsFetchingActionType = {
   type: 'TOGGLE_IS_FETCHING';
-  isFetching: boolean
+  isFetching: boolean;
+};
+type toggleIsFollowingProgressActionType = {
+  type: 'TOGGLE_IS_FOLLOWING_PROGRESS';
+  isFetching: any;
+  userId: number
 };
 type setUserProfileActionType = {
   type: 'SET_USER_PROFILE';
@@ -147,7 +153,8 @@ export type ActionsType =
   | SetCurrentPageActionType
   | setTotalUsersCountActionType
   | toggleIsFetchingActionType
-  | setUserProfileActionType;
+  | setUserProfileActionType
+  | toggleIsFollowingProgressActionType;
 
 export type StoreType = {
   _state: AppStateType;

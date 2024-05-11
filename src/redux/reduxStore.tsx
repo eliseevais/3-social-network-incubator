@@ -1,9 +1,9 @@
 import {combineReducers, createStore} from "redux";
-import {profileReducer} from "./profileReducer";
-import {dialogsReducer} from "./dialogsReducer";
-import {feedsReducer} from "./feedsReducer";
-import {usersReducer} from "./usersReducer";
-import {authReducer} from "./authReducer";
+import {profileReducer} from "./profile-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
+import {feedsReducer} from "./feeds-reducer";
+import {usersReducer} from "./users-reducer";
+import {authReducer} from "./auth-reducer";
 
 let rootReducer = combineReducers({
   profilePage: profileReducer,

@@ -4,9 +4,9 @@ import Maria from '../accets/img/Maria.jpg';
 import Olga from '../accets/img/Olga.jpg';
 import Maxim from '../accets/img/Maxim.jpg';
 import {StoreType} from "./storeAllPropsType";
-import {profileReducer} from "./profileReducer";
-import {dialogsReducer} from "./dialogsReducer";
-import {feedsReducer} from "./feedsReducer";
+import {profileReducer} from "./profile-reducer";
+import {dialogsReducer} from "./dialogs-reducer";
+import {feedsReducer} from "./feeds-reducer";
 
 export let store: StoreType = {
   _state: {
@@ -43,7 +43,8 @@ export let store: StoreType = {
       pageSize: 5,
       totalCount: 0,
       currentPage: 1,
-      isFetching: false
+      isFetching: false,
+      followingInProgress: false
     },
     feedsPage: {
       feeds: [

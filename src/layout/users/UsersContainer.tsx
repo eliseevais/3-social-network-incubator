@@ -6,9 +6,9 @@ import {usersAPI} from "../../api/api";
 import {UsersNew} from './UsersNew';
 import {
   follow, setCurrentPage, setTotalUsersCount,
-  setUsers, toggleIsFetching,
+  setUsers, toggleIsFollowingProgress, toggleIsFetching,
   unfollow
-} from '../../redux/usersReducer';
+} from '../../redux/users-reducer';
 import {Preloader} from "../../common/Preloader";
 
 type MSTPType = {
@@ -17,6 +17,7 @@ type MSTPType = {
   totalCount: number
   currentPage: number
   isFetching: boolean
+  followingInProgress: []
 };
 type MDTPType = {
   follow: (userId: number) => void;
@@ -24,7 +25,8 @@ type MDTPType = {
   setUsers: (users: Array<UserType>) => void;
   setCurrentPage: (pageNumber: number) => void;
   setTotalUsersCount: (totalUsersCount: number) => void;
-  toggleIsFetching: (isFetching: boolean) => void
+  toggleIsFetching: (isFetching: boolean) => void;
+  toggleFollowingProgress: any
 };
 
 export type UsersPagePropsType = MSTPType & MDTPType;
@@ -68,6 +70,8 @@ class UsersContainer extends Component<UsersPagePropsType, {}> {
                   setUsers={this.props.setUsers}
                   isFetching={this.props.isFetching}
                   toggleIsFetching={this.props.toggleIsFetching}
+                  toggleFollowingProgress={this.props.toggleFollowingProgress}
+                  followingInProgress={this.props.followingInProgress}
         />
       </>
     )
@@ -81,7 +85,8 @@ const MSTP = (state: AppStateType): MSTPType => {
     pageSize: state.usersPage.pageSize,
     totalCount: state.usersPage.totalCount,
     currentPage: state.usersPage.currentPage,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress
   }
 }
 // const MDTP = (dispatch: Dispatch): MDTPType => {
@@ -109,5 +114,5 @@ const MSTP = (state: AppStateType): MSTPType => {
 
 export default connect(MSTP, {
   follow, unfollow, setUsers, setCurrentPage,
-  setTotalUsersCount, toggleIsFetching
+  setTotalUsersCount, toggleIsFetching, toggleFollowingProgress: toggleIsFollowingProgress
 })(UsersContainer)
