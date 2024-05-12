@@ -1,20 +1,25 @@
-import {ActionsType} from '../../redux/store-all-props-types';
+import {
+  ActionsType,
+  DialogsPagePropsType
+} from '../../redux/store-all-props-types';
 import {AppStateType} from '../../redux/redux-store';
 import {connect} from 'react-redux';
-import {Dialogs} from './Dialogs';
+import {Dialogs} from "./Dialogs";
 import {
   sendMessageAC,
   updateNewMessageTextAC
 } from '../../redux/dialogs-reducer';
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
-let mapStateToProps = (state: AppStateType) => {
-  return {
-    dialogsPage: state.dialogsPage,
-    isAuth: state.auth.isAuth
-  }
+type MSTPType = {
+  dialogsPage: DialogsPagePropsType;
 };
 
-let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
+let MSTP = (state: AppStateType): MSTPType => ({
+  dialogsPage: state.dialogsPage,
+});
+
+let MDTP = (dispatch: (action: ActionsType) => void) => {
   return {
     updateNewMessageText: (text: string) => {
       dispatch(updateNewMessageTextAC(text))
@@ -25,4 +30,6 @@ let mapDispatchToProps = (dispatch: (action: ActionsType) => void) => {
   }
 };
 
-export const DialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+let AuthRedirectComponent = withAuthRedirect(Dialogs);
+
+export const DialogsContainer = connect(MSTP, MDTP)(AuthRedirectComponent);

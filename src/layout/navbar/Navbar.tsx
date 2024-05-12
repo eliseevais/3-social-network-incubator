@@ -11,9 +11,9 @@ export const Navbar = () => {
   return (
     <Styles.Navbar>
 
-      <Route path='/login' render={() => <Login/>}/>
-
       <Redirect from='/' to='/profile'/>
+
+      <Route path='/login' render={() => <Login/>}/>
       <Route path='/profile/:userId?' render={() => <ProfileContainer/>}/>
       <Route path='/dialogs' render={() => <DialogsContainer/>}/>
       <Route path='/users' render={() => <UsersContainer />}/>

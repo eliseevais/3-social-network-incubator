@@ -11,6 +11,7 @@ import {
   unfollow
 } from '../../redux/users-reducer';
 import {Preloader} from "../../common/Preloader";
+import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 
 type MSTPType = {
   users: Array<UserType>;
@@ -101,10 +102,10 @@ const MSTP = (state: AppStateType): MSTPType => {
 //   }
 // }
 
-export default connect(MSTP, {
+export default withAuthRedirect(connect(MSTP, {
   follow,
   unfollow,
   setCurrentPage,
   toggleIsFollowingProgress,
   getUsers
-})(UsersContainer)
+})(UsersContainer))
