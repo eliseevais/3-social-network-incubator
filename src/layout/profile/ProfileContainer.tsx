@@ -62,4 +62,6 @@ let MSTP = (state: AppStateType): MSTPType => ({
 
 let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
-export default connect(MSTP, {getUserProfile})(WithUrlDataContainerComponent);
+// export default connect(MSTP, {getUserProfile})(WithUrlDataContainerComponent);
+
+export default withAuthRedirect(connect(MSTP, {getUserProfile})(WithUrlDataContainerComponent));
