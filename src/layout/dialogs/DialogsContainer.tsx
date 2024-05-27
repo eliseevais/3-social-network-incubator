@@ -10,6 +10,7 @@ import {
   updateNewMessageTextAC
 } from '../../redux/dialogs-reducer';
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
+import {compose} from "redux";
 
 type MSTPType = {
   dialogsPage: DialogsPagePropsType;
@@ -30,6 +31,7 @@ let MDTP = (dispatch: (action: ActionsType) => void) => {
   }
 };
 
-let AuthRedirectComponent = withAuthRedirect(Dialogs);
-
-export const DialogsContainer = connect(MSTP, MDTP)(AuthRedirectComponent);
+export const DialogsContainer: any = compose(
+  connect(MSTP, MDTP),
+  withAuthRedirect
+)(Dialogs)
