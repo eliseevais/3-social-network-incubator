@@ -62,5 +62,5 @@ let MSTP = (state: AppStateType): MSTPType => ({
 export default compose<React.ComponentType>(
   connect(MSTP, {getUserProfile}),
   withRouter,
-  withAuthRedirect,
+  //withAuthRedirect,
 )(ProfileContainer)
