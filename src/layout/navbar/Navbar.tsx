@@ -5,7 +5,7 @@ import {Styles} from "./Navbar_Styles";
 import UsersContainer from "../users/UsersContainer";
 import {Music} from "../music/Music";
 import {Login} from "../login/Login";
-import {DialogsContainer} from "../dialogs/DialogsContainer";
+import DialogsContainer from "../dialogs/DialogsContainer";
 
 export const Navbar = () => {
   return (

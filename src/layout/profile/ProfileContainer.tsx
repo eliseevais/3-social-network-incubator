@@ -59,7 +59,7 @@ let MSTP = (state: AppStateType): MSTPType => ({
   profile: state.profilePage.profile
 });
 
-export default compose<any>(
+export default compose<React.ComponentType>(
   connect(MSTP, {getUserProfile}),
   withRouter,
   withAuthRedirect,

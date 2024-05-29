@@ -11,6 +11,7 @@ import {
 } from '../../redux/dialogs-reducer';
 import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
+import React from "react";
 
 type MSTPType = {
   dialogsPage: DialogsPagePropsType;
@@ -31,7 +32,7 @@ let MDTP = (dispatch: (action: ActionsType) => void) => {
   }
 };
 
-export const DialogsContainer: any = compose(
+export default compose<React.ComponentType>(
   connect(MSTP, MDTP),
   withAuthRedirect
 )(Dialogs)
