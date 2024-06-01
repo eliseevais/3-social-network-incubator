@@ -63,7 +63,7 @@ export type UsersPageTypeFromApp = {
   users: Array<UserType>
 };
 export type UserFromServerType = {
-  aboutMe: string | null;
+  aboutMe?: string | null;
   contacts: {
     facebook: string | null
     website: string | null
@@ -141,6 +141,10 @@ type setUserProfileActionType = {
   type: 'SET_USER_PROFILE';
   profile: any;
 };
+type setStatusActionType = {
+  type: 'SET_STATUS';
+  status: string
+}
 
 export type ActionsType =
   | AddPostActionType
@@ -154,7 +158,8 @@ export type ActionsType =
   | setTotalUsersCountActionType
   | toggleIsFetchingActionType
   | setUserProfileActionType
-  | toggleIsFollowingProgressActionType;
+  | toggleIsFollowingProgressActionType
+  | setStatusActionType;
 
 export type StoreType = {
   _state: AppStateType;

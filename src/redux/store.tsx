@@ -20,7 +20,8 @@ export let store: StoreType = {
         {id: 6, message: 'I like it-incubator!', likesCount: 23}
       ],
       newPostText: 'Hello from store.tsx',
-      profile: null
+      profile: null,
+      status: ''
     },
     dialogsPage: {
       dialogs: [

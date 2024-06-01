@@ -2,9 +2,12 @@ import React, {Component} from "react";
 import {AppStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {Profile} from "./Profile";
-import {getUserProfile} from "../../redux/profile-reducer";
+import {
+  getUserProfileTC,
+  getUserStatusTC,
+  updateStatusTC
+} from "../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
-import {withAuthRedirect} from "../../hoc/WithAuthRedirect";
 import {compose} from "redux";
 
 type MSTPType = {
@@ -28,39 +31,51 @@ type MSTPType = {
       large: string | null
     }
   };
+  status: string
 };
 
 type MDTPType = {
-  getUserProfile: (userId: number) => void
+  getUserProfile: (userId: number) => void;
+  getUserStatus: (userId: number) => void;
+  updateStatus: (status: string) => void;
 };
 type PathParamsType = {
   userId: any
 };
 type OwnPropsType = MSTPType & MDTPType;
-type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType;
+export type PropsType = RouteComponentProps<PathParamsType> & OwnPropsType;
 
 class ProfileContainer extends Component<PropsType, AppStateType> {
   componentDidMount() {
     let userId = this.props.match.params.userId;
     if (!userId) {
-      userId = 2;
+      userId = 28730;
     }
-    this.props.getUserProfile(userId)
+    this.props.getUserProfile(userId);
+    this.props.getUserStatus(userId);
   }
 
   render() {
     return (
-      <Profile {...this.props} profile={this.props.profile}/>
+      <Profile {...this.props} profile={this.props.profile}
+               status={this.props.status}
+               updateStatus={this.props.updateStatus}
+      />
     )
   }
 }
 
 let MSTP = (state: AppStateType): MSTPType => ({
-  profile: state.profilePage.profile
+  profile: state.profilePage.profile,
+  status: state.profilePage.status
 });
 
 export default compose<React.ComponentType>(
-  connect(MSTP, {getUserProfile}),
+  connect(MSTP, {
+    getUserProfile: getUserProfileTC,
+    getUserStatus: getUserStatusTC,
+    updateStatus: updateStatusTC
+  }),
   withRouter,
   //withAuthRedirect,
 )(ProfileContainer)

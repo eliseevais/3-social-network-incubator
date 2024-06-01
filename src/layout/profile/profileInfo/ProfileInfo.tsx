@@ -2,8 +2,19 @@ import React from "react";
 import {Preloader} from "../../../common/Preloader";
 import {Styles} from "../../users/Users_Styles";
 import {ProfileStatus} from "./profileStatus/ProfileStatus";
+import {PropsType} from "../ProfileContainer";
+import {
+  UserFromServerType,
+  UserType
+} from "../../../redux/store-all-props-types";
 
-export const ProfileInfo = (props: any) => {
+type ProfileInfoPropsType = {
+  profile: UserFromServerType;
+  status: string;
+  updateStatus: (status: string) => void;
+}
+
+export const ProfileInfo = (props: ProfileInfoPropsType) => {
   if (!props.profile) {
     return <Preloader/>
   }
@@ -14,14 +25,16 @@ export const ProfileInfo = (props: any) => {
 
       <div>Full name: {props.profile.fullName}</div>
       <div>About: {props.profile.aboutMe}</div>
-      <div>Github: {props.profile.github}</div>
+      <div>Github: {props.profile.contacts.github}</div>
       <div>Looking for a job: {props.profile.lookingForAJob}</div>
       <div>Description for a
         job: {props.profile.lookingForAJobDescription}</div>
       ---------------------------------
 
       <div>
-        <ProfileStatus status={'Hello my friends'}/>
+        <ProfileStatus status={props.status}
+                       updateStatus={props.updateStatus}
+        />
       </div>
     </div>
   )
