@@ -54,7 +54,8 @@ export let store: StoreType = {
         {id: 3, text: 'This is the third news!'}
       ]
     },
-    auth: {}
+    auth: {},
+    form: {}
   },
   _callSubscriber() {
     console.log('state was changed')
